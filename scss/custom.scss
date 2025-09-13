@@ -1,0 +1,13 @@
+@import "node_modules/bootstrap/scss/functions";
+
+// Crea o extiende el mapa de colores
+$custom-colors: (
+  "chile": #CE3333,
+  "nopal": #6F9F2B,
+  "cebolla": #F3EFE8,
+  "mostaza": #F9A825 
+);
+
+// Une tus colores con los de Bootstrap
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
