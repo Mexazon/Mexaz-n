@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Tipografía -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Varta:wght@300..700&family=Wellfleet&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap + colores/tipos compilados desde custom.scss -->
+    <link rel="stylesheet" href="../dist/custom.css">
+    <!-- Estilos extra -->
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+    <div class="container">
+        <!--Botones Iniciar Sesión y Registrarse -->
+        <div class="buttons">
+            <a class="btn btn-mex btn-chile text-white wellfleet-regular" data-bs-toggle="modal" data-bs-target="#loginModal" role="button">INICIAR SESIÓN</a>
+            <a class="btn btn-mex btn-nopal text-white wellfleet-regular" data-bs-toggle="modal" data-bs-target="#registerModal" role="button">REGISTRARME</a>
+        </div>
+    </div>
+
+    <!--Modal Inicio de Sesión -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginTitle" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 rounded-3 overflow-hidden shadow-lg">
+            <button type="button" class="btn-close position-absolute end-0 m-3"
+                    data-bs-dismiss="modal" aria-label="Cerrar"></button>
+
+            <div class="row g-0">
+                <!-- Izquierda: naranja + formulario -->
+                <div class="col-md-6 bg-queso text-white p-4 p-md-5 d-flex flex-column justify-content-center">
+                <h2 id="loginTitle" class="wellfleet-regular text-uppercase mb-4">Iniciar sesión</h2>
+
+                <form>
+                    <div class="mb-3">
+                    <input type="text" class="form-control form-control-mex" placeholder="Usuario">
+                    </div>
+                    <div class="mb-3">
+                    <input type="password" class="form-control form-control-mex" placeholder="Contraseña">
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Recordarme siempre</label>
+                    </div>
+                    <a href="#" class="link-light text-decoration-none small">¿Olvidaste la contraseña?</a>
+                    </div>
+
+                    <button class="btn btn-mex btn-nopal text-white wellfleet-regular w-100">Entrar</button>
+                </form>
+                </div>
+
+                <!-- Derecha: imagen -->
+                <div class="col-md-6 bg-white d-flex align-items-center justify-content-center p-4 p-md-5">
+                <img src="assets/dorilocos.png" class="img-fluid" alt="Vendedora de dorilocos">
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Modal Wizard -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerTitle" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 rounded-3 overflow-hidden shadow-lg">
+
+                <!-- Cerrar -->
+                <button type="button" class="btn-close position-absolute end-0 m-3"
+                        data-bs-dismiss="modal" aria-label="Cerrar"></button>
+
+                <div class="row g-0" id="wizardRoot">
+                    <!-- Izquierda: imagen -->
+                    <div class="col-lg-5 d-none d-lg-flex align-items-center justify-content-center bg-white p-4">
+                        <img src="assets/hotdog.png" class="img-fluid" alt="Puesto callejero">
+                    </div>
+                    <!-- Derecha: pasos -->
+                    <div class="col-lg-7 bg-chile text-white p-4 p-md-5 d-flex flex-column step-content">
+
+                        <h2 id="registerTitle" class="wellfleet-regular text-uppercase mb-4">Regístrate</h2>
+
+                        <!-- PASO 1: datos básicos (común) -->
+                        <section class="wizard-step" data-step="1">
+                            <div class="mb-3">
+                            <input type="text" class="form-control form-control-mex" placeholder="Nombre de tu negocio">
+                            </div>
+                            <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <input type="email" class="form-control form-control-mex" placeholder="Correo electrónico">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control form-control-mex" placeholder="Teléfono">
+                            </div>
+                            </div>
+                            <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <input type="password" class="form-control form-control-mex" placeholder="Contraseña">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="password" class="form-control form-control-mex" placeholder="Confirma tu contraseña">
+                            </div>
+                            </div>
+
+                            <label class="d-block mb-3">¿Eres un puesto?</label>
+                            <div class="btn-group" role="group">
+                            <input type="radio" class="btn-check" name="esPuesto" id="rSi" autocomplete="off" value="si">
+                            <label class="btn btn-light" for="rSi">Sí</label>
+
+                            <input type="radio" class="btn-check" name="esPuesto" id="rNo" autocomplete="off" value="no">
+                            <label class="btn btn-light" for="rNo">No</label>
+                            </div>
+                        </section>
+
+                        <!-- PASO 2A: horarios (rama puesto) -->
+                        <section class="wizard-step d-none" data-step="2a">
+                            <p class="mb-3">Configura tus horarios:</p>
+                            <div class="vstack gap-2">
+                            <div class="d-flex gap-2 align-items-center">
+                                <span class="w-25">Lunes</span>
+                                <input type="time" class="form-control form-control-mex">
+                                <span>a</span>
+                                <input type="time" class="form-control form-control-mex">
+                            </div>
+                            <div class="d-flex gap-2 align-items-center">
+                                <span class="w-25">Martes</span>
+                                <input type="time" class="form-control form-control-mex">
+                                <span>a</span>
+                                <input type="time" class="form-control form-control-mex">
+                            </div>
+                             <div class="d-flex gap-2 align-items-center">
+                                <span class="w-25">Miércoles</span>
+                                <input type="time" class="form-control form-control-mex">
+                                <span>a</span>
+                                <input type="time" class="form-control form-control-mex">
+                            </div>
+                            <div class="d-flex gap-2 align-items-center">
+                                <span class="w-25">Jueves</span>
+                                <input type="time" class="form-control form-control-mex">
+                                <span>a</span>
+                                <input type="time" class="form-control form-control-mex">
+                            </div>
+                             <div class="d-flex gap-2 align-items-center">
+                                <span class="w-25">Viernes</span>
+                                <input type="time" class="form-control form-control-mex">
+                                <span>a</span>
+                                <input type="time" class="form-control form-control-mex">
+                            </div>
+                             <div class="d-flex gap-2 align-items-center">
+                                <span class="w-25">Sábado</span>
+                                <input type="time" class="form-control form-control-mex">
+                                <span>a</span>
+                                <input type="time" class="form-control form-control-mex">
+                            </div>
+                             <div class="d-flex gap-2 align-items-center">
+                                <span class="w-25">Domingo</span>
+                                <input type="time" class="form-control form-control-mex">
+                                <span>a</span>
+                                <input type="time" class="form-control form-control-mex">
+                            </div>
+                        </section>
+
+                        <!-- PASO 2B: datos de usuario normal (rama no puesto) -->
+                        <section class="wizard-step d-none" data-step="2b">
+                            <p class="mb-3">Cuéntanos un poco más:</p>
+                            <div class="mb-3">
+                            <input type="text" class="form-control form-control-mex" placeholder="Ciudad / Municipio">
+                            </div>
+                            <div class="mb-3">
+                            <input type="text" class="form-control form-control-mex" placeholder="Intereses (tacos, elotes, etc.)">
+                            </div>
+                        </section>
+
+                        <!-- PASO 3: confirmar -->
+                        <section class="wizard-step d-none" data-step="3">
+                            <p class="mb-3">Revisa tu información y confirma.</p>
+                            <!-- aquí puedes renderizar un resumen -->
+                            <div class="p-3 bg-white text-dark rounded">Resumen (demo)</div>
+                        </section>
+
+                        <div class="step-footer">
+                            <button class="btn btn-secondary" id="btnBack">Anterior</button>
+                            <button class="btn btn-warning ms-auto" id="btnNext">Siguiente</button>
+                            <button class="btn btn-nopal text-white d-none wellfleet-regular btn-confirmar" id="btnFinish">Confirmar</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/register-wizard.js"></script>
+
+</body>
+</html>
