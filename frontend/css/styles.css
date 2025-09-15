@@ -47,7 +47,7 @@
 /* Posición del botón*/
 .buttons {
   position: absolute;
-  top: 740px;
+  top: 75vh;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
