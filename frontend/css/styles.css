@@ -112,3 +112,36 @@
   font-size: 1rem;
 }
 
+/* Tarjetas de la sección "Nosotros" */
+#nosotros .card {
+    border-radius: 1rem;
+    overflow: hidden;
+    width: 398px;
+    height: 739px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo para las imágenes de misión y visión */
+.img-card-icon {
+    width: 221px;
+    height: 221px;
+    object-fit: contain;
+    margin: 1rem auto;
+    display: block;
+}
+
+/* Estilo para la imagen de perfil del equipo */
+.img-card-icon-equipo {
+    width: 389px;
+    height: 389px;
+    object-fit: contain;
+    margin: 1rem auto;
+    display: block;
+}
+
+/* Estilo para las flechas de navegación del carrusel */
+#equipoCarousel .carousel-control-prev,
+#equipoCarousel .carousel-control-next {
+    filter: invert(100%);
+}
