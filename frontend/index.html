@@ -60,15 +60,14 @@
 
                 <!-- Derecha: imagen -->
                 <div class="col-md-6 bg-white d-flex align-items-center justify-content-center p-4 p-md-5">
-                <img src="assets/dorilocos.png" class="img-fluid" alt="Vendedora de dorilocos">
+                <img src="assets/landing/dorilocos.png" class="img-fluid" alt="Vendedora de dorilocos">
                 </div>
             </div>
             </div>
         </div>
     </div>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Modal Wizard -->
+    
+    <!-- Modal Registro -->
     <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerTitle" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content border-0 rounded-3 overflow-hidden shadow-lg">
@@ -79,11 +78,11 @@
 
                 <div class="row g-0" id="wizardRoot">
                     <!-- Izquierda: imagen -->
-                    <div class="col-lg-5 d-none d-lg-flex align-items-center justify-content-center bg-white p-4">
-                        <img src="assets/hotdog.png" class="img-fluid" alt="Puesto callejero">
+                    <div class="col-lg-5 col-12 d-flex align-items-center justify-content-center bg-white p-4 order-2 order-lg-1">
+                        <img src="assets/landing/hot_dogs.png" class="img-fluid" alt="Puesto callejero">
                     </div>
                     <!-- Derecha: pasos -->
-                    <div class="col-lg-7 bg-chile text-white p-4 p-md-5 d-flex flex-column step-content">
+                    <div class="col-lg-7 col-12 bg-chile text-white p-4 p-md-5 d-flex flex-column step-content order-1 order-lg-2">
 
                         <h2 id="registerTitle" class="wellfleet-regular text-uppercase mb-4">Regístrate</h2>
 
@@ -123,47 +122,48 @@
                         <section class="wizard-step d-none" data-step="2a">
                             <p class="mb-3">Configura tus horarios:</p>
                             <div class="vstack gap-2">
-                            <div class="d-flex gap-2 align-items-center">
-                                <span class="w-25">Lunes</span>
-                                <input type="time" class="form-control form-control-mex">
-                                <span>a</span>
-                                <input type="time" class="form-control form-control-mex">
-                            </div>
-                            <div class="d-flex gap-2 align-items-center">
-                                <span class="w-25">Martes</span>
-                                <input type="time" class="form-control form-control-mex">
-                                <span>a</span>
-                                <input type="time" class="form-control form-control-mex">
-                            </div>
-                             <div class="d-flex gap-2 align-items-center">
-                                <span class="w-25">Miércoles</span>
-                                <input type="time" class="form-control form-control-mex">
-                                <span>a</span>
-                                <input type="time" class="form-control form-control-mex">
-                            </div>
-                            <div class="d-flex gap-2 align-items-center">
-                                <span class="w-25">Jueves</span>
-                                <input type="time" class="form-control form-control-mex">
-                                <span>a</span>
-                                <input type="time" class="form-control form-control-mex">
-                            </div>
-                             <div class="d-flex gap-2 align-items-center">
-                                <span class="w-25">Viernes</span>
-                                <input type="time" class="form-control form-control-mex">
-                                <span>a</span>
-                                <input type="time" class="form-control form-control-mex">
-                            </div>
-                             <div class="d-flex gap-2 align-items-center">
-                                <span class="w-25">Sábado</span>
-                                <input type="time" class="form-control form-control-mex">
-                                <span>a</span>
-                                <input type="time" class="form-control form-control-mex">
-                            </div>
-                             <div class="d-flex gap-2 align-items-center">
-                                <span class="w-25">Domingo</span>
-                                <input type="time" class="form-control form-control-mex">
-                                <span>a</span>
-                                <input type="time" class="form-control form-control-mex">
+                                <div class="d-flex gap-2 align-items-center">
+                                    <span class="w-25">Lunes</span>
+                                    <input type="time" class="form-control form-control-mex">
+                                    <span>a</span>
+                                    <input type="time" class="form-control form-control-mex">
+                                </div>
+                                <div class="d-flex gap-2 align-items-center">
+                                    <span class="w-25">Martes</span>
+                                    <input type="time" class="form-control form-control-mex">
+                                    <span>a</span>
+                                    <input type="time" class="form-control form-control-mex">
+                                </div>
+                                <div class="d-flex gap-2 align-items-center">
+                                    <span class="w-25">Miércoles</span>
+                                    <input type="time" class="form-control form-control-mex">
+                                    <span>a</span>
+                                    <input type="time" class="form-control form-control-mex">
+                                </div>
+                                <div class="d-flex gap-2 align-items-center">
+                                    <span class="w-25">Jueves</span>
+                                    <input type="time" class="form-control form-control-mex">
+                                    <span>a</span>
+                                    <input type="time" class="form-control form-control-mex">
+                                </div>
+                                <div class="d-flex gap-2 align-items-center">
+                                    <span class="w-25">Viernes</span>
+                                    <input type="time" class="form-control form-control-mex">
+                                    <span>a</span>
+                                    <input type="time" class="form-control form-control-mex">
+                                </div>
+                                <div class="d-flex gap-2 align-items-center">
+                                    <span class="w-25">Sábado</span>
+                                    <input type="time" class="form-control form-control-mex">
+                                    <span>a</span>
+                                    <input type="time" class="form-control form-control-mex">
+                                </div>
+                                <div class="d-flex gap-2 align-items-center">
+                                    <span class="w-25">Domingo</span>
+                                    <input type="time" class="form-control form-control-mex">
+                                    <span>a</span>
+                                    <input type="time" class="form-control form-control-mex">
+                                </div>
                             </div>
                         </section>
 
