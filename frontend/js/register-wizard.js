@@ -8,7 +8,7 @@
 
   function init() {
     const modal = document.getElementById("registerModal");
-    if (!modal) return; // por si la vista no tiene el modal
+    if (!modal) return;
 
     const root  = modal.querySelector("#wizardRoot");
     const btnNext   = modal.querySelector("#btnNext");
@@ -62,7 +62,7 @@
     });
 
     btnFinish.addEventListener("click", () => {
-      // TODO: aquí haces submit/fetch
+      // submit/fetch
       const bsModal = bootstrap.Modal.getOrCreateInstance(modal);
       bsModal.hide();
     });
