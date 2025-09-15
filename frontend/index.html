@@ -12,8 +12,10 @@
     
     <!-- Bootstrap + colores/tipos compilados desde custom.scss -->
     <link rel="stylesheet" href="../dist/custom.css">
+
     <!-- Estilos extra -->
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/boton.css">
 </head>
 <body>
     <div class="container">
@@ -200,5 +202,41 @@
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/register-wizard.js"></script>
 
+
+    <!-- Parte del contacto -->
+<div id="forms">
+    <section>
+    <div id="Contacto" class="card p-4 mx-auto" style="max-width: 600px;">
+        <h2 class="text-center mb-4">CONTACTANOS</h2>
+        <form id="contactForm"> <div class="row mb-3">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="nombre" placeholder="NOMBRE" required>
+                </div>
+                <div class="col-md-6">
+                    <input type="email" class="form-control" id="correo" placeholder="CORREO ELECTRONICO" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>-Asunto-</option>
+                    <option value="1">Patrocinio</option>
+                    <option value="2">Colaboracion</option>
+                    <option value="3">Sugerencia</option>
+                    <option value="4">Reporte de error</option>
+                    <option value="5">Otro</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <textarea class="form-control" id="mensaje" rows="5" placeholder="CUENTANOS" required></textarea>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success btn-lg">ENVIAR</button>
+            </div>
+        </form>
+        <div id="statusMessage" style="display: none;"></div> 
+    </div>
+    </section>
+</div>
+<script src="js/formulario.js"></script>
 </body>
 </html>
