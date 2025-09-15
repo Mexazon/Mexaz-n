@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+
+}
+
+body { 
+    font-family: "Varta bold", sans-serif;
+    
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.content {
+    min-height: 80px;
+    background-color: #f3efe8;
+}
+
+.menu {
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.logo {
+    font-size: 25px;
+    text-transform: uppercase;
+    display: none;
+
+}
+.menu .navbar ul li {
+    position: relative;
+    float: left;
+    margin-right: 150px;
+
+}
+.menu .navbar ul li a {
+    color: black;
+    padding: 10px;
+    font-size: 40px;
+    font-family: wellfleet;
+    display: block;
+}
+
+.menu .navbar ul li a:hover {
+    background-color:#f9a825;
+    color: #FFFFFF;
+    border-radius: 16px;
+}
+.menu label {
+    cursor: pointer;
+    display: none;
+    
+}
+
+label{
+    text-align: left;
+    margin-left: 0px;
+}
+
+#menu {
+    display: none;
+}
+@media (max-width: 991px) {
+    .content {
+        min-height: 70px;
+    }
+    .menu { 
+        top:0;
+        padding: 20px;
+        
+    }
+    .menu label {
+        display: flex
+    }
+    .menu .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;
+        background-color: rgb(242, 239, 239);
+
+    }
+    .menu .navbar ul li{
+        width: 100%;
+
+    }
+    #menu:checked ~ .navbar {
+        display: initial;
+    }
+}
+    
