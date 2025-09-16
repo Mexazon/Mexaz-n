@@ -1,3 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Varta:wght@700&family=Mandali&family=Inter:wght@300;600&family=Wellfleet&display=swap');
+
+/* Tipografías personalizadas */
+.varta-bold {
+  font-family: "Varta", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.inter-light {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.inter-semi-bold {
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.wellfleet-regular {
+  font-family: "Wellfleet", serif;
+  font-weight: 400;
+  font-size: 25px;
+  font-style: normal;
+}
+
+#imagen{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 #Contacto {
      display: flex;
     background-color: #F3EFE8; 
@@ -10,7 +47,7 @@
 }
 
 #Contacto h2 {
-   font-family: "Varta", sans-serif;
+   font-family: "Wellfleet", serif;
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
@@ -41,9 +78,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease; 
 }
-#forms{
-    margin-top: 75%;
-}
+
 #Contacto .btn-success:hover {
     background-color: #6f9f2b; 
 }

@@ -43,11 +43,15 @@
   line-height: 1;
   box-sizing: border-box;
 }
-
+#buttonsBox{
+  background-color: aqua;
+  width: 1920px;
+  height: 150px;
+}
 /* Posición del botón*/
 .buttons {
   position: absolute;
-  top: 75vh;
+  
   left: 50%;
   transform: translateX(-50%);
   display: flex;
