@@ -29,11 +29,13 @@
   font-style: normal;
 }
 
-#imagen{
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#logo {
+  /* Elimina width: 1920px y height: 350px; */
+  max-width: 1920px;
+  height: auto; /* El alto se ajustará automáticamente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #Contacto {
      display: flex;

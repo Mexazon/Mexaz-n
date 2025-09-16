@@ -36,6 +36,13 @@
   font-style: normal;
 }
 
+body {
+  background-image: url('../assets/landing/fondo.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
 /* ----- Botones Inicio de Sesión y Registrate ----- */
 
 /* Estilo del botón */
@@ -43,29 +50,26 @@
   width: 250px;
   height: 65px;
   border-radius: 16px;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
   box-sizing: border-box;
 }
-#buttonsBox{
-  background-color: aqua;
-  width: 1920px;
-  height: 150px;
-}
-/* Posición del botón*/
+
+/* Posición del botón, ahora con Flexbox */
 .buttons {
-  position: absolute;
-  
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   gap: 20px;
   align-items: center;
 }
+#buttonsBox{
+  background-color: aqua;
+  width: 1920px;
+  height: 150px;
+}
+
 
 /* ----- Modal Inicio de Sesión y Registrate ----- */
 
