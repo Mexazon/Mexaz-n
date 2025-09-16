@@ -8,6 +8,13 @@
   font-style: normal;
 }
 
+.varta-16{
+  font-family: "Varta", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 1.2rem;
+}
+
 .inter-light {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
@@ -112,3 +119,39 @@
   font-size: 1rem;
 }
 
+/* Tarjetas de la sección "Nosotros" */
+#nosotros .card {
+    border-radius: 1rem;
+    overflow: hidden;
+    width: 398px;
+    height: 739px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo para las imágenes de misión y visión */
+.img-card-icon {
+    width: 400px;
+    margin: 1rem auto;
+    display: block;
+}
+.img-card-icon-2 {
+    width: 190px;
+    margin: 1rem auto;
+    display: block;
+}
+
+/* Estilo para la imagen de perfil del equipo */
+.img-card-icon-equipo {
+    width: 389px;
+    height: 389px;
+    object-fit: contain;
+    margin: 1rem auto;
+    display: block;
+}
+
+/* Estilo para las flechas de navegación del carrusel */
+#equipoCarousel .carousel-control-prev,
+#equipoCarousel .carousel-control-next {
+    filter: invert(100%);
+}
