@@ -8,6 +8,13 @@
   font-style: normal;
 }
 
+.varta-16{
+  font-family: "Varta", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 1.2rem;
+}
+
 .inter-light {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
@@ -124,9 +131,12 @@
 
 /* Estilo para las imágenes de misión y visión */
 .img-card-icon {
-    width: 221px;
-    height: 221px;
-    object-fit: contain;
+    width: 400px;
+    margin: 1rem auto;
+    display: block;
+}
+.img-card-icon-2 {
+    width: 190px;
     margin: 1rem auto;
     display: block;
 }

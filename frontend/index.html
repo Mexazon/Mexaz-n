@@ -16,31 +16,29 @@
     <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-    <div class="container">
-        <!--Botones Iniciar Sesión y Registrarse -->
-        <div class="buttons">
-            <a class="btn btn-mex btn-chile text-white wellfleet-regular" data-bs-toggle="modal" data-bs-target="#loginModal" role="button">INICIAR SESIÓN</a>
-            <a class="btn btn-mex btn-nopal text-white wellfleet-regular" data-bs-toggle="modal" data-bs-target="#registerModal" role="button">REGISTRARME</a>
-        </div>
-    </div>
 
-    <section id="nosotros" class="container py-5">
+    <section id="nosotros" class="container container-sm ">
         <div class="row g-4 justify-content-center">
             
-            <div class="col-md-4 d-flex">
-                <div class="card border-0 shadow-sm text-center">
-                    <div class="card-body">
+            <div class="col-md-4 col-sm-12 d-flex">
+                <div class="card border-0 shadow-sm text-center text-bg-cebolla h-85 pb-5">
+                    <div class="card-header">
                         <h3 class="card-title wellfleet-regular text-uppercase fw-bold">Misión</h3>
-                        <p class="card-text varta-bold">Nuestra misión es visibilizar y fortalecer la cultura gastronómica callejera conectando a consumidores con opciones auténticas, sabrosas y accesibles, mientras impulsamos pequeños negocios que operan fuera del circuito gourmet y la comida rápida.</p>
+                    </div>
+                    <div class="card-body p-3">
+                        
+                        <p class="card-text varta-16 mb-0">Nuestra misión es visibilizar y fortalecer la cultura gastronómica callejera conectando a consumidores con opciones auténticas, sabrosas y accesibles, mientras impulsamos pequeños negocios que operan fuera del circuito gourmet y la comida rápida.</p>
                         <img src="/frontend/assets/landing/jarritos.png" class="img-fluid mt-3 img-card-icon" alt="Jarritos">
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 d-flex">
-                <div class="card border-0 shadow-sm text-center">
+            <div class="col-md-4 col-sm-12 d-flex">
+                <div class="card border-0 shadow-sm text-center text-bg-cebolla h-85">
+                    <div class="card-header">
+                        <h3 class="card-title wellfleet-regular text-uppercase fw-bold mt-2">Equipo</h3>
+                    </div>
                     <div class="card-body p-0 d-flex flex-column">
-                        <h3 class="card-title wellfleet-regular text-uppercase fw-bold pt-4">Equipo</h3>
                         <div id="equipoCarousel" class="carousel slide d-flex flex-column justify-content-center flex-grow-1" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
@@ -99,12 +97,15 @@
                 </div>
             </div>
 
-            <div class="col-md-4 d-flex">
-                <div class="card border-0 shadow-sm text-center">
+            <div class="col-md-4 col-sm-12 d-flex">
+                <div class="card border-0 shadow-sm text-center text-bg-cebolla h-85">
+                    <div class="card-header">
+                        <h3 class="card-title wellfleet-regular text-uppercase fw-bold mt-2">Visión</h3>
+                    </div>
                     <div class="card-body">
-                        <h3 class="card-title wellfleet-regular text-uppercase fw-bold">Visión</h3>
-                        <img src="/frontend/assets/landing/molcajete.png" class="img-fluid mt-3 img-card-icon" alt="Molcajete con salsa">
-                        <p class="card-text varta-bold">Construir una comunidad digital que transforme la manera de descubrir y disfrutar la comida callejera mexicana, donde cada platillo sea también una oportunidad para conocer personas, historias y tradiciones. Queremos consolidarnos como la red social gastronómica de referencia.</p>
+                        
+                        <img src="/frontend/assets/landing/molcajete.png" class="img-fluid mt-3 img-card-icon-2" alt="Molcajete con salsa">
+                        <p class="card-text varta-16">Construir una comunidad digital que transforme la manera de descubrir y disfrutar la comida callejera mexicana, donde cada platillo sea también una oportunidad para conocer personas, historias y tradiciones. Queremos consolidarnos como la red social gastronómica de referencia.</p>
                     </div>
                 </div>
             </div>
@@ -113,7 +114,7 @@
     </section>
 
     <!--Modal Inicio de Sesión -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginTitle" aria-hidden="true">
+    <di v class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginTitle" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content border-0 rounded-3 overflow-hidden shadow-lg">
             <button type="button" class="btn-close position-absolute end-0 m-3"
