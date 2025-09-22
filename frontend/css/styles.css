@@ -1,27 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Varta:wght@700&family=Mandali&family=Inter:wght@300;600&family=Wellfleet&display=swap');
+/* =========================
+   Reset & base
+   ========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
 
-/* Tipografías personalizadas */
+html { scroll-behavior: smooth; }                 
+body { font-family: "Varta bold", sans-serif; }   
+
+.container {                                      
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content {                                       
+  min-height: 80px;
+  background-color: #f3efe8;
+}
+
+
+/* =========================
+   Tipografías utilitarias
+   (Fonts ya vienen del <head>)
+   ========================= */
 .varta-bold {
   font-family: "Varta", sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
 }
-
+.varta-16{
+  font-family: "Varta", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 1.2rem;
+}
 .inter-light {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
 }
-
 .inter-semi-bold {
   font-family: 'Inter', sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
 }
-
 .wellfleet-regular {
   font-family: "Wellfleet", serif;
   font-weight: 400;
@@ -29,86 +58,318 @@
   font-style: normal;
 }
 
-/* ----- Botones Inicio de Sesión y Registrate ----- */
-
-/* Estilo del botón */
+/* =========================
+   Botones Inicio / Registro
+   ========================= */
 .btn-mex {
   width: 250px;
   height: 65px;
   border-radius: 16px;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
   box-sizing: border-box;
 }
-
-/* Posición del botón*/
 .buttons {
-  position: absolute;
-  top: 740px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   gap: 20px;
   align-items: center;
 }
 
-/* ----- Modal Inicio de Sesión y Registrate ----- */
-
+/* =========================
+   Modales: Login / Registro
+   ========================= */
 .form-control-mex{
-  border:0;
-  background:#F0F0F0;
-  height:44px;
-  border-radius:12px;
-  padding:0 14px;
+  border: 0;
+  background: #F0F0F0;
+  height: 44px;
+  border-radius: 12px;
+  padding: 0 14px;
 }
-
 .form-control-mex:focus{
   box-shadow: 0 0 0 0.2rem rgba(255,255,255,.4);
 }
-
-#loginModal .modal-dialog {
+#loginModal .modal-dialog{
   max-width: 1200px;
   margin: 1.75rem auto;
   width: 90%;
 }
+#loginModal .modal-content { min-height: 600px; }
+#loginModal .row { min-height: 600px; }
 
-#loginModal .modal-content {
-  min-height: 600px;
+#registerModal .modal-dialog{
+  max-width: 1200px;
+  margin: 1.75rem auto;
+  width: 90%;
 }
+#registerModal .modal-content > .row { min-height: 600px; }
 
-#loginModal .row { 
-  min-height: 600px;
-}
-
-#registerModal .modal-dialog { 
-    max-width:1200px; 
-    margin:1.75rem auto;
-    width:90%; 
-}
-
-#registerModal .modal-content > .row {
-  min-height: 600px;
-}
-
-.step-content {
+.step-content{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%; 
+  height: 100%;
   min-height: 600px;
 }
-
-.step-footer {
+.step-footer{
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
+.btn-confirmar{ font-size: 1rem; }
 
-.btn-confirmar {
-  font-size: 1rem;
+/* =========================
+   NAVBAR fija + responsive
+   ========================= */
+.menu {                                           
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  z-index: 1000;
 }
 
+.logo {
+  font-size: 25px;
+  text-transform: uppercase;
+  display: none;
+}
+
+/* barra centrada */
+.menu .navbar {                                  
+  background-color: #f3efe8;
+  flex: 1 1 100%;
+  justify-content: center;
+}
+.menu .navbar ul {                                
+  display: flex;
+  justify-content: center;
+  gap: 120px;
+  
+}
+.menu .navbar ul li a {                           
+  color: black;
+  padding: 0 10px;
+  font-size: 30px;
+  font-family: wellfleet;
+  display: block;
+  text-decoration: none;
+}
+.menu .navbar ul li a:hover {                     
+  background-color:#f9a825;
+  color: black;
+  border-radius: 16px;
+}
+#menu { display: none; position: absolute; }      
+
+.menu.container { max-width: none; width: 100%; } 
+
+#inicio, #form {                                  
+  min-height: calc(100vh - 80px);
+  display: grid;
+  place-items: center;
+  row-gap: 24px;
+  padding: 16px 0;
+  scroll-margin-top: 80px;
+}
+#nosotros {                                     
+  min-height: calc(100vh - 80px);
+  display: grid;
+  align-content: center;
+  padding: 24px 0;
+  scroll-margin-top: 80px;
+}
+
+#logo img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  transform: translateY(-30px);
+}
+
+
+/* =========================
+   Sección “Nosotros”
+   ========================= */
+#nosotros .card{
+  border-radius: 1rem;
+  overflow: hidden;
+  width: 398px;
+  height: 739px;
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
+  
+}
+.img-card-icon{
+  width: 400px;
+  margin: 1rem auto;
+  display: block;
+}
+.img-card-icon-2{
+  width: 190px;
+  margin: 1rem auto;
+  display: block;
+}
+.img-card-icon-equipo{
+  width: 389px;
+  height: 389px;
+  object-fit: contain;
+  margin: 1rem auto;
+  display: block;
+}
+#equipoCarousel .carousel-control-prev,
+#equipoCarousel .carousel-control-next{
+  filter: invert(100%);
+}
+
+/* =========================
+   Sección “Contáctanos”
+   ========================= */
+#Contacto{
+  display: flex;
+  background-color: #F3EFE8;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 40px auto;
+  width: 959px;
+  height: 490px;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+}
+#Contacto h2{
+  font-family: "Wellfleet", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  background-color: #F3EFE8;
+  text-align: center;
+  color: #333;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+#Contacto .form-control{
+  background-color: #ffffff;
+  border-radius: 5px;
+  color: #333;
+  padding: 10px;
+}
+#Contacto .btn-success{
+  font-family: 'Varta', sans-serif;
+  background-color: #6b8e23;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 25px;
+  font-weight: bold;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#Contacto .btn-success:hover{ background-color: #6f9f2b; }
+
+/* =========================
+   AJUSTES RESPONSIVE
+   ========================= */
+#nosotros > .row{
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+.menu label{ display: none; }
+
+@media (max-width: 920px){
+  
+  html, body { max-width: 100%; overflow-x: hidden; }
+
+  /* 1) NAVBAR → HAMBURGUESA + LISTA CENTRADA */
+  .menu{ padding: 8px 14px; align-items: center; }
+  .menu label{
+  display: block;
+  position: absolute;   
+  top: 8px;
+  right: 16px;
+  padding: 4px 8px;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1002;      
+}
+
+ .menu .navbar{
+  top: var(--nav-h);
+  left: 0; right: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background: #f3efe8;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  display: none;
+}
+
+
+  #menu:checked ~ .navbar{ display: block; }
+  .menu .navbar ul{
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 8px 0 12px;
+  }
+  .menu .navbar ul li{ width: 100%; }
+  .menu .navbar ul li a{
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+    font-size: 22px;
+  }
+
+  #logo{ display: flex; justify-content: center; }
+  #logo img{ width: 72vw; max-width: 360px; height: auto; }
+
+  .buttons{ align-items: center; }
+  .btn-mex{
+    width: 80vw;
+    max-width: 360px;
+    height: 56px;
+    font-size: 1rem;
+  }
+
+  #nosotros .card{
+  width: 86vw;            
+  max-width: 360px;       
+  min-height: 560px;      
+  margin: 16px auto;      
+  display: flex;
+  flex-direction: column;
+}
+
+.img-card-icon,
+.img-card-icon-2,
+.img-card-icon-equipo{
+  width: 100%;
+  height: 220px;         
+  margin: 12px auto;
+  object-fit: contain;    
+}
+ 
+  #Contacto{
+    width: 80vw;
+    height: auto;
+    padding: 16px;
+    margin: 24px auto;
+  }
+  #Contacto .row > [class*="col-"]{ width: 100%; }
+  #Contacto .btn-success{ width: 100%; }
+}
+
+@media (max-width: 480px){
+  #logo img{ width: 78vw; max-width: 340px; }
+  .btn-mex{ width: 86vw; }
+}
+
+body { 
+    background-image: url('../assets/landing/fondo.png');
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed;
+}
