@@ -9,15 +9,15 @@
   list-style: none;
 }
 
-html { scroll-behavior: smooth; }                 /* navbarStyle.css */
-body { font-family: "Varta bold", sans-serif; }   /* navbarStyle.css */
+html { scroll-behavior: smooth; }                 
+body { font-family: "Varta bold", sans-serif; }   
 
-.container {                                      /* navbarStyle.css */
+.container {                                      
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.content {                                        /* navbarStyle.css */
+.content {                                       
   min-height: 80px;
   background-color: #f3efe8;
 }
@@ -77,7 +77,6 @@ body { font-family: "Varta bold", sans-serif; }   /* navbarStyle.css */
   gap: 20px;
   align-items: center;
 }
-/* #buttonsBox eliminado por no usarse */
 
 /* =========================
    Modales: Login / Registro
@@ -124,7 +123,7 @@ body { font-family: "Varta bold", sans-serif; }   /* navbarStyle.css */
 /* =========================
    NAVBAR fija + responsive
    ========================= */
-.menu {                                           /* navbarStyle.css */
+.menu {                                           
   position: fixed;
   top: 0; left: 0; right: 0;
   display: flex;
@@ -138,18 +137,18 @@ body { font-family: "Varta bold", sans-serif; }   /* navbarStyle.css */
 }
 
 /* barra centrada */
-.menu .navbar {                                   /* navbarStyle.css */
+.menu .navbar {                                  
   background-color: #f3efe8;
   flex: 1 1 100%;
   justify-content: center;
 }
-.menu .navbar ul {                                /* navbarStyle.css */
+.menu .navbar ul {                                
   display: flex;
   justify-content: center;
   gap: 120px;
   
 }
-.menu .navbar ul li a {                           /* navbarStyle.css */
+.menu .navbar ul li a {                           
   color: black;
   padding: 0 10px;
   font-size: 30px;
@@ -157,18 +156,16 @@ body { font-family: "Varta bold", sans-serif; }   /* navbarStyle.css */
   display: block;
   text-decoration: none;
 }
-.menu .navbar ul li a:hover {                     /* navbarStyle.css */
+.menu .navbar ul li a:hover {                     
   background-color:#f9a825;
   color: black;
   border-radius: 16px;
 }
-#menu { display: none; position: absolute; }      /* navbarStyle.css */
+#menu { display: none; position: absolute; }      
 
-/* Asegura que la fila del header ocupe todo el ancho */
-.menu.container { max-width: none; width: 100%; } /* navbarStyle.css */
+.menu.container { max-width: none; width: 100%; } 
 
-/* Secciones con anclaje cómodo bajo navbar */
-#inicio, #form {                                  /* navbarStyle.css */
+#inicio, #form {                                  
   min-height: calc(100vh - 80px);
   display: grid;
   place-items: center;
@@ -176,7 +173,7 @@ body { font-family: "Varta bold", sans-serif; }   /* navbarStyle.css */
   padding: 16px 0;
   scroll-margin-top: 80px;
 }
-#nosotros {                                       /* navbarStyle.css */
+#nosotros {                                     
   min-height: calc(100vh - 80px);
   display: grid;
   align-content: center;
@@ -184,7 +181,6 @@ body { font-family: "Varta bold", sans-serif; }   /* navbarStyle.css */
   scroll-margin-top: 80px;
 }
 
-/* Asegura que el logo escale correctamente */
 #logo img {
   max-width: 100%;
   height: auto;
@@ -231,7 +227,6 @@ body { font-family: "Varta bold", sans-serif; }   /* navbarStyle.css */
 /* =========================
    Sección “Contáctanos”
    ========================= */
-
 #Contacto{
   display: flex;
   background-color: #F3EFE8;
@@ -273,7 +268,9 @@ body { font-family: "Varta bold", sans-serif; }   /* navbarStyle.css */
 }
 #Contacto .btn-success:hover{ background-color: #6f9f2b; }
 
-/* ====== CONTENEDOR CENTRADO PARA LAS TARJETAS (desktop y mobile) ====== */
+/* =========================
+   AJUSTES RESPONSIVE
+   ========================= */
 #nosotros > .row{
   max-width: 1200px;
   margin-inline: auto;
@@ -281,28 +278,25 @@ body { font-family: "Varta bold", sans-serif; }   /* navbarStyle.css */
 }
 .menu label{ display: none; }
 
-/* ====== AJUSTES RESPONSIVE ====== */
 @media (max-width: 920px){
-  /* Evita desbordes horizontales en móvil */
+  
   html, body { max-width: 100%; overflow-x: hidden; }
 
   /* 1) NAVBAR → HAMBURGUESA + LISTA CENTRADA */
   .menu{ padding: 8px 14px; align-items: center; }
   .menu label{
   display: block;
-  position: absolute;   /* anclado al header fijo */
+  position: absolute;   
   top: 8px;
   right: 16px;
   padding: 4px 8px;
   font-size: 28px;
   line-height: 1;
   cursor: pointer;
-  z-index: 1002;        /* ← por encima del panel (1001) */
+  z-index: 1002;      
 }
 
-  /* Panel del menú hamburguesa ocupando ancho completo, centrado */
  .menu .navbar{
-  /* lo que ya tienes... */
   top: var(--nav-h);
   left: 0; right: 0;
   width: 100%;
@@ -310,8 +304,6 @@ body { font-family: "Varta bold", sans-serif; }   /* navbarStyle.css */
   background: #f3efe8;
   border-bottom: 1px solid rgba(0,0,0,.06);
   display: none;
-
- 
 }
 
 
@@ -331,14 +323,9 @@ body { font-family: "Varta bold", sans-serif; }   /* navbarStyle.css */
     font-size: 22px;
   }
 
-  /* 2) LOGO MEXAZÓN CENTRADO Y ESCALADO */
-  /* Desktop: oculta el ícono de hamburguesa */
-
-
   #logo{ display: flex; justify-content: center; }
   #logo img{ width: 72vw; max-width: 360px; height: auto; }
 
-  /* 3) BOTONES CENTRADOS Y TÁCTILES */
   .buttons{ align-items: center; }
   .btn-mex{
     width: 80vw;
@@ -347,38 +334,34 @@ body { font-family: "Varta bold", sans-serif; }   /* navbarStyle.css */
     font-size: 1rem;
   }
 
-  /* 4) NOSOTROS: CARDS CENTRADAS + MÁRGENES + CONTENIDO LEGIBLE */
   #nosotros .card{
-  width: 86vw;            /* un poco más fluida */
-  max-width: 360px;       /* caben bien en iPhone 14 Pro Max */
-  min-height: 560px;      /* ← iguala altura mínima */
-  margin: 16px auto;      /* centradas + margen lateral */
+  width: 86vw;            
+  max-width: 360px;       
+  min-height: 560px;      
+  margin: 16px auto;      
   display: flex;
   flex-direction: column;
 }
 
-/* Todas las imágenes dentro de las cards comparten caja */
 .img-card-icon,
 .img-card-icon-2,
 .img-card-icon-equipo{
   width: 100%;
-  height: 220px;          /* ← altura fija para que no “baile” la card */
+  height: 220px;         
   margin: 12px auto;
-  object-fit: contain;    /* muestra completa sin deformar */
+  object-fit: contain;    
 }
-  /* 5) CONTÁCTANOS: CARD FLUIDA + CAMPOS EN LISTA */
+ 
   #Contacto{
     width: 80vw;
     height: auto;
     padding: 16px;
     margin: 24px auto;
   }
-  /* si algún layout no colapsa con Bootstrap, fuerza columna única */
   #Contacto .row > [class*="col-"]{ width: 100%; }
   #Contacto .btn-success{ width: 100%; }
 }
 
-/* Afinado extra para móviles pequeños */
 @media (max-width: 480px){
   #logo img{ width: 78vw; max-width: 340px; }
   .btn-mex{ width: 86vw; }
