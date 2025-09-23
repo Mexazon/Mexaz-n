@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Varta:wght@300..700&family=Wellfleet&display=swap" rel="stylesheet">
+    
+
+
+<!-- TU CSS (sirve cualquiera de las 2 formas; usa UNA) -->   <!-- ✅ -->
+
+  <script type="module" crossorigin src="/Mexaz-n/assets/index-DQUQyvz9.js"></script>
+  <link rel="stylesheet" crossorigin href="/Mexaz-n/assets/index-CrQuDu2X.css">
+</head>
+<body>
+    <!-- Barra de navegación --> 
+    <header> 
+        <div class="menu container">
+        <input type="checkbox" id="menu">
+
+        <nav class="navbar">
+        <ul>
+            <li><a href="#inicio">INICIO</a></li>
+            <li><a href="#nosotros">NOSOTROS</a></li>
+            <li><a href="#form">CONTACTO</a></li>
+        </ul>
+        </nav>
+
+        <!-- Hamburguesa al final -->
+        <label for="menu">☰</label>
+        </div>
+    </header>
+
+    <section id="inicio">
+        <!-- Logo Mexazón --> 
+        <div id="logo">
+            <img src="/Mexaz-n/assets/logo-DIwGMNjs.png" alt="" srcset="">
+        </div>
+    
+        <!-- Botón Iniciar Sesión y Registrame --> 
+        <div class="container">
+            <div class="buttons">
+                <a class="btn btn-mex btn-chile text-white wellfleet-regular" data-bs-toggle="modal" data-bs-target="#loginModal" role="button">INICIAR SESIÓN</a>
+                <a class="btn btn-mex btn-nopal text-white wellfleet-regular" data-bs-toggle="modal" data-bs-target="#registerModal" role="button">REGISTRARME</a>
+            </div>
+        </div>
+
+        <!-- Modal Inicio de Sesión -->
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginTitle" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content border-0 rounded-3 overflow-hidden shadow-lg">
+                <button type="button" class="btn-close position-absolute end-0 m-3"
+                        data-bs-dismiss="modal" aria-label="Cerrar"></button>
+
+                <div class="row g-0">
+                    <div class="col-md-6 bg-queso text-white p-4 p-md-5 d-flex flex-column justify-content-center">
+                    <h2 id="loginTitle" class="wellfleet-regular text-uppercase mb-4">Iniciar sesión</h2>
+
+                    <form>
+                        <div class="mb-3">
+                        <input type="text" class="form-control form-control-mex" placeholder="Usuario">
+                        </div>
+                        <div class="mb-3">
+                        <input type="password" class="form-control form-control-mex" placeholder="Contraseña">
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Recordarme siempre</label>
+                        </div>
+                        <a href="#" class="link-light text-decoration-none small">¿Olvidaste la contraseña?</a>
+                        </div>
+
+                        <button class="btn btn-mex btn-nopal text-white wellfleet-regular w-100">Entrar</button>
+                    </form>
+                    </div>
+
+                    <div class="col-md-6 bg-white d-flex align-items-center justify-content-center p-4 p-md-5">
+                    <img src="/Mexaz-n/assets/dorilocos-Bnnk13J5.png" class="img-fluid" alt="Vendedora de dorilocos">
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Modal Registro -->
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerTitle" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content border-0 rounded-3 overflow-hidden shadow-lg">
+
+                    <button type="button" class="btn-close position-absolute end-0 m-3"
+                            data-bs-dismiss="modal" aria-label="Cerrar"></button>
+
+                    <div class="row g-0" id="wizardRoot">
+                        <div class="col-lg-5 col-12 d-flex align-items-center justify-content-center bg-white p-4 order-2 order-lg-1">
+                            <img src="/Mexaz-n/assets/hot_dogs-KeRsU0oB.png" class="img-fluid" alt="Puesto callejero">
+                        </div>
+                        <div class="col-lg-7 col-12 bg-chile text-white p-4 p-md-5 d-flex flex-column step-content order-1 order-lg-2">
+
+                            <h2 id="registerTitle" class="wellfleet-regular text-uppercase mb-4">Regístrate</h2>
+
+                            <section class="wizard-step" data-step="1">
+                                <div class="mb-3">
+                                <input type="text" class="form-control form-control-mex" placeholder="Nombre de tu negocio">
+                                </div>
+                                <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control form-control-mex" placeholder="Correo electrónico">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control form-control-mex" placeholder="Teléfono">
+                                </div>
+                                </div>
+                                <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <input type="password" class="form-control form-control-mex" placeholder="Contraseña">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="password" class="form-control form-control-mex" placeholder="Confirma tu contraseña">
+                                </div>
+                                </div>
+
+                                <label class="d-block mb-3">¿Eres un puesto?</label>
+                                <div class="btn-group" role="group">
+                                <input type="radio" class="btn-check" name="esPuesto" id="rSi" autocomplete="off" value="si">
+                                <label class="btn btn-light" for="rSi">Sí</label>
+
+                                <input type="radio" class="btn-check" name="esPuesto" id="rNo" autocomplete="off" value="no">
+                                <label class="btn btn-light" for="rNo">No</label>
+                                </div>
+                            </section>
+
+                            <section class="wizard-step d-none" data-step="2a">
+                                <p class="mb-3">Configura tus horarios:</p>
+                                <div class="vstack gap-2">
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="w-25">Lunes</span>
+                                        <input type="time" class="form-control form-control-mex">
+                                        <span>a</span>
+                                        <input type="time" class="form-control form-control-mex">
+                                    </div>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="w-25">Martes</span>
+                                        <input type="time" class="form-control form-control-mex">
+                                        <span>a</span>
+                                        <input type="time" class="form-control form-control-mex">
+                                    </div>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="w-25">Miércoles</span>
+                                        <input type="time" class="form-control form-control-mex">
+                                        <span>a</span>
+                                        <input type="time" class="form-control form-control-mex">
+                                    </div>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="w-25">Jueves</span>
+                                        <input type="time" class="form-control form-control-mex">
+                                        <span>a</span>
+                                        <input type="time" class="form-control form-control-mex">
+                                    </div>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="w-25">Viernes</span>
+                                        <input type="time" class="form-control form-control-mex">
+                                        <span>a</span>
+                                        <input type="time" class="form-control form-control-mex">
+                                    </div>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="w-25">Sábado</span>
+                                        <input type="time" class="form-control form-control-mex">
+                                        <span>a</span>
+                                        <input type="time" class="form-control form-control-mex">
+                                    </div>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="w-25">Domingo</span>
+                                        <input type="time" class="form-control form-control-mex">
+                                        <span>a</span>
+                                        <input type="time" class="form-control form-control-mex">
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="wizard-step d-none" data-step="2b">
+                                <p class="mb-3">Cuéntanos un poco más:</p>
+                                <div class="mb-3">
+                                <input type="text" class="form-control form-control-mex" placeholder="Ciudad / Municipio">
+                                </div>
+                                <div class="mb-3">
+                                <input type="text" class="form-control form-control-mex" placeholder="Intereses (tacos, elotes, etc.)">
+                                </div>
+                            </section>
+
+                            <section class="wizard-step d-none" data-step="3">
+                                <p class="mb-3">Revisa tu información y confirma.</p>
+                                <div class="p-3 bg-white text-dark rounded">Resumen (demo)</div>
+                            </section>
+
+                            <div class="step-footer">
+                                <button class="btn btn-secondary" id="btnBack">Anterior</button>
+                                <button class="btn btn-warning ms-auto" id="btnNext">Siguiente</button>
+                                <button class="btn btn-nopal text-white d-none wellfleet-regular btn-confirmar" id="btnFinish">Confirmar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tarjetas -->
+    <section id="nosotros">
+        <div class="row g-4 justify-content-center">
+            
+            <div class="col-md-4 col-sm-12 d-flex">
+                <div class="card border-0 shadow-sm text-center text-bg-cebolla h-85 pb-5">
+                    <div class="card-header">
+                        <h3 class="card-title wellfleet-regular text-uppercase fw-bold mt-2">Misión</h3>
+                    </div>
+                    <div class="card-body p-3">
+                        
+                        <p class="card-text varta-16 mb-0">Nuestra misión es visibilizar y fortalecer la cultura gastronómica callejera conectando a consumidores con opciones auténticas, sabrosas y accesibles, mientras impulsamos pequeños negocios que operan fuera del circuito gourmet y la comida rápida.</p>
+                        <img src="/Mexaz-n/assets/jarritos-BXX4fMgj.png" class="img-fluid mt-3 img-card-icon" alt="Jarritos">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-12 d-flex">
+                <div class="card border-0 shadow-sm text-center text-bg-cebolla h-85 pb-5">
+                    <div class="card-header">
+                        <h3 class="card-title wellfleet-regular text-uppercase fw-bold mt-2">Equipo</h3>
+                    </div>
+                    <div class="card-body p-0 d-flex flex-column">
+                        <div id="equipoCarousel" class="carousel slide d-flex flex-column justify-content-center flex-grow-1" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="/Mexaz-n/assets/paty-q9I3OnKd.png" class="d-block w-100 img-card-icon-equipo" alt="Nombre de la persona">
+                                    <div class="carousel-caption d-none d-md-block text-dark position-static mt-3">
+                                        <h5>Paty</h5>
+                                        <p>Scrum Master</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="/Mexaz-n/assets/fredy-BRATkJ5J.png" class="d-block w-100 img-card-icon-equipo" alt="Nombre de la persona">
+                                    <div class="carousel-caption d-none d-md-block text-dark position-static mt-3">
+                                        <h5>Freddy</h5>
+                                        <p>Diseñador</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="/Mexaz-n/assets/andy-BdgLbzYO.png" class="d-block w-100 img-card-icon-equipo" alt="Nombre de la persona">
+                                    <div class="carousel-caption d-none d-md-block text-dark position-static mt-3">
+                                        <h5>Andy</h5>
+                                        <p>Desarrolladora FullStack</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="/Mexaz-n/assets/jayco-DGZfFFoG.png" class="d-block w-100 img-card-icon-equipo" alt="Nombre de la persona">
+                                    <div class="carousel-caption d-none d-md-block text-dark position-static mt-3">
+                                        <h5>Jay Co</h5>
+                                        <p>Desarrollador FullStack</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="/Mexaz-n/assets/alvaro-DrqleOzH.png" class="d-block w-100 img-card-icon-equipo" alt="Nombre de la persona">
+                                    <div class="carousel-caption d-none d-md-block text-dark position-static mt-3">
+                                        <h5>Alvaro</h5>
+                                        <p>Desarrollador FullStack</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="/Mexaz-n/assets/gio-ClApZy8z.jpg" class="d-block w-100 img-card-icon-equipo" alt="Nombre de la persona">
+                                    <div class="carousel-caption d-none d-md-block text-dark position-static mt-3">
+                                        <h5>Gio</h5>
+                                        <p>Desarrollador FullStack</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="/Mexaz-n/assets/lupita-BdRbaBey.jpeg" class="d-block w-100 img-card-icon-equipo" alt="Nombre de la persona">
+                                    <div class="carousel-caption d-none d-md-block text-dark position-static mt-3">
+                                        <h5>Lupita</h5>
+                                        <p>Desarrollador FullStack</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#equipoCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Anterior</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#equipoCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Siguiente</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-12 d-flex">
+                <div class="card border-0 shadow-sm text-center text-bg-cebolla h-85">
+                    <div class="card-header">
+                        <h3 class="card-title wellfleet-regular text-uppercase fw-bold mt-2">Visión</h3>
+                    </div>
+                    <div class="card-body">
+                        
+                        <img src="/Mexaz-n/assets/molcajete-MeiUcSDi.png" class="img-fluid mt-3 img-card-icon-2" alt="Molcajete con salsa">
+                        <p class="card-text varta-16">Construir una comunidad digital que transforme la manera de descubrir y disfrutar la comida callejera mexicana, donde cada platillo sea también una oportunidad para conocer personas, historias y tradiciones. Queremos consolidarnos como la red social gastronómica de referencia.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contáctanos -->
+    <div id="form">
+        <section>
+            <div id="Contacto" class="card p-4 mx-auto" style="max-width: 600px;">
+                <h2 class="text-center mb-4">CONTACTANOS</h2>
+                <form id="contactForm"> 
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="nombre" placeholder="NOMBRE" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control" id="correo" placeholder="CORREO ELECTRONICO" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <select class="form-select" id="asunto" aria-label="Default select example" required>
+                            <option selected disabled>-Asunto-</option>
+                            <option value="Patrocinio">Patrocinio</option>
+                            <option value="Colaboración">Colaboración</option>
+                            <option value="Sugerencia">Sugerencia</option>
+                            <option value="Reporte de error">Reporte de error</option>
+                            <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="tel" class="form-control" id="telefono" placeholder="TELÉFONO"
+                                pattern="^(\+?52)?\s?(\d{10})$"
+                                title="Usa 10 dígitos (opcional +52)" required>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <textarea class="form-control" id="mensaje" rows="5" placeholder="CUENTANOS" required></textarea>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success btn-lg">ENVIAR</button>
+                    </div>
+                </form>
+                <div id="statusMessage" style="display: none;"></div> 
+            </div>
+        </section>
+    </div>
+
+
+
+<!-- Entrada Vite -->   <!-- usa /main.js -->
+
+
+
+</body>
+</html>
