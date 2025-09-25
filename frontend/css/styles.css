@@ -367,7 +367,7 @@ body { font-family: "Varta bold", sans-serif; }
   .btn-mex{ width: 86vw; }
 }
 
-body { 
+.landing { 
     background-image: url('../assets/landing/fondo.png');
     background-size: cover; 
     background-position: center; 
