@@ -1,101 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Varta:wght@300..700&family=Wellfleet&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Varta:wght@300..700&family=Wellfleet&display=swap"
+    rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/loged.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Font Awesome para los iconos del modal -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/loged.css">
+  <!-- Estilos del modal -->
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="">
-    <nav class= "navbar navbar-expand-lg navbar-dark bg-dark d-lg-none">
-      <div class="container-fluid">
-        <a class="navbar-brand p-0" href="#">
-          <img src="assets/logo-mexazon.svg" alt="Mexazón" class="brand-logo brand-logo--nav" loading="lazy">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-    </nav>
-
-    <!-- Layout -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-lg-none">
     <div class="container-fluid">
-      <div class="row min-vh-100">
-        <!-- Sidebar -->
-        <div class="col-lg-2 d-none d-lg-block bg-dark text-white sidebar">
-          <div class="px-3">
-            <!-- Logo -->
-            <div class="brand-box text-center">
-              <img src="assets/logo-mexazon.svg" alt="Mexazón" class="brand-logo">
+      <a class="navbar-brand p-0" href="#">
+        <img src="assets/logo-mexazon.svg" alt="Mexazón" class="brand-logo brand-logo--nav" loading="lazy">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar"
+        aria-controls="sidebar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Layout -->
+  <div class="container-fluid">
+    <div class="row min-vh-100">
+      <!-- Sidebar -->
+      <div class="col-lg-2 d-none d-lg-block bg-dark text-white sidebar">
+        <div class="px-3">
+          <!-- Logo -->
+          <div class="brand-box text-center">
+            <img src="assets/logo-mexazon.svg" alt="Mexazón" class="brand-logo">
+          </div>
+
+          <!-- Botón hambre -->
+          <button id="btnHambre" class="btn btn-success w-100 mb-3">
+            <i class="bi bi-search"></i> ¿Hambre?
+          </button>
+          <!-- Menú -->
+          <ul class="nav flex-column gap-2">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#"><i class="bi bi-person-circle me-2"></i>Perfil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#"><i class="bi bi-heart-fill me-2"></i>Favoritos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#"><i class="bi bi-bell-fill me-2"></i>Notificaciones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#"><i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Offcanvas (mobile sidebar) -->
+      <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="sidebar">
+        <div class="offcanvas-header">
+          <div class="offcanvas-title">
+            <img src="/frontend/assets/logo-mexazon.svg" alt="Mexazón" class="brand-logo brand-logo--offcanvas"
+              loading="lazy">
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <button class="btn btn-success w-100 mb-3"><i class="bi bi-search"></i> ¿Hambre?</button>
+          <ul class="nav flex-column gap-2">
+            <li class="nav-item"><a class="nav-link text-white" href="#"><i
+                  class="bi bi-person-circle me-2"></i>Perfil</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="#"><i
+                  class="bi bi-heart-fill me-2"></i>Favoritos</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="#"><i
+                  class="bi bi-bell-fill me-2"></i>Notificaciones</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="#"><i
+                  class="bi bi-box-arrow-right me-2"></i>Cerrar sesión</a></li>
+          </ul>
+        </div>
+      </div>
+
+
+      <main class="col-lg-10 ms-auto p-3 p-lg-5">
+        <div class="row g-4">
+
+          <!-- Recent reviews -->
+          <section class="col-12 col-xl-6">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h5 class="mb-0">Reseñas Recientes</h5>
+              <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                <i class="bi bi-plus-lg"></i> Nueva reseña
+              </button>
             </div>
 
-            <!-- Botón hambre -->
-           <button id="btnHambre" class="btn btn-success w-100 mb-3">
-  <i class="bi bi-search"></i> ¿Hambre?
-</button>
-            <!-- Menú -->
-            <ul class="nav flex-column gap-2">
-              <li class="nav-item">
-                <a class="nav-link text-white" href="#"><i class="bi bi-person-circle me-2"></i>Perfil</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white" href="#"><i class="bi bi-heart-fill me-2"></i>Favoritos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white" href="#"><i class="bi bi-bell-fill me-2"></i>Notificaciones</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white" href="#"><i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+            <!-- Modal -->
+            <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title" id="reviewModalLabel">
+                      <i class="fas fa-edit me-2"></i>
+                      Nueva Reseña
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form id="reviewForm">
+                      <!-- Código Postal -->
+                      <div class="mb-4">
+                        <label for="postalCode" class="form-label">
+                          <i class="fas fa-map-marker-alt me-2"></i>
+                          Código Postal
+                        </label>
+                        <select class="form-select" id="postalCode" required>
+                          <option value="">Selecciona un código postal...</option>
+                        </select>
+                      </div>
 
-        <!-- Offcanvas (mobile sidebar) -->
-        <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="sidebar">
-          <div class="offcanvas-header">
-            <div class="offcanvas-title">
-              <img src="/frontend/assets/logo-mexazon.svg" alt="Mexazón" class="brand-logo brand-logo--offcanvas" loading="lazy">
-            </div>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <button class="btn btn-success w-100 mb-3"><i class="bi bi-search"></i> ¿Hambre?</button>
-            <ul class="nav flex-column gap-2">
-              <li class="nav-item"><a class="nav-link text-white" href="#"><i class="bi bi-person-circle me-2"></i>Perfil</a></li>
-              <li class="nav-item"><a class="nav-link text-white" href="#"><i class="bi bi-heart-fill me-2"></i>Favoritos</a></li>
-              <li class="nav-item"><a class="nav-link text-white" href="#"><i class="bi bi-bell-fill me-2"></i>Notificaciones</a></li>
-              <li class="nav-item"><a class="nav-link text-white" href="#"><i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión</a></li>
-            </ul>
-          </div>
-        </div>
-        
+                      <!-- Puesto/Local -->
+                      <div class="mb-4">
+                        <label for="location" class="form-label">
+                          <i class="fas fa-store me-2"></i>
+                          Puesto/Local
+                        </label>
+                        <select class="form-select" id="location" disabled required>
+                          <option value="">Primero selecciona un código postal</option>
+                        </select>
+                      </div>
 
-            <main class="col-lg-10 ms-auto p-3 p-lg-5">
-                <div class="row g-4">
+                      <!-- Calificación -->
+                      <div class="mb-4">
+                        <label class="form-label">
+                          <i class="fas fa-star me-2"></i>
+                          Calificación
+                        </label>
+                        <div class="rating-container">
+                          <div class="rating-text" id="ratingText">Primero selecciona un local</div>
+                          <div class="star-rating" id="starRating">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                          </div>
+                        </div>
+                        <input type="hidden" id="rating" value="" required>
+                      </div>
 
-            <!-- Recent reviews -->
-                    <section class="col-12 col-xl-6">
-                    <div class="d-flex align-items-center justify-content-between mb-2">
-                        <h5 class="mb-0">Reseñas Recientes</h5>
-                        <button class="btn btn-sm btn-outline-primary" id="btnNewReview">
-                        <i class="bi     bi-plus-lg"></i> Nueva reseña
-                        </button>
-                    </div>
-                    <div id="reviews" class="vstack gap-3"></div>
-                    </section>
+                      <!-- Reseña -->
+                      <div class="mb-4">
+                        <label for="reviewText" class="form-label">
+                          <i class="fas fa-comment me-2"></i>
+                          Tu Reseña
+                        </label>
+                        <textarea class="form-control" id="reviewText" rows="5"
+                          placeholder="Primero completa los pasos anteriores..." disabled required></textarea>
+                        <div class="form-text">Comparte tu experiencia</div>
+                      </div>
+
+                      <button type="submit" class="btn btn-submit" id="submitBtn" disabled>
+                        <i class="fas fa-paper-plane me-2"></i>
+                        Publicar Reseña
+                      </button>
+                    </form>
+                  </div>
                 </div>
-            </main>
+              </div>
+            </div>
+            <!-- <div id="reviews" class="vstack gap-3"></div> -->
+          </section>
         </div>
-    </div>   
-    <script type="module" src="/js/posts.js"></script>
-    <script type="module" src="/feed.js"></script> 
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script src="/frontend/js/modal-form.js"></script>
+  <script type="module" src="/js/posts.js"></script>
+  <script type="module" src="/feed.js"></script>
 </body>
+
 </html>
