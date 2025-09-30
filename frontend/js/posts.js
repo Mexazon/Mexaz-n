@@ -11,13 +11,15 @@ const user = {
 };
 
 //Arreglo de objetos tipo 'Review'
-let posts = []
+let post;
+let postsList = (JSON.parse(localStorage.getItem("publications")) || []); 
 
-posts = (JSON.parse(localStorage.getItem("publications")) || [])
-console.log(posts)
+
 
 //Funcion para crear una etiqueta html con un atributo en especifico
 const create = (tag, attrs={}) => Object.assign(document.createElement(tag), attrs);
+
+const list = document.getElementById("reviews");
 
 //Funcion que decide que imagen de chile pone 
 function pepperImg(filled = true){
@@ -36,22 +38,16 @@ function renderPepperRating(container, value, max = 5){
 let addButton = document.getElementById("btnNewReview")
 
 addButton.addEventListener("click", function(e){
-    posts.push(new Review(2,"Coyoacan",4,"Muy Buenos",Date.now())) 
-    localStorage.setItem("publications", JSON.stringify(posts));
-    renderReviews(posts);
+    post=new Review(2,"Coyoacan",4,"Muy Buenos",Date.now());
+    postsList.push(post);
+    localStorage.setItem("publications", JSON.stringify(postsList));
+    renderReview(post);
 });
 
 //Funcion agarra los objetos tipo Review del arreglo posts y los inserta en un string html para luego ser insertado en el div "Reviews"
 //Agarra como parametro una lista de reviews
-function renderReviews(items) {
-    //list agarra el div con la id reviews donde van a estar los posts
-  const list = document.getElementById("reviews");
-  //vacio el div
-  list.innerHTML = '';
+function renderReview(r) {
 
-  //Funcion que itera en cada elemento Review del arreglo
-  //r es la referencia
-  items.forEach(r => {
     //Se crea un elemento div con la clase 'review'
     const card = create('div', { className: 'review' });
     //Asigno el formato completo de la tarjeta con los datos del elemento Review
@@ -80,8 +76,18 @@ function renderReviews(items) {
     list.appendChild(card);
     // Pinta el rating de esa tarjeta 
     renderPepperRating(card.querySelector('.pepper-rating'), r.calificacion, 5);
-  });
 }
 
-renderReviews(posts)
+function renderAllReviews(list){
+  for(let element of list){
+    renderReview(element);
+  }
+    
+  
+}
+
+renderAllReviews(postsList);
+
+
+
 
