@@ -100,7 +100,7 @@
           <section class="col-12 col-xl-6">
             <div class="d-flex align-items-center justify-content-between mb-2">
               <h5 class="mb-0">Reseñas Recientes</h5>
-              <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#reviewModal">
+              <button class="btn btn-sm btn-outline-chile" data-bs-toggle="modal" data-bs-target="#reviewModal">
                 <i class="bi bi-plus-lg"></i> Nueva reseña
               </button>
             </div>
@@ -136,7 +136,7 @@
                           <i class="fas fa-store me-2"></i>
                           Puesto/Local
                         </label>
-                        <select class="form-select" id="location" disabled required>
+                        <select name="puesto"class="form-select" id="location" disabled required>
                           <option value="">Primero selecciona un código postal</option>
                         </select>
                       </div>
@@ -149,29 +149,28 @@
                         </label>
                         <div class="rating-container">
                           <div class="rating-text" id="ratingText">Primero selecciona un local</div>
-                          <div class="star-rating" id="starRating">
-                            <span class="star" data-rating="1">★</span>
-                            <span class="star" data-rating="2">★</span>
-                            <span class="star" data-rating="3">★</span>
-                            <span class="star" data-rating="4">★</span>
-                            <span class="star" data-rating="5">★</span>
+                          <div class="star-rating pepper-form" id="starRating">
+                            <img class="star" src="assets/black-pepper.svg" data-rating="1"/>
+                            <img class="star" src="assets/black-pepper.svg" data-rating="2"/>
+                            <img class="star" src="assets/black-pepper.svg" data-rating="3"/>
+                            <img class="star" src="assets/black-pepper.svg" data-rating="4"/>
+                            <img class="star" src="assets/black-pepper.svg" data-rating="5"/>
                           </div>
                         </div>
-                        <input type="hidden" id="rating" value="" required>
+                        <input name="rating"type="hidden" id="rating" value="" required>
                       </div>
-
                       <!-- Reseña -->
                       <div class="mb-4">
                         <label for="reviewText" class="form-label">
                           <i class="fas fa-comment me-2"></i>
                           Tu Reseña
                         </label>
-                        <textarea class="form-control" id="reviewText" rows="5"
+                        <textarea name="resenia"class="form-control" id="reviewText" rows="5"
                           placeholder="Primero completa los pasos anteriores..." disabled required></textarea>
                         <div class="form-text">Comparte tu experiencia</div>
                       </div>
 
-                      <button type="submit" class="btn btn-submit" id="submitBtn" disabled>
+                      <button type="submit" class="btn btn-submit" id="submitBtn" data-bs-dismiss="modal" disabled>
                         <i class="fas fa-paper-plane me-2"></i>
                         Publicar Reseña
                       </button>
@@ -180,18 +179,18 @@
                 </div>
               </div>
             </div>
-            <!-- <div id="reviews" class="vstack gap-3"></div> -->
+            <div id="reviews" class="vstack gap-3"></div>
           </section>
         </div>
       </main>
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-  <script src="/frontend/js/modal-form.js"></script>
-  <script type="module" src="/js/posts.js"></script>
-  <script type="module" src="/feed.js"></script>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script type="module"   src="/js/modal-form.js"></script>
+    <script type="module" src="/js/posts.js"></script>
+    <script type="module" src="/feed.js"></script>
 </body>
 
 </html>

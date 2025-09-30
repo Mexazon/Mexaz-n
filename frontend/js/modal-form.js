@@ -1,3 +1,7 @@
+//importo las rutas de los chiles 
+import redPepper from '../assets/red-pepper.svg';
+import blackPepper from '../assets/black-pepper.svg';
+
 // Base de datos de códigos postales y sus respectivos lugares
 const postalCodeData = {
     "06000": [
@@ -25,7 +29,7 @@ const ratingText = document.getElementById('ratingText');
 const ratingInput = document.getElementById('rating');
 const reviewTextArea = document.getElementById('reviewText');
 const submitBtn = document.getElementById('submitBtn');
-const reviewForm = document.getElementById('reviewForm');
+export const reviewForm = document.getElementById('reviewForm');
 
 // Inicialización
 document.addEventListener('DOMContentLoaded', function() {
@@ -96,7 +100,6 @@ function initializeStarRating() {
                 ratingInput.value = currentRating;
                 updateStarDisplay();
                 updateRatingText();
-                
                 // Habilitar textarea
                 enableReviewText();
             }
@@ -144,10 +147,11 @@ function updateStarDisplay() {
     const stars = starRating.querySelectorAll('.star');
     stars.forEach((star, index) => {
         if (index < currentRating) {
-            star.classList.add('active');
+            star.src = redPepper;
         } else {
-            star.classList.remove('active');
+            star.src = blackPepper;
         }
+      
     });
 }
 
@@ -156,21 +160,22 @@ function highlightStars(rating) {
     const stars = starRating.querySelectorAll('.star');
     stars.forEach((star, index) => {
         if (index < rating) {
-            star.classList.add('active');
+            star.src = redPepper;
         } else {
-            star.classList.remove('active');
+            star.src = blackPepper;
         }
+      
     });
 }
 
 // Actualizar texto de calificación
 function updateRatingText() {
     const ratingTexts = {
-        1: 'Muy malo ⭐',
-        2: 'Malo ⭐⭐',
-        3: 'Regular ⭐⭐⭐',
-        4: 'Bueno ⭐⭐⭐⭐',
-        5: 'Excelente ⭐⭐⭐⭐⭐'
+        1: '',
+        2: '',
+        3: 'Orale',
+        4: 'Sabroso',
+        5: 'A toda madre!!!'
     };
     ratingText.textContent = ratingTexts[currentRating] || 'Selecciona una calificación';
 }
@@ -205,30 +210,10 @@ function validateForm() {
     submitBtn.disabled = !isValid;
 }
 
-// Manejar envío del formulario
-reviewForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    if (validateFormData()) {
-        showSuccessMessage();
-        resetForm();
-    }
-});
+
 
 // Validar datos del formulario
-function validateFormData() {    
-    return true;
-}
 
-// Mostrar mensaje de éxito
-function showSuccessMessage() {
-    const modal = bootstrap.Modal.getInstance(document.getElementById('reviewModal'));
-    modal.hide();
-    
-    setTimeout(() => {
-        alert('¡Reseña publicada exitosamente!');
-    }, 500);
-}
 
 // Resetear pasos posteriores
 function resetSubsequentSteps(fromStep) {
@@ -249,7 +234,7 @@ function resetSubsequentSteps(fromStep) {
 }
 
 // Resetear formulario completo
-function resetForm() {
+export function resetForm() {
     reviewForm.reset();
     currentRating = 0;
     
@@ -265,8 +250,3 @@ function resetForm() {
     
     submitBtn.disabled = true;
 }
-
-// Limpiar formulario cuando se cierra el modal
-document.getElementById('reviewModal').addEventListener('hidden.bs.modal', function() {
-    resetForm();
-});

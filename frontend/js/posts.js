@@ -3,6 +3,7 @@ import { Review } from "./classes.js";
 //importo las rutas de los chiles 
 import redPepper from '../assets/red-pepper.svg';
 import blackPepper from '../assets/black-pepper.svg';
+import  {resetForm,reviewForm}  from "./modal-form.js";
 
 //objeto usuario basico (Cambiar al modelo establecido en el UML)"
 const user = {
@@ -35,19 +36,24 @@ function renderPepperRating(container, value, max = 5){
   container.innerHTML = html;
 }
 
-let addButton = document.getElementById("btnNewReview")
+reviewForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(reviewForm);
 
-addButton.addEventListener("click", function(e){
-    post=new Review(2,"Coyoacan",4,"Muy Buenos",Date.now());
+    post=new Review(2,formData.get("puesto"),formData.get("rating"),formData.get("resenia"),Date.now());
     postsList.push(post);
     localStorage.setItem("publications", JSON.stringify(postsList));
+
     renderReview(post);
+        //Enviar datos al modelo
+    resetForm();
+    
 });
 
 //Funcion agarra los objetos tipo Review del arreglo posts y los inserta en un string html para luego ser insertado en el div "Reviews"
 //Agarra como parametro una lista de reviews
-function renderReview(r) {
-
+function renderReview(r){
+    
     //Se crea un elemento div con la clase 'review'
     const card = create('div', { className: 'review' });
     //Asigno el formato completo de la tarjeta con los datos del elemento Review

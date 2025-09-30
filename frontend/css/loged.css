@@ -70,6 +70,10 @@ h3{font-size:1.5rem;}   /* ~24px */
 .pepper-rating{
   display:flex;align-items:center;gap:10px;
 }
+.pepper-form{
+  display:flex;align-items:center;justify-content: center;;gap:10px;
+}
+
 .pepper-rating img{
   width:18px;height:18px;object-fit:contain;
   transform: rotate(-8deg);
@@ -78,6 +82,11 @@ h3{font-size:1.5rem;}   /* ~24px */
 @media (max-width:576px){
   .pepper-rating{ gap:12px; }
   .pepper-rating img{ width:18px;height:px; }
+}
+
+.pepper-form .star{
+  width:34px;height:34px;object-fit:contain;
+  transform: rotate(-8deg);
 }
 
 /* Utilidades */
@@ -158,4 +167,34 @@ body::before {
 #btnHambre {
   margin-top: -0.25rem;   /* sube el botón pegándolo más al logo */
   margin-bottom: 0.75rem; /* deja aire antes del menú */
+}
+
+
+.rating-container {
+    text-align: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    border: 1px solid #e9ecef;
+}
+.rating-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #495057;
+}
+.star-rating {
+    font-size: 2rem;
+    margin: 0.5rem 0;
+}
+.star {
+    cursor: pointer;
+    transition: color 0.2s ease;
+    margin: 0 2px;
+}
+
+.rating-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #495057;
 }
