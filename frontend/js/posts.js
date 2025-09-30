@@ -10,21 +10,11 @@ const user = {
   avatar: 'https://i.pravatar.cc/200?img=12',
 };
 
-
 //Arreglo de objetos tipo 'Review'
 let posts = []
-//Anadi 10 entradas al arreglo
-posts.push(new Review(2,"Coyoacan",4,"Muy Buenos",Date.now())) 
-posts.push(new Review(4,"Iztapalapa",5,"No me gusta",Date.now())) 
-posts.push(new Review(5,"Coyoacan",4,"Muy Buenos",Date.now())) 
-posts.push(new Review(6,"Iztapalapa",3,"No me gusta",Date.now())) 
-posts.push(new Review(6,"Coyoacan",2,"Muy Buenos",Date.now())) 
-posts.push(new Review(6,"Iztapalapa",3,"No me gusta",Date.now())) 
-posts.push(new Review(1,"Coyoacan",3,"Muy Buenos",Date.now())) 
-posts.push(new Review(4,"Iztapalapa",3,"No me gusta",Date.now())) 
-posts.push(new Review(2,"Coyoacan",4,"Muy Buenos",Date.now())) 
-posts.push(new Review(3,"Iztapalapa",1,"No me gusta",Date.now())) 
 
+posts = (JSON.parse(localStorage.getItem("publications")) || [])
+console.log(posts)
 
 //Funcion para crear una etiqueta html con un atributo en especifico
 const create = (tag, attrs={}) => Object.assign(document.createElement(tag), attrs);
@@ -42,6 +32,14 @@ function renderPepperRating(container, value, max = 5){
   for (let i = 1; i <= max; i++) html += pepperImg(i <= v);
   container.innerHTML = html;
 }
+
+let addButton = document.getElementById("btnNewReview")
+
+addButton.addEventListener("click", function(e){
+    posts.push(new Review(2,"Coyoacan",4,"Muy Buenos",Date.now())) 
+    localStorage.setItem("publications", JSON.stringify(posts));
+    renderReviews(posts);
+});
 
 //Funcion agarra los objetos tipo Review del arreglo posts y los inserta en un string html para luego ser insertado en el div "Reviews"
 //Agarra como parametro una lista de reviews
@@ -85,4 +83,5 @@ function renderReviews(items) {
   });
 }
 
-renderReviews(posts);
+renderReviews(posts)
+
