@@ -1,11 +1,11 @@
 //Construccion del modelo de las resenias "Reviews"
 export class Review{
     constructor(hours,lugar,calificacion,descripcion,id){
-        const idResenia = id*Math.random();
+        const idResenia = id;
         const idUsuario = 2
         const idNegocio = 3
         this.hoursAgo = hours
-        this.foto = `https://picsum.photos/seed/${idResenia}/320/240`
+        this.foto = `https://picsum.photos/seed/${idResenia*Math.random()}/320/240`
         this.lugar = lugar
         this.likes = 0
         this.calificacion = calificacion
