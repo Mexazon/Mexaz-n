@@ -12,3 +12,4 @@ import './js/formulario.js';
 import './js/register-wizard.js';
 import './js/ScheduleValidation.js';
 import './js/finalValidation.js';
+import './js/register-wizard.js';
