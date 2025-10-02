@@ -373,3 +373,8 @@ body { font-family: "Varta bold", sans-serif; }
     background-position: center; 
     background-attachment: fixed;
 }
+
+/* seccion de id tag */
+#tagInput{
+  background: #f3efe8;
+}

@@ -10,4 +10,3 @@ import './css/styles.css';
 // Scripts
 import './js/formulario.js';
 import './js/register-wizard.js';
-
