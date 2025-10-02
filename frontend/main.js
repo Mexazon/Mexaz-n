@@ -10,5 +10,5 @@ import './css/styles.css';
 // Scripts
 import './js/formulario.js';
 import './js/register-wizard.js';
-import './js/ReviewDato sRegisto.js';
-
+import './js/ScheduleValidation.js';
+import './js/finalValidation.js';
