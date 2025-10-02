@@ -53,7 +53,6 @@ reviewForm.addEventListener('submit', function(e) {
 //Funcion agarra los objetos tipo Review del arreglo posts y los inserta en un string html para luego ser insertado en el div "Reviews"
 //Agarra como parametro una lista de reviews
 function renderReview(r){
-    
     //Se crea un elemento div con la clase 'review'
     const card = create('div', { className: 'review' });
     //Asigno el formato completo de la tarjeta con los datos del elemento Review

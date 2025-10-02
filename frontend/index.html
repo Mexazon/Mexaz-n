@@ -126,11 +126,11 @@
 
                                 <label class="d-block mb-3">¿Eres un puesto?</label>
                                 <div class="btn-group" role="group">
-                                <input type="radio" class="btn-check" name="esPuesto" id="rSi" autocomplete="off" value="si">
-                                <label class="btn btn-light" for="rSi">Sí</label>
-
-                                <input type="radio" class="btn-check" name="esPuesto" id="rNo" autocomplete="off" value="no">
-                                <label class="btn btn-light" for="rNo">No</label>
+                                    <input type="radio" class="btn-check" name="esPuesto" id="rSi" autocomplete="off" value="si">
+                                    <label class="btn btn-light" for="rSi">Sí</label>
+                                        
+                                    <input type="radio" class="btn-check" name="esPuesto" id="rNo" autocomplete="off" value="no">
+                                    <label class="btn btn-light" for="rNo">No</label>
                                 </div>
                             </section>
 
@@ -139,45 +139,45 @@
                                 <div class="vstack gap-2">
                                     <div class="d-flex gap-2 align-items-center">
                                         <span class="w-25">Lunes</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex"id="LunesA">
                                         <span>a</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex"id="LunesC">
                                     </div>
                                     <div class="d-flex gap-2 align-items-center">
                                         <span class="w-25">Martes</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="MartesA">
                                         <span>a</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="MartesB">
                                     </div>
                                     <div class="d-flex gap-2 align-items-center">
                                         <span class="w-25">Miércoles</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="MiercolesA">
                                         <span>a</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="MiercolesB">
                                     </div>
                                     <div class="d-flex gap-2 align-items-center">
                                         <span class="w-25">Jueves</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="JuevesA">
                                         <span>a</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="JuevesB">
                                     </div>
                                     <div class="d-flex gap-2 align-items-center">
                                         <span class="w-25">Viernes</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="ViernesA">
                                         <span>a</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="ViernesB">
                                     </div>
                                     <div class="d-flex gap-2 align-items-center">
                                         <span class="w-25">Sábado</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="SabadoA">
                                         <span>a</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="SabadoB">
                                     </div>
                                     <div class="d-flex gap-2 align-items-center">
                                         <span class="w-25">Domingo</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="DomingoA">
                                         <span>a</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="DomingoB">
                                     </div>
                                 </div>
                             </section>
@@ -194,7 +194,7 @@
 
                             <section class="wizard-step d-none" data-step="3">
                                 <p class="mb-3">Revisa tu información y confirma.</p>
-                                <div class="p-3 bg-white text-dark rounded">Resumen (demo)</div>
+                                <div class="p-3 bg-white text-dark rounded" id="schedulePreview">Resumen (demo)</div>
                             </section>
 
                             <div class="step-footer">
