@@ -64,6 +64,7 @@ h3{font-size:1.5rem;}   /* ~24px */
   border-radius:.75rem;padding:1rem;
   box-shadow:0 4px 12px rgba(0,0,0,.04);
 }
+
 .review img{ width:120px;height:90px;object-fit:cover;border-radius:.5rem; }
 
 /* ===== Chilitos como “estrellas” (SVGs de assets/) ===== */
