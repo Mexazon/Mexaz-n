@@ -34,12 +34,12 @@
         const hiddenInput = modal.querySelector('#interesesHidden');
         const tagErrorEl = modal.querySelector('#tagError');
 
-        
+        let si = modal.querySelector("#rSi")?.checked;
+        let no = modal.querySelector("#rNo")?.checked;
         
         const steps = {
             "1": root.querySelector('[data-step="1"]'),
             "2a": root.querySelector('[data-step="2a"]'),
-            "2b": root.querySelector('[data-step="2b"]'),
             "3": root.querySelector('[data-step="3"]'),
         };
 
@@ -113,26 +113,30 @@
                 codigoPostalRegistroEl.focus();
                 return showStatusRegistro('El código postal debe tener 5 dígitos.', 'alert-warning');
             }
+
+            si = modal.querySelector("#rSi")?.checked;
+            no = modal.querySelector("#rNo")?.checked;
+
             //tipo de usurio <se movio de posicion>
-            const si = modal.querySelector("#rSi")?.checked;
-            const no = modal.querySelector("#rNo")?.checked;
             if (!si && !no) {
                 return showStatusRegistro("Selecciona si eres un puesto para continuar.", 'alert-warning');
             }
 
-            branch = si ? "2a" : "2b";
+            branch = si ? "2a" : "3";
             show(branch);
         }
 
         // --- Eventos de Navegación ---
         btnNext.addEventListener("click", () => {
             if (current === "1") return nextFromStep1();
-            if (current === "2a" || current === "2b") return show("3");
+            if (current === "2a") return show("3");
         });
 
         btnBack.addEventListener("click", () => {
-            if (current === "3") return show(branch);
-            if (current === "2a" || current === "2b") return show("1");
+            if (current === "3" && si) return show("2a");
+            if (current === "3" && !si) return show("1");
+            if (current === "2a") return show("1");
+            console.log(si,current)
         });
         //confirmacion del registro 
         btnFinish.addEventListener("click", () => {
