@@ -1,5 +1,7 @@
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
 // Crea o extiende el mapa de colores
 $custom-colors: (
   "chile": #CE3333,
@@ -9,9 +11,35 @@ $custom-colors: (
   "queso": #FF9940
 );
 
-// Une tus colores con los de Bootstrap
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
-
-
 @import "../node_modules/bootstrap/scss/bootstrap";
+
+@mixin custom-btn($color-name, $color-value) {
+  .btn-#{$color-name} {
+    @include button-variant(
+      $color-value,
+      $color-value,
+      $hover-background: darken($color-value, 10%),
+      $hover-border: darken($color-value, 12%)
+    );
+    &:active,
+    &.active,
+    &:focus:active {
+      background-color: #000;   // black background
+      border-color: #000;       // black border
+      color: #fff;              // white text
+      box-shadow: none;         // remove Bootstrap’s default inset shadow
+    }
+  }
+
+}
+
+// Then, override or fine-tune the "active" / "clicked" look
+    
+
+@include custom-btn("chile", #CE3333);
+@include custom-btn("nopal", #6F9F2B);
+@include custom-btn("mostaza", #F9A825);
+
+// Une tus colores con los de Bootstrap

@@ -29,7 +29,7 @@
         const codigoPostalRegistroEl = modal.querySelector('#codigoPostalRegistro');
 
         //inputs intereses
-           const inputEl = modal.querySelector('#tagInput');
+        const inputEl = modal.querySelector('#tagInput');
         const displayContainer = modal.querySelector('#tagContainer');
         const hiddenInput = modal.querySelector('#interesesHidden');
         const tagErrorEl = modal.querySelector('#tagError');

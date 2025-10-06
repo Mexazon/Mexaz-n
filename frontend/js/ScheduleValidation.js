@@ -1,24 +1,21 @@
 import { Schedule } from "./classes.js";
 
+    const si = document.getElementById("rSi")?.checked;
+    
     const DAYS = [
-        { label: "Domingo",   startId: "DomingoA",   endId: "DomingoB" },
-        { label: "Lunes",     startId: "LunesA",     endId: "LunesC" },
+       
+        { label: "Lunes",     startId: "LunesA",     endId: "LunesB" },
         { label: "Martes",    startId: "MartesA",    endId: "MartesB" },
         { label: "Miércoles", startId: "MiercolesA", endId: "MiercolesB" },
         { label: "Jueves",    startId: "JuevesA",    endId: "JuevesB" },
         { label: "Viernes",   startId: "ViernesA",   endId: "ViernesB" },
         { label: "Sábado",    startId: "SabadoA",    endId: "SabadoB" },
+         { label: "Domingo",   startId: "DomingoA",   endId: "DomingoB" }
     ];
 
     const STORAGE_KEY = "businessSchedule";
     let preview = document.getElementById("schedulePreview");
-    if (!preview) {
-        const section = document.querySelector('section.wizard-step[data-step="2a"]');
-        preview = document.createElement("div");
-        preview.id = "schedulePreview";
-        preview.className = "mt-3";
-        section?.appendChild(preview);
-    }
+ 
 
     const getInput = id => document.getElementById(id);
     const fmt = t => (t && t.length >= 4 ? t : "");
@@ -131,7 +128,10 @@ import { Schedule } from "./classes.js";
 
     function update() {
         const arr = buildScheduleArray();
-        render(arr);
+        if(si){
+            render(arr);
+        }
+        
         save(arr);
         window.currentSchedule = arr; // 👈 exposed if needed
     }
