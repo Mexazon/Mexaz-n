@@ -302,7 +302,7 @@ body { font-family: "Varta bold", sans-serif; }
   width: 100%;
   box-sizing: border-box;
   background: #f3efe8;
-  border-bottom: 1px solid rgba(0,0,0,.06);
+  border-bottom: 1px solid rgba(96, 155, 41, 0.06);
   display: none;
 }
 
@@ -374,7 +374,11 @@ body { font-family: "Varta bold", sans-serif; }
     background-attachment: fixed;
 }
 
+<<<<<<< HEAD
 /* seccion de id tag */
 #tagInput{
   background: #f3efe8;
 }
+=======
+
+>>>>>>> user-login
