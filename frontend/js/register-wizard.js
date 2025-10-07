@@ -1,3 +1,9 @@
+    import { Modal } from 'bootstrap';
+    import {preview}  from "./ScheduleValidation.js";
+    import { update } from "./ScheduleValidation.js";
+    import {isScheduleValid} from "./ScheduleValidation"
+    import {Business,UserCostumer} from "./classes.js";
+    import {existentUsers} from "./loadData.js"
 
     // Asegura que el DOM esté listo
     if (document.readyState === "loading") {
@@ -5,6 +11,10 @@
     } else {
         init();
     }
+
+
+
+    let checkData;
 
     function init() {
         const modal = document.getElementById("registerModal");
@@ -20,19 +30,12 @@
 
         // inputs usados en el registro
 
-        const nombreNegocioEl = modal.querySelector('#nombreNegocio');
         const emailRegistroEl = modal.querySelector('#emailRegistro');
         const telefonoRegistroEl = modal.querySelector('#telefonoRegistro');
         const passwordEl = modal.querySelector('#passwordRegistro');
         const confirmaPasswordEl = modal.querySelector('#passwordRegistroConfirmacion');
         const ciudadRegistroEl = modal.querySelector('#ciudadRegistro'); 
         const codigoPostalRegistroEl = modal.querySelector('#codigoPostalRegistro');
-
-        //inputs intereses
-        const inputEl = modal.querySelector('#tagInput');
-        const displayContainer = modal.querySelector('#tagContainer');
-        const hiddenInput = modal.querySelector('#interesesHidden');
-        const tagErrorEl = modal.querySelector('#tagError');
 
         let si = modal.querySelector("#rSi")?.checked;
         let no = modal.querySelector("#rNo")?.checked;
@@ -128,23 +131,50 @@
 
         // --- Eventos de Navegación ---
         btnNext.addEventListener("click", () => {
-            if (current === "1") return nextFromStep1();
-            if (current === "2a") return show("3");
+            checkData=`
+                <p class="mb-2"><strong>Email:</strong> <span>${emailRegistroEl.value}</span></p>
+                <p class="mb-2"><strong>Teléfono:</strong> <span">${telefonoRegistroEl.value}</span></p>
+                <p class="mb-2"><strong>Ciudad:</strong> <span">${ciudadRegistroEl.value}</span></p>
+                <p class="mb-0"><strong>Código Postal:</strong> <span>${codigoPostalRegistroEl.value}</span></p>
+            `;
+            preview.innerHTML=checkData;
+            let sheduleReview = JSON.parse(localStorage.getItem("businessSchedule"))
+
+            if (current === "1"){
+                localStorage.removeItem("schedulePreview");
+                btnFinish.disabled = false;
+                return nextFromStep1();
+            } 
+            if (current === "2a"){
+                update();
+                if(!isScheduleValid(sheduleReview)){
+                    btnFinish.disabled = true;
+                }else{
+                    btnFinish.disabled = false;
+                } 
+
+                return show("3");
+            } 
         });
 
         btnBack.addEventListener("click", () => {
+            preview.innerHTML="";
             if (current === "3" && si) return show("2a");
             if (current === "3" && !si) return show("1");
             if (current === "2a") return show("1");
-            console.log(si,current)
+            
         });
         //confirmacion del registro 
         btnFinish.addEventListener("click", () => {
-            showStatusRegistro('¡Registro completado! Redireccionando...', 'alert-success');
-            setTimeout(() => {
-                const bsModal = bootstrap.Modal.getOrCreateInstance(modal);
-                bsModal.hide();
-            }, 1500);
+
+            if(si){
+                existentUsers.push(new Business("New Business",ciudadRegistroEl.value,codigoPostalRegistroEl.value,emailRegistroEl.value,passwordEl.value,new Date().toISOString().split('T')[0],JSON.parse(localStorage.getItem("businessSchedule"))))
+            }else{
+                existentUsers.push(new UserCostumer("New User",ciudadRegistroEl.value,codigoPostalRegistroEl.value,emailRegistroEl.value,passwordEl.value,new Date().toISOString().split('T')[0]))
+            }
+            localStorage.removeItem('businessSchedule');
+            localStorage.setItem("registedUsers",JSON.stringify(existentUsers))
+            
         });
 
     // Evita submit accidental con Enter en pasos intermedios
@@ -180,6 +210,3 @@
     }
 
 
-  function isBusiness(){
-    
-  }

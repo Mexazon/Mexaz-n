@@ -152,7 +152,7 @@
                                         <span class="w-25">Lunes</span>
                                         <input type="time" class="form-control form-control-mex"id="LunesA">
                                         <span>a</span>
-                                        <input type="time" class="form-control form-control-mex"id="LunesC">
+                                        <input type="time" class="form-control form-control-mex"id="LunesB">
                                     </div>
                                     <div class="d-flex gap-2 align-items-center">
                                         <span class="w-25">Martes</span>
@@ -193,34 +193,17 @@
                                 </div>
                             </section>
 
-                            <section class="wizard-step d-none" data-step="2b">
-                            <p class="mb-3">Cuéntanos un poco más:</p>
-                            
-                            <div class="mb-3">
-                                <input type="text" id="nombreUsuarioRegistro" class="form-control form-control-mex" placeholder="Nombre de usuario">
-                            </div>
-                            
-                            <div class="mb-3">
-                            <label for="tagInput" class="form-label">Intereses (máx. 3)</label>
-                            
-                            <div id="tagContainer" class="form-control form-control-mex d-flex flex-wrap align-items-center gap-2 tag-area">
-                                
-                                <input type="text" id="tagInput" placeholder="Añade un interés y presiona Enter..." class="tag-input-field flex-grow-1 border-0 p-0" autocomplete="off">
-                            </div>
-                            
-                            <input type="hidden" name="intereses" id="interesesHidden">
-                            </div>
-                            </section>
-
                             <section class="wizard-step d-none" data-step="3">
                                 <p class="mb-3">Revisa tu información y confirma.</p>
-                                <div class="p-3 bg-white text-dark rounded" id="schedulePreview">Resumen (demo)</div>
+                                <div class="p-3 bg-white text-dark rounded" id="schedulePreview">
+                                    
+                                </div>
                             </section>
 
                             <div class="step-footer">
                                 <button class="btn btn-secondary" id="btnBack">Anterior</button>
                                 <button class="btn btn-warning ms-auto" id="btnNext">Siguiente</button>
-                                <button class="btn btn-nopal text-white d-none wellfleet-regular btn-confirmar" id="btnFinish">Confirmar</button>
+                                <button class="btn btn-nopal text-white d-none wellfleet-regular btn-confirmar btn-secondary" data-bs-dismiss="modal" id="btnFinish">Confirmar</button>
                             </div>
                             <div id="registerStatusMessage" style="display: none;" class="mt-3 text-center"></div> <!-- contenedor de mensajes -->
                             </div>

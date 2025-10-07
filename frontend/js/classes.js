@@ -21,6 +21,7 @@ export class Review{
 class User{
     bioDescription;
     profilePhoto;
+    role;
     constructor(name,city,cp,email,password,dateRegistered){
         this.name=name
         this.city=city
@@ -38,18 +39,20 @@ export class Schedule{
     }
 }
 
-class Business extends User{
+export class Business extends User{
     ranking;
     constructor(name,city,cp,email,password,dateRegistered,schedule){
         super(name,city,cp,email,password,dateRegistered);
         this.schedule = schedule;
+        this.role="business";
     }
 }
 
-class UserCostumer extends User{
+export class UserCostumer extends User{
     favorito;
-    constructor(name,city,cp,email,password,dateRegistered,intereses){
+    follows;
+    constructor(name,city,cp,email,password,dateRegistered){
         super(name,city,cp,email,password,dateRegistered);
-        this.intereses = intereses;
+        this.role="user";
     }
 }

@@ -1,6 +1,6 @@
 import { Schedule } from "./classes.js";
 
-    const si = document.getElementById("rSi")?.checked;
+    let si = document.getElementById("rSi")?.checked;
     
     const DAYS = [
        
@@ -10,11 +10,11 @@ import { Schedule } from "./classes.js";
         { label: "Jueves",    startId: "JuevesA",    endId: "JuevesB" },
         { label: "Viernes",   startId: "ViernesA",   endId: "ViernesB" },
         { label: "Sábado",    startId: "SabadoA",    endId: "SabadoB" },
-         { label: "Domingo",   startId: "DomingoA",   endId: "DomingoB" }
+        { label: "Domingo",   startId: "DomingoA",   endId: "DomingoB" }
     ];
 
     const STORAGE_KEY = "businessSchedule";
-    let preview = document.getElementById("schedulePreview");
+    export let preview = document.getElementById("schedulePreview");
  
 
     const getInput = id => document.getElementById(id);
@@ -88,7 +88,7 @@ import { Schedule } from "./classes.js";
             ? `<div class="alert alert-warning py-2 px-3 mb-2">Revisa ${invalidCount} día(s) con horarios incompletos o inválidos.</div>`
             : "";
 
-        preview.innerHTML = `
+        preview.innerHTML += `
             <div class="card shadow-sm">
               <div class="card-body">
                 <h6 class="card-title mb-2">Horario configurado</h6>
@@ -126,11 +126,11 @@ import { Schedule } from "./classes.js";
       });
     }
 
-    function update() {
+    export function update() {
         const arr = buildScheduleArray();
-        if(si){
+
             render(arr);
-        }
+
         
         save(arr);
         window.currentSchedule = arr; // 👈 exposed if needed
@@ -149,6 +149,5 @@ import { Schedule } from "./classes.js";
     const data = load();
     restoreToDOM(data);
     bind();
-    update();
 
 
