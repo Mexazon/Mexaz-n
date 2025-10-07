@@ -302,7 +302,7 @@ body { font-family: "Varta bold", sans-serif; }
   width: 100%;
   box-sizing: border-box;
   background: #f3efe8;
-  border-bottom: 1px solid rgba(0,0,0,.06);
+  border-bottom: 1px solid rgba(96, 155, 41, 0.06);
   display: none;
 }
 
@@ -373,3 +373,5 @@ body { font-family: "Varta bold", sans-serif; }
     background-position: center; 
     background-attachment: fixed;
 }
+
+
