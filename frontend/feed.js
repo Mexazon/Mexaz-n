@@ -10,5 +10,4 @@ import './css/loged.css';
 
 // Scripts
 import './js/posts.js';
-import './js/classes.js';
 import './js/modal-form.js';
