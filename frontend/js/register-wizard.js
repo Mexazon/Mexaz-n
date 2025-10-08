@@ -1,4 +1,3 @@
-    import { Modal } from 'bootstrap';
     import {preview}  from "./ScheduleValidation.js";
     import { update } from "./ScheduleValidation.js";
     import {isScheduleValid} from "./ScheduleValidation"

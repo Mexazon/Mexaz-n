@@ -41,6 +41,7 @@ export class Schedule{
 
 export class Business extends User{
     ranking;
+    menu;
     constructor(name,city,cp,email,password,dateRegistered,schedule){
         super(name,city,cp,email,password,dateRegistered);
         this.schedule = schedule;

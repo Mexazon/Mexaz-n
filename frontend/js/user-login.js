@@ -1,19 +1,9 @@
+import {existentUsers} from "./loadData.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginForm");
   const loginError = document.getElementById("loginError");
 
-  //usuario y contraseña de prueba
-  const testUsers = [
-    { username: "andrea", password: "123456" },
-    { username: "paty", password: "abcdef" },
-    { username: "gio", password: "holacrayola"},
-    { username: "jacov", password: "clave123"},
-    { username: "freddy", password: "adiostonotos"}
-  ];
-
-   if (!localStorage.getItem("users")) {
-    localStorage.setItem("users", JSON.stringify(testUsers));
-   }
   loginForm.addEventListener("submit", (e) => {
     e.preventDefault(); // evita que se envíe sin validar
 
@@ -28,8 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
     //local storage
-    const users = JSON.parse(localStorage.getItem("users"));
-   const foundUser = users.find(u => u.username === user && u.password === pass);
+   const foundUser = existentUsers.find(u => u.email === user && u.password === pass);
    if (!foundUser) {
   showError("Usuario o contraseña incorrectos");
   return; 
