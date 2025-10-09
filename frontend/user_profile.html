@@ -98,95 +98,47 @@
       </div>
 
 
-      <main class="col-lg-10 ms-auto p-3 p-lg-5">
-        <div class="row g-4">
-
-          <!-- Recent reviews -->
-          <section class="col-12 col-xl-6">
-            <div class="d-flex align-items-center justify-content-between mb-2">
-              <h5 class="mb-0">Reseñas Recientes</h5>
-              <button class="btn btn-sm btn-outline-chile" data-bs-toggle="modal" data-bs-target="#reviewModal">
-                <i class="bi bi-plus-lg"></i> Nueva reseña
-              </button>
-            </div>
-
-            <!-- Modal -->
-            <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title" id="reviewModalLabel">
-                      <i class="fas fa-edit me-2"></i>
-                      Nueva Reseña
-                    </h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <form id="reviewForm">
-                      <!-- Código Postal -->
-                      <div class="mb-4">
-                        <label for="postalCode" class="form-label">
-                          <i class="fas fa-map-marker-alt me-2"></i>
-                          Código Postal
-                        </label>
-                        <select class="form-select" id="postalCode" required>
-                          <option value="">Selecciona un código postal...</option>
-                        </select>
-                      </div>
-
-                      <!-- Puesto/Local -->
-                      <div class="mb-4">
-                        <label for="location" class="form-label">
-                          <i class="fas fa-store me-2"></i>
-                          Puesto/Local
-                        </label>
-                        <select name="puesto"class="form-select" id="location" disabled required>
-                          <option value="">Primero selecciona un código postal</option>
-                        </select>
-                      </div>
-
-                      <!-- Calificación -->
-                      <div class="mb-4">
-                        <label class="form-label">
-                          <i class="fas fa-star me-2"></i>
-                          Calificación
-                        </label>
-                        <div class="rating-container">
-                          <div class="rating-text" id="ratingText">Primero selecciona un local</div>
-                          <div class="star-rating pepper-form" id="starRating">
-                            <img class="star" src="assets/black-pepper.svg" data-rating="1"/>
-                            <img class="star" src="assets/black-pepper.svg" data-rating="2"/>
-                            <img class="star" src="assets/black-pepper.svg" data-rating="3"/>
-                            <img class="star" src="assets/black-pepper.svg" data-rating="4"/>
-                            <img class="star" src="assets/black-pepper.svg" data-rating="5"/>
-                          </div>
-                        </div>
-                        <input name="rating"type="hidden" id="rating" value="" required>
-                      </div>
-                      <!-- Reseña -->
-                      <div class="mb-4">
-                        <label for="reviewText" class="form-label">
-                          <i class="fas fa-comment me-2"></i>
-                          Tu Reseña
-                        </label>
-                        <textarea name="resenia"class="form-control" id="reviewText" rows="5"
-                          placeholder="Primero completa los pasos anteriores..." disabled required></textarea>
-                        <div class="form-text">Comparte tu experiencia</div>
-                      </div>
-
-                      <button type="submit" class="btn btn-submit" id="submitBtn" data-bs-dismiss="modal" disabled>
-                        <i class="fas fa-paper-plane me-2"></i>
-                        Publicar Reseña
-                      </button>
-                    </form>
-                  </div>
-                </div>
+      <main class="container p-3 p-lg-5">
+         <div class="card shadow-sm">
+          <div class="card-body text-center">
+            <!-- Profile Picture -->
+            <img src="https://via.placeholder.com/100" class="rounded-circle mb-3" alt="Profile picture" width="100" height="100">
+            
+            <!-- Name -->
+            <h5 class="card-title mb-1">Jay Co</h5>
+            
+            <!-- Description -->
+            <p class="text-muted mb-3">Fan de las garnachas, tacos y todo lo que deje resaca</p>
+            
+            <!-- Stats -->
+            <div class="d-flex justify-content-center mb-3">
+              <div class="px-3">
+                <h6 class="mb-0">10</h6>
+                <small class="text-muted">Reseñas</small>
+              </div>
+              <div class="px-3">
+                <h6 class="mb-0">34</h6>
+                <small class="text-muted">Seguidores</small>
+              </div>
+              <div class="px-3">
+                <h6 class="mb-0">28</h6>
+                <small class="text-muted">Seguidos</small>
               </div>
             </div>
-            <div id="reviews" class="vstack gap-3"></div>
-          </section>
+            
+            <!-- Buttons -->
+            <div class="d-flex justify-content-center gap-2 mb-3">
+              <button class="btn btn-outline-secondary btn-sm">Editar Perfil</button>
+              <button class="btn btn-success btn-sm">Seguir</button>
+            </div>
+          </div>
+          <!-- Footer with separator -->
+          <div class="border-top px-3 py-2 d-flex justify-content-between text-muted small">
+            <span>5 meses activo</span>
+            <span><i class="bi bi-geo-alt"></i> CDMX, México</span>
+          </div>
         </div>
+          
       </main>
     </div>
   </div>

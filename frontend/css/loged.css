@@ -39,18 +39,6 @@ h3{font-size:1.5rem;}   /* ~24px */
   font-size:16px;
 }
 
-/* Sidebar */
-.sidebar{
-    position: fixed;
-    top: 0;        /* distance from the top of the screen */
-    left: 0;       /* distance from the left of the screen */
-    height: 100%;   /* optional, makes it span the screen */
-    z-index: 1000; /* keep it above other content */
-}
-.sidebar .nav-link{ opacity:.9; transition:opacity .15s ease; }
-.sidebar .nav-link:hover{ opacity:1; text-decoration:underline; }
-
-
 /* Avatar */
 .avatar{
   width:120px;height:120px;border-radius:50%;
@@ -131,19 +119,6 @@ body::before {
 .brand-logo--offcanvas{ height: 28px; }   /* offcanvas título */
 
 .brand-link { text-decoration: none; }
-
-/* Sidebar */
-.sidebar .nav-link{
-  display: flex;            /* pone icono y texto en una fila */
-  align-items: center;      /* centrado vertical */
-  gap: .5rem;               /* espacio entre icono y texto */
-  white-space: nowrap;      /* evita que 'Notificaciones' baje de renglón */
-}
-
-/* Ajuste del contenedor interno */
-.sidebar .px-3 {
-  padding-top: 0.5rem; /* menos espacio todavía */
-}
 
 /* Logo */
 .brand-box {

@@ -12,6 +12,4 @@ import './css/hambre.css';
 
 
 // Scripts
-import './js/posts.js';
-
 import './js/menusearch.js';

@@ -1,3 +1,4 @@
+//Estructura de objetos con los iconos y categorias de alimentos
 const categories = [
   { name: 'todos', icon: 'bi-grid-fill' }, // Changed to icon
   { name: 'tacos', image: '/tacos.svg' },
@@ -156,7 +157,6 @@ function initializeEventListeners() {
 
 // --- MAIN EXECUTION ---
 document.addEventListener('DOMContentLoaded', () => {
- 
   renderNavbar();
   renderFoodCards();
   initializeEventListeners();
