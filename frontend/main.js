@@ -14,3 +14,4 @@ import './js/ScheduleValidation.js';
 import './js/register-wizard.js';
 import './js/loadData.js'
 import './js/user-login.js'
+import './js/business_profile.js'
