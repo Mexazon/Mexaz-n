@@ -1,11 +1,26 @@
-//Estructura de objetos con los iconos y categorias de alimentos
+// --- DATA ---
+const foodData = [
+  { name: 'Tacos El Güero', category: 'tacos', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 120 },
+  { name: 'Elotes Doña Mary', category: 'elotes', status: 'open', location: 'Benito Juarez', rating: 4, reviews: 85 },
+  { name: 'Tamales Oaxaqueños', category: 'tamales', status: 'closed', location: 'Coyoacán', rating: 5, reviews: 200 },
+  { name: 'Burritos Express', category: 'burritos', status: 'open', location: 'Cuauhtémoc', rating: 4, reviews: 95 },
+  { name: 'Pozolería La Tradicional', category: 'pozole', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 150 },
+  { name: 'Tacos de Canasta Lupita', category: 'tacos', status: 'open', location: 'Coyoacán', rating: 4, reviews: 78 },
+  { name: 'Elotes Don Pepe', category: 'elotes', status: 'closed', location: 'Benito Juarez', rating: 3, reviews: 45 },
+  { name: 'Tamales de Rajas', category: 'tamales', status: 'open', location: 'Benito Juarez', rating: 4, reviews: 110 },
+  { name: 'Burrito Loco', category: 'burritos', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 180 },
+  { name: 'Pozole Rojo y Verde', category: 'pozole', status: 'closed', location: 'Cuauhtémoc', rating: 4, reviews: 92 },
+  { name: 'Tacos al Pastor El Rey', category: 'tacos', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 250 },
+  { name: 'Esquites La Güera', category: 'elotes', status: 'open', location: 'Coyoacán', rating: 4, reviews: 67 },
+];
+
 const categories = [
   { name: 'todos', icon: 'bi-grid-fill' }, // Changed to icon
-  { name: 'tacos', image: '/tacos.svg' },
-  { name: 'elotes', image: '/elotes.svg' },
-  { name: 'tamales', image: '/tamal.svg' },
-  { name: 'burritos', image: '/burrito.svg' },
-  { name: 'pozole', image: '/pozole.svg' },
+  { name: 'tacos', image: '/assets/tacos.svg' },
+  { name: 'elotes', image: '/assets/elotes.svg' },
+  { name: 'tamales', image: '/assets/tamales.svg' },
+  { name: 'burritos', image: '/assets/burritos.svg' },
+  { name: 'pozole', image: '/assets/pozoles.svg' },
 ];
 
 
@@ -17,7 +32,7 @@ let selectedLocation = 'Benito Juarez';
 let searchTerm = '';
 
 
-// --- RENDER FUNCTIONS ---
+// --- RENDER FUNCTIONS asdN---
 
 
 
