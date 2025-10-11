@@ -36,8 +36,8 @@
   <div class="container-fluid">
     <div class="row min-vh-100">
       <!-- Sidebar -->
-      <div class="col-lg-2 d-none d-lg-block bg-dark text-white sidebar">
-        <div class="px-3">
+      <div class="col-lg-2 d-none d-lg-block bg-dark text-white">
+        <div class="position-sticky mr-3">
           <!-- Logo -->
           <div class="brand-box text-center">
             <img src="assets/logo-mexazon.svg" alt="Mexazón" class="brand-logo">
@@ -48,7 +48,7 @@
             <i class="bi bi-search"></i> ¿Hambre?
           </button>
           <!-- Menú -->
-          <ul class="nav flex-column gap-2">
+          <ul id="desk-sidebar" class="nav flex-column gap-2">
             <li class="nav-item">
               <a class="nav-link text-white" href="#"><i class="bi bi-person-circle me-2"></i>Perfil</a>
             </li>
@@ -96,19 +96,28 @@
       </div>
 
 
-      <main class="col-lg-10 ms-auto p-3 p-lg-5">
+      <main class="col-12 col-lg-10 ms-auto p-3 p-lg-5">
         <div class="row g-4">
-
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <h5 class="mb-0">Reseñas Recientes</h5>
+            <button class="btn btn-sm btn-outline-chile" data-bs-toggle="modal" data-bs-target="#reviewModal">
+              <i class="bi bi-plus-lg"></i> Nueva reseña
+            </button>
+          </div>
+        </div>
           <!-- Recent reviews -->
-          <section class="col-12 col-xl-6">
-            <div class="d-flex align-items-center justify-content-between mb-2">
-              <h5 class="mb-0">Reseñas Recientes</h5>
-              <button class="btn btn-sm btn-outline-chile" data-bs-toggle="modal" data-bs-target="#reviewModal">
-                <i class="bi bi-plus-lg"></i> Nueva reseña
-              </button>
-            </div>
 
-            <!-- Modal -->
+  
+          <section id="reviews" class="row g-4">
+          </section>
+       
+      </main>
+    </div>
+  </div>
+
+
+
+  <!-- Modal -->
             <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel"
               aria-hidden="true">
               <div class="modal-dialog modal-lg">
@@ -182,13 +191,6 @@
                 </div>
               </div>
             </div>
-            <div id="reviews" class="vstack gap-3"></div>
-          </section>
-        </div>
-      </main>
-    </div>
-  </div>
-
     <!-- Scripts -->
     
     <script type="module" src="/feed.js"></script>

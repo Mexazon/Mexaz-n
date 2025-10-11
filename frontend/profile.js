@@ -9,6 +9,4 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './css/loged.css';
 
 // Scripts
-import './js/posts.js';
-import './js/modal-form.js';
 import './js/load-sidebar.js'

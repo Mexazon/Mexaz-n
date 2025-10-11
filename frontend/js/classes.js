@@ -19,8 +19,6 @@ export class Review{
 
 
 class User{
-    bioDescription;
-    profilePhoto;
     role;
     constructor(name,city,cp,email,password,dateRegistered){
         this.name=name
@@ -29,6 +27,8 @@ class User{
         this.email=email
         this.password=password
         this.dateRegistered=dateRegistered
+        this.bioDescription="Que antojo tengo!";
+        this.profilePhoto="https://i.pravatar.cc/200?img=12";
     }
 }
 
@@ -40,20 +40,19 @@ export class Schedule{
 }
 
 export class Business extends User{
-    ranking;
-    menu;
     constructor(name,city,cp,email,password,dateRegistered,schedule){
         super(name,city,cp,email,password,dateRegistered);
         this.schedule = schedule;
         this.role="business";
+        this.ranking = 0;
+        this.menu = [];
     }
 }
 
 export class UserCostumer extends User{
-    favorito;
-    follows;
     constructor(name,city,cp,email,password,dateRegistered){
         super(name,city,cp,email,password,dateRegistered);
         this.role="user";
+        this.favorito="";
     }
 }
