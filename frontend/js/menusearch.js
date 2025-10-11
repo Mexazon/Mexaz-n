@@ -1,18 +1,22 @@
 // --- DATA ---
 const foodData = [
-  { name: 'Tacos El Güero', category: 'tacos', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 120 },
-  { name: 'Elotes Doña Mary', category: 'elotes', status: 'open', location: 'Benito Juarez', rating: 4, reviews: 85 },
-  { name: 'Tamales Oaxaqueños', category: 'tamales', status: 'closed', location: 'Coyoacán', rating: 5, reviews: 200 },
-  { name: 'Burritos Express', category: 'burritos', status: 'open', location: 'Cuauhtémoc', rating: 4, reviews: 95 },
-  { name: 'Pozolería La Tradicional', category: 'pozole', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 150 },
-  { name: 'Tacos de Canasta Lupita', category: 'tacos', status: 'open', location: 'Coyoacán', rating: 4, reviews: 78 },
-  { name: 'Elotes Don Pepe', category: 'elotes', status: 'closed', location: 'Benito Juarez', rating: 3, reviews: 45 },
-  { name: 'Tamales de Rajas', category: 'tamales', status: 'open', location: 'Benito Juarez', rating: 4, reviews: 110 },
-  { name: 'Burrito Loco', category: 'burritos', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 180 },
-  { name: 'Pozole Rojo y Verde', category: 'pozole', status: 'closed', location: 'Cuauhtémoc', rating: 4, reviews: 92 },
-  { name: 'Tacos al Pastor El Rey', category: 'tacos', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 250 },
-  { name: 'Esquites La Güera', category: 'elotes', status: 'open', location: 'Coyoacán', rating: 4, reviews: 67 },
+  { name: 'Tacos El Güero',avatar:"" ,category: 'tacos', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 120 },
+  { name: 'Elotes Doña Mary',avatar:"" ,category: 'elotes', status: 'open', location: 'Benito Juarez', rating: 4, reviews: 85 },
+  { name: 'Tamales Oaxaqueños',avatar:"" ,category: 'tamales', status: 'closed', location: 'Coyoacán', rating: 5, reviews: 200 },
+  { name: 'Burritos Express',avatar:"" ,category: 'burritos', status: 'open', location: 'Cuauhtémoc', rating: 4, reviews: 95 },
+  { name: 'Pozolería La Tradicional',avatar:"" ,category: 'pozole', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 150 },
+  { name: 'Tacos de Canasta Lupita',avatar:"" ,category: 'tacos', status: 'open', location: 'Coyoacán', rating: 4, reviews: 78 },
+  { name: 'Elotes Don Pepe',avatar:"" ,category: 'elotes', status: 'closed', location: 'Benito Juarez', rating: 3, reviews: 45 },
+  { name: 'Tamales de Rajas',avatar:"" ,category: 'tamales', status: 'open', location: 'Benito Juarez', rating: 4, reviews: 110 },
+  { name: 'Burrito Loco',avatar:"" ,category: 'burritos', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 180 },
+  { name: 'Pozole Rojo y Verde',avatar:"" ,category: 'pozole', status: 'closed', location: 'Cuauhtémoc', rating: 4, reviews: 92 },
+  { name: 'Tacos al Pastor El Rey',avatar:"" ,category: 'tacos', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 250 },
+  { name: 'Esquites La Güera',avatar:"" ,category: 'elotes', status: 'open', location: 'Coyoacán', rating: 4, reviews: 67 },
 ];
+
+for(let food of foodData){
+    food.avatar=`https://picsum.photos/seed/${335577*Math.random()}/320/240`;
+}
 
 const categories = [
   { name: 'todos', icon: 'bi-grid-fill' }, // Changed to icon
@@ -114,12 +118,13 @@ function renderFoodCards() {
         const cardElement = document.createElement('div');
         cardElement.className = 'col';
         cardElement.innerHTML = `
-            <div class="food-card">
-                <div class="food-card-img">IMG</div>
-                <div class="food-card-body">
-                    <h5 class="food-card-title">${card.name}</h5>
-                    <div class="rating-chilis">${chiliIcons}</div>
-                    <small class="text-muted">${card.reviews} reseñas</small>
+            <div class="card bg-cebolla">
+                <img src="${card.avatar}" alt="IMG">
+                <div class="card-body">
+                <h6 class="card-title">${card.name}</h6>
+                <div class="pepper-rating">
+                </div>
+                <small>${card.reviews} reseñas</small>         
                 </div>
             </div>
         `;
