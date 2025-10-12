@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Perfil</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -18,7 +18,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/loged.css">
   <!-- Estilos del modal -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body class="">
@@ -38,8 +38,8 @@
   <div class="container-fluid">
     <div class="row min-vh-100">
       <!-- Sidebar -->
-      <div class="col-lg-2 d-none d-lg-block bg-dark text-white sidebar">
-        <div class="px-3">
+      <div class="col-lg-2 d-none d-lg-block bg-dark text-whiter">
+        <div class="position-sticky mr-3">
           <!-- Logo -->
           <div class="brand-box text-center">
             <img src="assets/logo-mexazon.svg" alt="Mexazón" class="brand-logo">
@@ -98,11 +98,9 @@
       </div>
 
 
-      <main class="col-lg-12 ms-auto p-3 p-lg-5">
+      <main id="business_profile" class="col-12 col-lg-10 ms-auto mt-3 mt-lg-0 p-3 p-lg-5">
        <!-- Tus tarjetas van aqui -->
 
-<<<<<<< HEAD
-=======
         <div class="row g-4">
 
           <!-- Acomodando Vista de perfil  -->
@@ -374,9 +372,9 @@
             <!-- VISTA DE ADMINISTRADOR: Input oculto para subir imágenes -->
             <input type="file" id="fileInput" accept="image/*" class="d-none">
         </div>
+    </div>
 
-        <!-- VISTA DE ADMINISTRADOR: Modal para ingresar nombre del platillo -->
-        <!--
+
         <div class="modal fade" id="dishNameModal" tabindex="-1" aria-labelledby="dishNameModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -400,28 +398,163 @@
                 </div>
             </div>
         </div>
-        -->
 
+
+
+
+
+
+                        <div id="feed_negocio" class="card p-4 rounded-4 shadow-sm">
+                            <h3 class="fw-bold mb-3">Reseñas Recientes</h3>
+                            <div class="input-group mb-3">
+                                <!-- Seccion para agregar nuevas resenias -->
+
+
+                                    <button id="boton_nuevaresenia_negocio" class="btn btn-sm btn-outline-chile" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                <i class="bi bi-plus-lg"></i> Nueva reseña
+              </button>
+            
+
+            <!-- Modal -->
+            <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title" id="reviewModalLabel">
+                      <i class="fas fa-edit me-2"></i>
+                      Nueva Reseña
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form id="reviewForm">
+                      <!-- Código Postal -->
+                      <div class="mb-4">
+                        <label for="postalCode" class="form-label">
+                          <i class="fas fa-map-marker-alt me-2"></i>
+                          Código Postal
+                        </label>
+                        <select class="form-select" id="postalCode" required>
+                          <option value="">Selecciona un código postal...</option>
+                        </select>
+                      </div>
+
+                      <!-- Puesto/Local -->
+                      <div class="mb-4">
+                        <label for="location" class="form-label">
+                          <i class="fas fa-store me-2"></i>
+                          Puesto/Local
+                        </label>
+                        <select name="puesto"class="form-select" id="location" disabled required>
+                          <option value="">Primero selecciona un código postal</option>
+                        </select>
+                      </div>
+
+                      <!-- Calificación -->
+                      <div class="mb-4">
+                        <label class="form-label">
+                          <i class="fas fa-star me-2"></i>
+                          Calificación
+                        </label>
+                        <div class="rating-container">
+                          <div class="rating-text" id="ratingText">Primero selecciona un local</div>
+                          <div class="star-rating pepper-form" id="starRating">
+                            <img class="star" src="assets/black-pepper.svg" data-rating="1"/>
+                            <img class="star" src="assets/black-pepper.svg" data-rating="2"/>
+                            <img class="star" src="assets/black-pepper.svg" data-rating="3"/>
+                            <img class="star" src="assets/black-pepper.svg" data-rating="4"/>
+                            <img class="star" src="assets/black-pepper.svg" data-rating="5"/>
+                          </div>
                         </div>
+                        <input name="rating"type="hidden" id="rating" value="" required>
+                      </div>
+                      <!-- Reseña -->
+                      <div class="mb-4">
+                        <label for="reviewText" class="form-label">
+                          <i class="fas fa-comment me-2"></i>
+                          Tu Reseña
+                        </label>
+                        <textarea name="resenia"class="form-control" id="reviewText" rows="5"
+                          placeholder="Primero completa los pasos anteriores..." disabled required></textarea>
+                        <div class="form-text">Comparte tu experiencia</div>
+                      </div>
+
+                      <button type="submit" class="btn btn-submit" id="submitBtn" data-bs-dismiss="modal" disabled>
+                        <i class="fas fa-paper-plane me-2"></i>
+                        Publicar Reseña
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
 
->>>>>>> parent of fc842e3 (adjustments with .js imports)
 
 
 
+                                <!-- aqui termina la seccion de nueva resenia  -->
+                            </div>
+                            <div class="review-feed" id="review-feed">
+                                <div class="review-card p-3 border-bottom mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <img src="https://via.placeholder.com/50" alt="Perfil" class="review-profile-img rounded-circle me-3">
+                                        <div>
+                                            <span class="fw-bold">@renata_</span> hizo una reseña a un nuevo puesto
+                                            <div class="chile-rating small mt-1">
+                                                <i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h5 class="fw-bold mb-2">Quesadillas y huaraches - La guera</h5>
+                                    <p class="mb-2">No está mal para ser callejero. Me incomodó que no hubiera cubiertos, pero el sabor compensa, volveré pronto.</p>
+                                    <img src="https://via.placeholder.com/200" alt="Imagen de reseña" class="img-fluid rounded-3 mb-2">
+                                    <div class="d-flex justify-content-between align-items-center text-muted small">
+                                        <span>18 <i class="bi bi-hand-thumbs-up me-2"></i><i class="bi bi-chat-text"></i></span>
+                                        <span>Hace 2 horas</span>
+                                    </div>
+                                </div>
 
-      </main>
+                                
+
+                                <div class="review-card p-3 border-bottom mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <img src="https://via.placeholder.com/50" alt="Perfil" class="review-profile-img rounded-circle me-3">
+                                        <div>
+                                            <span class="fw-bold">@usuario_ejemplo</span> hizo una reseña a un nuevo puesto
+                                            <div class="chile-rating small mt-1">
+                                                <i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h5 class="fw-bold mb-2">Quesadillas y huaraches - La guera</h5>
+                                    <p class="mb-2">No está mal para ser callejero. Me incomodó que no hubiera cubiertos, pero el sabor compensa, volveré pronto.</p>
+                                    <img src="https://via.placeholder.com/200" alt="Imagen de reseña" class="img-fluid rounded-3 mb-2">
+                                    <div class="d-flex justify-content-between align-items-center text-muted small">
+                                        <span>18 <i class="bi bi-hand-thumbs-up me-2"></i><i class="bi bi-chat-text"></i></span>
+                                        <span>Hace 2 horas</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- se cierra div de datos -->
+
+
+        </div>
+
+
+
+      </main> 
+      <!-- /*fin del main y de la seccion de tarjetas*/ -->
     </div>
   </div>
 
     <!-- Scripts -->
-<<<<<<< HEAD
-    
-=======
-    <script type="module" src="./main.js"></script>
->>>>>>> parent of fc842e3 (adjustments with .js imports)
-    <script type="module" src="/feed.js"></script>
+    <script type="module" src="./business_profile.js"></script>
 </body>
 
 </html>
