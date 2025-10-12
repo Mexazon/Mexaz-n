@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Perfil</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -18,7 +18,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/loged.css">
   <!-- Estilos del modal -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body class="">
@@ -98,19 +98,469 @@
       </div>
 
 
-      <main class="col-lg-12 ms-auto p-3 p-lg-5">
+      <main id="business_profile" class="col-12 col-lg-10 ms-auto mt-3 mt-lg-0 p-3 p-lg-5">
        <!-- Tus tarjetas van aqui -->
 
+        <div class="row g-4">
+
+          <!-- Acomodando Vista de perfil  -->
+          <div class="container-fluid">
+
+                <div class="row gx-lg-5">
+                    <div class="col-12 col-lg-6">
+                        <div id="Datos" class="card p-4 rounded-4 shadow-sm mb-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <i class="bi bi-star fs-4 text-secondary"></i>
+                                <i class="bi bi-heart fs-4 text-danger"></i>
+                            </div>
+
+                            <div class="text-center mb-3" >
+                                <img src="https://www.mexicoescultura.com/galerias/espacios/principal/palacio_de_bellas_artes.jpg" width="225px" height="225px" alt="Foto de perfil" class="profile-img rounded-circle mb-2">
+                                <div class="d-flex align-items-center justify-content-center mt-2">
+                                    <button class="btn btn-success me-2">Seguir</button>
+                                    <button id="edit-button" class="btn btn-primary btn-sm d-none">Editar</button>
+                                   
+                                </div>
+                            </div>
+
+                            <h2 class="text-center fw-bold mb-2">Antojitos "La guera"</h2>
+                            <div class="chile-rating text-center mb-3">
+                                <i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile"></i>
+                            </div>
+
+                            <div class="text-center text-muted mb-4">
+                                <i class="bi bi-geo-alt me-1"></i>Esquina con, Eje central, Av Francisco I. Madero, 06007 <br>Ciudad de México, CDMX
+                            </div>
+
+                            <hr class="mb-4">
+
+                            <div class="row text-center text-muted">
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center justify-content-center mb-2">
+                                        <i class="bi bi-clock me-2"></i>
+                                        <span class="fw-bold">5 meses activo</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-camera me-2"></i>
+                                        <span class="fw-bold">10 reseñas</span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex flex-column align-items-center mb-2">
+                                        <button class="btn btn-sm btn-link p-0 fw-bold" data-bs-toggle="collapse" data-bs-target="#horarioCollapse">Horarios</button>
+                                        <div class="collapse" id="horarioCollapse">
+                                            <ul class="list-unstyled text-start small mt-2">
+                                                <li>L 10:00 - 14:00</li>
+                                                <li>M 10:00 - 14:00</li>
+                                                <li>M 10:00 - 14:00</li>
+                                                <li>J 10:00 - 14:00</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <span class="fw-bold">Tipo de comida</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="calificaciones" class="card p-4 rounded-4 shadow-sm mb-4">
+                            <h3 class="fw-bold mb-4">Calificaciones</h3>
+                            <div class="row text-center mb-4">
+                                <div class="col-md-4 mb-3 mb-md-0">
+                                    <div class="average-rating rounded-circle d-flex flex-column justify-content-center align-items-center mx-auto">
+                                        <span class="fw-bold fs-3">4/5</span>
+                                        <span class="small"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="d-flex align-items-center mb-2">
+                                            <span class="me-2">5</span><img src="assets/red-pepper.svg" class="rating-display-icon" width="16px" height="16px">
+                                            <div class="progress flex-grow-1" role="progressbar" style="height: 10px;">
+                                                <div class="progress-bar bg-success" style="width: 80%;"></div>
+                                            </div>
+                                        </li>
+                                        <li class="d-flex align-items-center mb-2">
+                                            <span class="me-2">4</span><img src="assets/red-pepper.svg" class="rating-display-icon" width="16px" height="16px">
+                                            <div class="progress flex-grow-1" role="progressbar" style="height: 10px;">
+                                                <div class="progress-bar bg-warning" style="width: 65%;"></div>
+                                            </div>
+                                        </li>
+                                        <li class="d-flex align-items-center mb-2">
+                                            <span class="me-2">3</span><img src="assets/red-pepper.svg" class="rating-display-icon" width="16px" height="16px">
+                                            <div class="progress flex-grow-1" role="progressbar" style="height: 10px;">
+                                                <div class="progress-bar bg-warning" style="width: 40%;"></div>
+                                            </div>
+                                        </li>
+                                        <li class="d-flex align-items-center mb-2">
+                                            <span class="me-2">2</span><img src="assets/black-pepper.svg" class="rating-display-icon" width="16px" height="16px">
+                                            <div class="progress flex-grow-1" role="progressbar" style="height: 10px;">
+                                                <div class="progress-bar bg-danger" style="width: 25%;"></div>
+                                            </div>
+                                        </li>
+                                        <li class="d-flex align-items-center">
+                                            <span class="me-2">1</span><img src="assets/black-pepper.svg" class="rating-display-icon" width="16px" height="16px">
+                                            <div class="progress flex-grow-1" role="progressbar" style="height: 10px;">
+                                                <div class="progress-bar bg-danger" style="width: 15%;"></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-wrap">
+                                <span class="badge rounded-pill bg-light text-dark border me-2 mb-2">Tamales</span>
+                                <span class="badge rounded-pill bg-light text-dark border me-2 mb-2">Tacos</span>
+                                <span class="badge rounded-pill bg-light text-dark border me-2 mb-2">Tortas</span>
+                                <span class="badge rounded-pill bg-light text-dark border me-2 mb-2">Quesadillas</span>
+                                <button class="btn btn-link btn-sm p-0 mb-2">+ ver más</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <!-- agregando seccion  -->
+                              
+
+                        <div class="card p-4 rounded-4 shadow-sm mb-4">
+
+                          <div class="card border-0  rounded-4 p-4 mx-auto" style="max-width: 450px;">
+            <h2 class="fw-bold fs-4 mb-4">Menú</h2>
+
+            <div id="menuCarousel" class="carousel slide position-relative" data-bs-ride="false">
+                <div class="carousel-inner px-2">
+                    <!-- Slide 1 - Primeros 3 platillos -->
+                    <div class="carousel-item active">
+                        <div class="row g-3">
+                            <div class="col-4">
+                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
+                                    <img src="https://images.unsplash.com/photo-1618040996337-56904b7850b9?w=400&h=400&fit=crop"
+                                        class="w-100 h-100 object-fit-cover" alt="Quesadillas">
+                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
+                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
+                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Quesadillas</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
+                                    <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&h=400&fit=crop"
+                                        class="w-100 h-100 object-fit-cover" alt="Tacos">
+                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
+                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
+                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Tacos</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
+                                    <img src="https://mbmarcobeteta.com/wp-content/uploads/2025/03/IMG_7161-2.webp?w=400&h=400&fit=crop"
+                                        class="w-100 h-100 object-fit-cover" alt="Tortas">
+                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
+                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
+                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Tortas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 - Segundo grupo de platillos -->
+                    <div class="carousel-item">
+                        <div class="row g-3">
+                            <div class="col-4">
+                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
+                                    <img src="https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c?w=400&h=400&fit=crop"
+                                        class="w-100 h-100 object-fit-cover" alt="Tamales">
+                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
+                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
+                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Tamales</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUE6O6NGcF5ZGNKClsrSHAror2czBVg1e9Yg&s?w=400&h=400&fit=crop"
+                                        class="w-100 h-100 object-fit-cover" alt="Elotes">
+                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
+                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
+                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Elotes</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
+                                    <img src="https://i.blogs.es/c45961/como-hacer-tlacoyos-receta-cocina-tradicional-mexicana/840_560.jpg?w=400&h=400&fit=crop"
+                                        class="w-100 h-100 object-fit-cover" alt="Tlacoyos">
+                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
+                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
+                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Tlacoyos</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 - Tercer grupo de platillos -->
+                    <div class="carousel-item">
+                        <div class="row g-3">
+                            <div class="col-4">
+                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
+                                    <img src="https://img77.uenicdn.com/image/upload/v1563182271/service_images/shutterstock_1339600532.jpg?w=400&h=400&fit=crop"
+                                        class="w-100 h-100 object-fit-cover" alt="Gorditas">
+                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
+                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
+                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Gorditas</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
+                                    <img src="https://images.unsplash.com/photo-1626790680787-de5e9a07bcf2?w=400&h=400&fit=crop"
+                                        class="w-100 h-100 object-fit-cover" alt="Sopes">
+                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
+                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
+                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Sopes</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
+                                    <img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=400&h=400&fit=crop"
+                                        class="w-100 h-100 object-fit-cover" alt="Huaraches">
+                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
+                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
+                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Huaraches</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VISTA DE ADMINISTRADOR: Descomenta para agregar platillos -->
+                    <!-- 
+                    <div id class="carousel-item">
+                        <div class="row g-3">
+                            <div class="col-4">
+                                <div class="rounded-3 border border-3 border-secondary border-dashed d-flex flex-column align-items-center justify-content-center" 
+                                     style="height: 180px; cursor: pointer; background-color: #f0f0f0;"
+                                     onclick="document.getElementById('fileInput').click()">
+                                    <i class="bi bi-plus-circle fs-1 text-secondary mb-2"></i>
+                                    <p class="text-secondary fw-semibold mb-0 small text-center px-2">Agregar platillo</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                </div>
+
+                <!-- Controles del carrusel -->
+                <button class="carousel-control-prev position-absolute top-50 translate-middle-y rounded-circle bg-dark bg-opacity-75" 
+                        type="button" data-bs-target="#menuCarousel" data-bs-slide="prev" 
+                        style="width: 45px; height: 45px; left: -22px;">
+                    <span class="carousel-control-prev-icon" style="width: 24px; height: 24px;" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next position-absolute top-50 translate-middle-y rounded-circle bg-dark bg-opacity-75" 
+                        type="button" data-bs-target="#menuCarousel" data-bs-slide="next" 
+                        style="width: 45px; height: 45px; right: -22px;">
+                    <span class="carousel-control-next-icon" style="width: 24px; height: 24px;" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+
+            <!-- VISTA DE ADMINISTRADOR: Input oculto para subir imágenes -->
+            <input type="file" id="fileInput" accept="image/*" class="d-none">
+        </div>
+
+        <!-- VISTA DE ADMINISTRADOR: Modal para ingresar nombre del platillo -->
+        <!--
+        <div class="modal fade" id="dishNameModal" tabindex="-1" aria-labelledby="dishNameModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="dishNameModalLabel">Agregar platillo al menú</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="dishName" class="form-label">Nombre del platillo</label>
+                            <input type="text" class="form-control" id="dishName" placeholder="Ej: Enchiladas, Pozole, etc.">
+                        </div>
+                        <div class="mb-3">
+                            <img id="previewImage" class="img-fluid rounded d-none" style="max-height: 200px;">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" onclick="addDishToCarousel()">Agregar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+
+                        </div>
 
 
 
 
-      </main>
+
+
+
+
+
+                        <div id="feed_negocio" class="card p-4 rounded-4 shadow-sm">
+                            <h3 class="fw-bold mb-3">Reseñas Recientes</h3>
+                            <div class="input-group mb-3">
+                                <!-- Seccion para agregar nuevas resenias -->
+
+
+                                    <button id="boton_nuevaresenia_negocio" class="btn btn-sm btn-outline-chile" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                <i class="bi bi-plus-lg"></i> Nueva reseña
+              </button>
+            
+
+            <!-- Modal -->
+            <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title" id="reviewModalLabel">
+                      <i class="fas fa-edit me-2"></i>
+                      Nueva Reseña
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form id="reviewForm">
+                      <!-- Código Postal -->
+                      <div class="mb-4">
+                        <label for="postalCode" class="form-label">
+                          <i class="fas fa-map-marker-alt me-2"></i>
+                          Código Postal
+                        </label>
+                        <select class="form-select" id="postalCode" required>
+                          <option value="">Selecciona un código postal...</option>
+                        </select>
+                      </div>
+
+                      <!-- Puesto/Local -->
+                      <div class="mb-4">
+                        <label for="location" class="form-label">
+                          <i class="fas fa-store me-2"></i>
+                          Puesto/Local
+                        </label>
+                        <select name="puesto"class="form-select" id="location" disabled required>
+                          <option value="">Primero selecciona un código postal</option>
+                        </select>
+                      </div>
+
+                      <!-- Calificación -->
+                      <div class="mb-4">
+                        <label class="form-label">
+                          <i class="fas fa-star me-2"></i>
+                          Calificación
+                        </label>
+                        <div class="rating-container">
+                          <div class="rating-text" id="ratingText">Primero selecciona un local</div>
+                          <div class="star-rating pepper-form" id="starRating">
+                            <img class="star" src="assets/black-pepper.svg" data-rating="1"/>
+                            <img class="star" src="assets/black-pepper.svg" data-rating="2"/>
+                            <img class="star" src="assets/black-pepper.svg" data-rating="3"/>
+                            <img class="star" src="assets/black-pepper.svg" data-rating="4"/>
+                            <img class="star" src="assets/black-pepper.svg" data-rating="5"/>
+                          </div>
+                        </div>
+                        <input name="rating"type="hidden" id="rating" value="" required>
+                      </div>
+                      <!-- Reseña -->
+                      <div class="mb-4">
+                        <label for="reviewText" class="form-label">
+                          <i class="fas fa-comment me-2"></i>
+                          Tu Reseña
+                        </label>
+                        <textarea name="resenia"class="form-control" id="reviewText" rows="5"
+                          placeholder="Primero completa los pasos anteriores..." disabled required></textarea>
+                        <div class="form-text">Comparte tu experiencia</div>
+                      </div>
+
+                      <button type="submit" class="btn btn-submit" id="submitBtn" data-bs-dismiss="modal" disabled>
+                        <i class="fas fa-paper-plane me-2"></i>
+                        Publicar Reseña
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+                                <!-- aqui termina la seccion de nueva resenia  -->
+                            </div>
+                            <div class="review-feed" id="review-feed">
+                                <div class="review-card p-3 border-bottom mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <img src="https://via.placeholder.com/50" alt="Perfil" class="review-profile-img rounded-circle me-3">
+                                        <div>
+                                            <span class="fw-bold">@renata_</span> hizo una reseña a un nuevo puesto
+                                            <div class="chile-rating small mt-1">
+                                                <i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h5 class="fw-bold mb-2">Quesadillas y huaraches - La guera</h5>
+                                    <p class="mb-2">No está mal para ser callejero. Me incomodó que no hubiera cubiertos, pero el sabor compensa, volveré pronto.</p>
+                                    <img src="https://via.placeholder.com/200" alt="Imagen de reseña" class="img-fluid rounded-3 mb-2">
+                                    <div class="d-flex justify-content-between align-items-center text-muted small">
+                                        <span>18 <i class="bi bi-hand-thumbs-up me-2"></i><i class="bi bi-chat-text"></i></span>
+                                        <span>Hace 2 horas</span>
+                                    </div>
+                                </div>
+
+                                
+
+                                <div class="review-card p-3 border-bottom mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <img src="https://via.placeholder.com/50" alt="Perfil" class="review-profile-img rounded-circle me-3">
+                                        <div>
+                                            <span class="fw-bold">@usuario_ejemplo</span> hizo una reseña a un nuevo puesto
+                                            <div class="chile-rating small mt-1">
+                                                <i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h5 class="fw-bold mb-2">Quesadillas y huaraches - La guera</h5>
+                                    <p class="mb-2">No está mal para ser callejero. Me incomodó que no hubiera cubiertos, pero el sabor compensa, volveré pronto.</p>
+                                    <img src="https://via.placeholder.com/200" alt="Imagen de reseña" class="img-fluid rounded-3 mb-2">
+                                    <div class="d-flex justify-content-between align-items-center text-muted small">
+                                        <span>18 <i class="bi bi-hand-thumbs-up me-2"></i><i class="bi bi-chat-text"></i></span>
+                                        <span>Hace 2 horas</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- se cierra div de datos -->
+
+
+        </div>
+
+
+
+      </main> 
+      <!-- /*fin del main y de la seccion de tarjetas*/ -->
     </div>
   </div>
 
     <!-- Scripts -->
-    
+    <script type="module" src="./main.js"></script>
     <script type="module" src="/feed.js"></script>
 </body>
 
