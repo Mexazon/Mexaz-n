@@ -14,3 +14,7 @@ import './js/ScheduleValidation.js';
 import './js/register-wizard.js';
 import './js/loadData.js'
 import './js/user-login.js'
+<<<<<<< HEAD
+=======
+import './js/business_profile.js'
+>>>>>>> parent of fc842e3 (adjustments with .js imports)
