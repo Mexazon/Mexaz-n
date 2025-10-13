@@ -4,10 +4,7 @@ import  {resetForm,reviewForm}  from "./modal-form.js";
 import {renderPepperRating} from "./peppers-rendering.js";
 
 //objeto usuario basico (Cambiar al modelo establecido en el UML)"
-const user = {
-  displayName: 'Jay Co',
-  avatar: 'https://i.pravatar.cc/200?img=12',
-};
+const user = JSON.parse(localStorage.getItem("logedUser"));
 
 //Arreglo de objetos tipo 'Review'
 let post;
@@ -26,11 +23,11 @@ reviewForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const formData = new FormData(reviewForm);
 
-    post=new Review(2,formData.get("puesto"),formData.get("rating"),formData.get("resenia"),Date.now());
+    post=new Review(2,formData.get("puesto"),formData.get("rating"),formData.get("resenia"),user.id);
     postsList.push(post);
     localStorage.setItem("publications", JSON.stringify(postsList));
 
-    renderReview(post);
+    renderReview(post,"col-12 col-xl-4 col-lg-6",list);
         //Enviar datos al modelo
     resetForm();
     
@@ -38,19 +35,19 @@ reviewForm.addEventListener('submit', function(e) {
 
 //Funcion agarra los objetos tipo Review del arreglo posts y los inserta en un string html para luego ser insertado en el div "Reviews"
 //Agarra como parametro una lista de reviews
-function renderReview(r,size){
+function renderReview(r,size,container){
     //Se crea un elemento div con la clase 'review'
     const card = create('div', { className: `${size}`});
     //Asigno el formato completo de la tarjeta con los datos del elemento Review
     card.innerHTML = `
-    <div class="card shadow-sm mb-3 border border-dark-subtle bg-cebolla">
+    <div class="card shadow-sm mb-3 border border-dark-subtle bg-cebolla card-review">
       <div class="card-header">
         <div class="d-flex align-items-center gap-2 mb-1 flex-wrap text-truncate">
         <img src="${user.avatar}" 
              alt="avatar" 
              class="rounded-circle" 
              style="width:28px; height:28px; object-fit:cover;">
-        <strong>@${user.displayName}</strong>
+        <strong>@${user.name}</strong>
         <span class="text-muted small text-truncate">hizo una reseña a un nuevo puesto</span>
       </div>
       </div>
@@ -78,18 +75,18 @@ function renderReview(r,size){
   </div>`;
 
     //Inserto el elemento card al div principal de "Reviews"
-    list.appendChild(card);
+    container.appendChild(card);
     // Pinta el rating de esa tarjeta 
     renderPepperRating(card.querySelector('.pepper-rating'), r.calificacion, 5);
 }
 
-function renderAllReviews(list){
+export function renderAllReviews(list,size,container){
   for(let element of list){
-    renderReview(element,'col-12 col-xl-4 col-lg-6');
+    renderReview(element,size,container);
   }
 }
 
-renderAllReviews(postsList);
+renderAllReviews(postsList,'col-12 col-xl-4 col-lg-6',list);
 
 
 

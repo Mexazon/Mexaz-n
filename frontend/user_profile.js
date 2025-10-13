@@ -10,3 +10,4 @@ import './css/loged.css';
 
 // Scripts
 import './js/load-sidebar.js'
+import './js/profile.js'

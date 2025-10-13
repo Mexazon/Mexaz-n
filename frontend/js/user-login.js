@@ -1,4 +1,5 @@
 import {existentUsers} from "./loadData.js";
+import {setLogedUser} from "./loadData.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginForm");
@@ -26,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // valida inicio de sesión si los datos coinciden
     loginError.classList.add("d-none");
-    alert("✅ Inicio de sesión válido");
+    setLogedUser(foundUser);
     window.location.href = "feed.html"; // redirige si todo es correcto
   });
 

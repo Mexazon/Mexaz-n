@@ -37,7 +37,7 @@
     <div class="row min-vh-100">
       <!-- Sidebar -->
       <div class="col-lg-2 d-none d-lg-block bg-dark text-white">
-        <div class="position-sticky mr-3">
+        <div class="sticky-top p-3">
           <!-- Logo -->
           <div class="brand-box text-center">
             <img src="assets/logo-mexazon.svg" alt="Mexazón" class="brand-logo">
@@ -80,7 +80,7 @@
         </div>
         <div class="offcanvas-body">
           <button class="btn btn-nopal w-100 mb-3"><i class="bi bi-search"></i> ¿Hambre?</button>
-          <ul class="nav flex-column gap-2">
+          <ul class="nav flex-column gap-2" id="tiny-sidebar">
             <li class="nav-item"><a class="nav-link text-white" href="#">
                   <i class="bi bi-person-circle me-2"></i>Perfil</a></li>
             <li class="nav-item"><a class="nav-link text-white" href="#">
@@ -99,53 +99,9 @@
       <div class="row min-vh-100 g-4">
         <!-- MIDDLE COLUMN (sticky) -->
         <div class="col-12 col-lg-6 d-flex">
-          <div class="w-100 d-flex flex-column p-4 pt-lg-4 h-lg-100 min-h-0">
+          <div class="w-100 d-flex flex-column p-4 pt-lg-4 h-lg-100 min-h-0" id="profile-data">
             <!-- Profile Card -->
-            <div class="card shadow-sm mb-3 h-75 d-flex flex-column justify-content-center">
-  <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
-    <img src="https://i.pravatar.cc/200?img=12" class="rounded-circle mb-3" alt="Profile" width="100" height="100">
-    <h4 class="mb-1">Jay Co</h4>
-    <p class="text-muted mb-3">Fan de las garnachas, tacos y todo lo que deje resaca</p>
-
-    <div class="d-flex align-items-center justify-content-center mb-3">
-      <div class="px-3">
-        <h6 class="mb-0">10</h6><small class="text-muted">Reseñas</small>
-      </div>
-      <div class="px-3">
-        <h6 class="mb-0">34</h6><small class="text-muted">Seguidores</small>
-      </div>
-      <div class="px-3">
-        <h6 class="mb-0">28</h6><small class="text-muted">Seguidos</small>
-      </div>
-    </div>
-
-    <div class="d-flex justify-content-center gap-2 mb-3">
-      <button class="btn btn-outline-secondary btn-sm">Editar Perfil</button>
-      <button class="btn btn-success btn-sm">Seguir</button>
-    </div>
-  </div>
-  <div class="border-top px-3 py-2 d-flex justify-content-between text-muted small">
-        <span>${antiguedad}</span>
-        <span><i class="bi bi-geo-alt"></i> ${user.city}, México</span>
-      </div>
-</div>
-
-            <!-- Favorite Card -->
-            <div class="card shadow-sm h-25">
-              <div class="card-body">
-                <h6 class="mb-3">Favorito</h6>
-                <div class="d-flex align-items-start gap-3">
-                  <img src="https://via.placeholder.com/96x96" class="rounded img-fluid" alt="Restaurante" width="96" height="96">
-                  <div class="flex-grow-1">
-                    <div class="d-flex justify-content-between">
-                      <h6 class="mb-1">Hamburguesas “Minions”</h6>
-                      <small class="text-muted">42 reseñas</small>
-                    </div>
-                    <div class="small text-muted">🌶️🌶️🌶️🌶️</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          
 
             <!-- Spacer so sticky column has some bottom breathing room -->
             <div class="py-2"></div>
@@ -155,137 +111,10 @@
         <!-- RIGHT COLUMN (independent scroll) -->
        
         <div class="col-12 col-lg-6">
-          <div class="vh-100 overflow-auto p-4 pt-lg-4">
+          <div class="vh-100 overflow-auto p-4 pt-lg-4" id="user-posts">
 
             <!-- Feed Card 1 -->
-            <div class="card shadow-sm mb-4">
-              <div class="card-body">
-                <div class="d-flex align-items-center mb-3">
-                  <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="avatar">
-                  <div>
-                    <strong>@JayCo</strong>
-                    <div class="small text-muted">Hace 2 horas</div>
-                  </div>
-                </div>
-                <h6 class="mb-1">Quesadillas y huaraches - La güera</h6>
-                <p class="mb-3 text-muted small">No está mal para ser callejero... volveré pronto.</p>
-                <img src="https://via.placeholder.com/600x300" class="img-fluid rounded" alt="food">
-                <div class="mt-2 text-success"><i class="bi bi-hand-thumbs-up"></i> 18</div>
-              </div>
-            </div>
-
-            <!-- Duplicate a few for demo -->
-            <div class="card shadow-sm mb-4">
-              <div class="card-body">
-                <div class="d-flex align-items-center mb-3">
-                  <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="avatar">
-                  <div>
-                    <strong>@JayCo</strong>
-                    <div class="small text-muted">Ayer</div>
-                  </div>
-                </div>
-                <h6 class="mb-1">Quesadillas y huaraches - La güera</h6>
-                <p class="mb-0 text-muted small">Otra visita y sigue cumpliendo.</p>
-              </div>
-            </div>
-
-            <div class="card shadow-sm mb-4">
-              <div class="card-body">
-                <div class="d-flex align-items-center mb-3">
-                  <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="avatar">
-                  <div>
-                    <strong>@JayCo</strong>
-                    <div class="small text-muted">Hace 3 días</div>
-                  </div>
-                </div>
-                <h6 class="mb-1">Tacos El Primo</h6>
-                <p class="mb-0 text-muted small">Salsita top 🔥</p>
-              </div>
-            </div>
-
-            <div class="card shadow-sm mb-4">
-              <div class="card-body">
-                <div class="d-flex align-items-center mb-3">
-                  <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="avatar">
-                  <div>
-                    <strong>@JayCo</strong>
-                    <div class="small text-muted">Ayer</div>
-                  </div>
-                </div>
-                <h6 class="mb-1">Quesadillas y huaraches - La güera</h6>
-                <p class="mb-0 text-muted small">Otra visita y sigue cumpliendo.</p>
-              </div>
-            </div>
-
-            <div class="card shadow-sm mb-4">
-              <div class="card-body">
-                <div class="d-flex align-items-center mb-3">
-                  <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="avatar">
-                  <div>
-                    <strong>@JayCo</strong>
-                    <div class="small text-muted">Hace 3 días</div>
-                  </div>
-                </div>
-                <h6 class="mb-1">Tacos El Primo</h6>
-                <p class="mb-0 text-muted small">Salsita top 🔥</p>
-              </div>
-            </div>
-
-            <div class="card shadow-sm mb-4">
-              <div class="card-body">
-                <div class="d-flex align-items-center mb-3">
-                  <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="avatar">
-                  <div>
-                    <strong>@JayCo</strong>
-                    <div class="small text-muted">Ayer</div>
-                  </div>
-                </div>
-                <h6 class="mb-1">Quesadillas y huaraches - La güera</h6>
-                <p class="mb-0 text-muted small">Otra visita y sigue cumpliendo.</p>
-              </div>
-            </div>
-
-            <div class="card shadow-sm mb-4">
-              <div class="card-body">
-                <div class="d-flex align-items-center mb-3">
-                  <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="avatar">
-                  <div>
-                    <strong>@JayCo</strong>
-                    <div class="small text-muted">Hace 3 días</div>
-                  </div>
-                </div>
-                <h6 class="mb-1">Tacos El Primo</h6>
-                <p class="mb-0 text-muted small">Salsita top 🔥</p>
-              </div>
-            </div>
-
-            <div class="card shadow-sm mb-4">
-              <div class="card-body">
-                <div class="d-flex align-items-center mb-3">
-                  <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="avatar">
-                  <div>
-                    <strong>@JayCo</strong>
-                    <div class="small text-muted">Ayer</div>
-                  </div>
-                </div>
-                <h6 class="mb-1">Quesadillas y huaraches - La güera</h6>
-                <p class="mb-0 text-muted small">Otra visita y sigue cumpliendo.</p>
-              </div>
-            </div>
-
-            <div class="card shadow-sm mb-4">
-              <div class="card-body">
-                <div class="d-flex align-items-center mb-3">
-                  <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="avatar">
-                  <div>
-                    <strong>@JayCo</strong>
-                    <div class="small text-muted">Hace 3 días</div>
-                  </div>
-                </div>
-                <h6 class="mb-1">Tacos El Primo</h6>
-                <p class="mb-0 text-muted small">Salsita top 🔥</p>
-              </div>
-            </div>
+            
 
           </div>
         </div>
@@ -298,7 +127,7 @@
 
     <!-- Scripts -->
     
-    <script type="module" src="/profile.js"></script>
+    <script type="module" src="/user_profile.js"></script>
 </body>
 
 </html>

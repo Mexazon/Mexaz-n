@@ -1,17 +1,18 @@
+import {renderPepperRating} from "./peppers-rendering.js";
 // --- DATA ---
-const foodData = [
-  { name: 'Tacos El Güero',avatar:"" ,category: 'tacos', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 120 },
-  { name: 'Elotes Doña Mary',avatar:"" ,category: 'elotes', status: 'open', location: 'Benito Juarez', rating: 4, reviews: 85 },
-  { name: 'Tamales Oaxaqueños',avatar:"" ,category: 'tamales', status: 'closed', location: 'Coyoacán', rating: 5, reviews: 200 },
-  { name: 'Burritos Express',avatar:"" ,category: 'burritos', status: 'open', location: 'Cuauhtémoc', rating: 4, reviews: 95 },
-  { name: 'Pozolería La Tradicional',avatar:"" ,category: 'pozole', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 150 },
-  { name: 'Tacos de Canasta Lupita',avatar:"" ,category: 'tacos', status: 'open', location: 'Coyoacán', rating: 4, reviews: 78 },
-  { name: 'Elotes Don Pepe',avatar:"" ,category: 'elotes', status: 'closed', location: 'Benito Juarez', rating: 3, reviews: 45 },
-  { name: 'Tamales de Rajas',avatar:"" ,category: 'tamales', status: 'open', location: 'Benito Juarez', rating: 4, reviews: 110 },
-  { name: 'Burrito Loco',avatar:"" ,category: 'burritos', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 180 },
-  { name: 'Pozole Rojo y Verde',avatar:"" ,category: 'pozole', status: 'closed', location: 'Cuauhtémoc', rating: 4, reviews: 92 },
-  { name: 'Tacos al Pastor El Rey',avatar:"" ,category: 'tacos', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 250 },
-  { name: 'Esquites La Güera',avatar:"" ,category: 'elotes', status: 'open', location: 'Coyoacán', rating: 4, reviews: 67 },
+export const foodData = [
+  {id:87, name: 'Tacos El Güero',avatar:"" ,category: 'tacos', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 120 },
+  {id:88, name: 'Elotes Doña Mary',avatar:"" ,category: 'elotes', status: 'open', location: 'Benito Juarez', rating: 4, reviews: 85 },
+  {id:89, name: 'Tamales Oaxaqueños',avatar:"" ,category: 'tamales', status: 'closed', location: 'Coyoacán', rating: 5, reviews: 200 },
+  {id:90, name: 'Burritos Express',avatar:"" ,category: 'burritos', status: 'open', location: 'Cuauhtémoc', rating: 4, reviews: 95 },
+  {id:91, name: 'Pozolería La Tradicional',avatar:"" ,category: 'pozole', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 150 },
+  {id:92, name: 'Tacos de Canasta Lupita',avatar:"" ,category: 'tacos', status: 'open', location: 'Coyoacán', rating: 4, reviews: 78 },
+  {id:93, name: 'Elotes Don Pepe',avatar:"" ,category: 'elotes', status: 'closed', location: 'Benito Juarez', rating: 3, reviews: 45 },
+  {id:94, name: 'Tamales de Rajas',avatar:"" ,category: 'tamales', status: 'open', location: 'Benito Juarez', rating: 4, reviews: 110 },
+  {id:95, name: 'Burrito Loco',avatar:"" ,category: 'burritos', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 180 },
+  {id:96, name: 'Pozole Rojo y Verde',avatar:"" ,category: 'pozole', status: 'closed', location: 'Cuauhtémoc', rating: 4, reviews: 92 },
+  {id:97, name: 'Tacos al Pastor El Rey',avatar:"" ,category: 'tacos', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 250 },
+  {id:98, name: 'Esquites La Güera',avatar:"" ,category: 'elotes', status: 'open', location: 'Coyoacán', rating: 4, reviews: 67 },
 ];
 
 for(let food of foodData){
@@ -27,14 +28,13 @@ const categories = [
   { name: 'pozole', image: '/assets/pozoles.svg' },
 ];
 
-
-
 // --- STATE MANAGEMENT ---
 let selectedCategory = 'todos';
 let isFilteringOpen = false;
 let selectedLocation = 'Benito Juarez';
 let searchTerm = '';
 
+const foodCardContainer = document.getElementById('food-card-container');
 
 // --- RENDER FUNCTIONS asdN---
 
@@ -90,9 +90,7 @@ function renderNavbar() {
     `;
 }
 
-
 function renderFoodCards() {
-    const foodCardContainer = document.getElementById('food-card-container');
     foodCardContainer.innerHTML = ''; // Clear existing cards
 
     const filteredData = foodData.filter(card => {
@@ -109,29 +107,26 @@ function renderFoodCards() {
     }
 
     filteredData.forEach(card => {
-        const chiliIcons = Array.from({ length: 5 }, (_, i) =>
-            i < card.rating
-                ? '<i class="bi bi-wind"></i>'
-                : '<i class="bi bi-wind text-muted"></i>'
-        ).join('');
-
         const cardElement = document.createElement('div');
         cardElement.className = 'col';
         cardElement.innerHTML = `
-            <div class="card bg-cebolla">
-                <img src="${card.avatar}" alt="IMG">
-                <div class="card-body">
-                <h6 class="card-title">${card.name}</h6>
-                <div class="pepper-rating">
-                </div>
-                <small>${card.reviews} reseñas</small>         
-                </div>
+           <div class="card h-100 d-flex card-business">
+            <img src="${card.avatar}" alt="IMG" class="card-img-top img-shrink">
+            <div class="card-body p-2">
+                <h6 class="card-title mb-1 text-truncate">${card.name}</h6>
+                <div class="pepper-rating small mb-1"></div>
+            </div>
+
+            <!-- Footer aligned to the right -->
+            <div class="card-footer border-1 pt-0 mt-auto text-end">
+                <small class="text-muted">${card.reviews} reseñas</small>
+            </div>
             </div>
         `;
+        renderPepperRating(cardElement.querySelector('.pepper-rating'), card.rating, 5);
         foodCardContainer.appendChild(cardElement);
     });
 }
-
 
 // --- EVENT LISTENERS & INITIALIZATION ---
 
@@ -173,6 +168,24 @@ function initializeEventListeners() {
         openNowButton.classList.toggle('active');
         renderFoodCards();
     });
+
+    // Click to open details
+    foodCardContainer.addEventListener('click', (e) => {
+    const cardEl = e.target.closest('.card');
+    if (!cardEl) return;
+
+    const payload = {
+        id: cardEl.dataset.id,
+        name: cardEl.dataset.name,
+        reviews: Number(cardEl.dataset.reviews),
+        rating: Number(cardEl.dataset.rating)
+    };
+
+    // Example: pass data to detail page
+    sessionStorage.setItem('selectedCard', JSON.stringify(payload));
+    location.href = 'business_profile.html';
+    });
+
 }
 
 // --- MAIN EXECUTION ---

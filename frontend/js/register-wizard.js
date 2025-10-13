@@ -167,9 +167,9 @@
         btnFinish.addEventListener("click", () => {
 
             if(si){
-                existentUsers.push(new Business("New Business",ciudadRegistroEl.value,codigoPostalRegistroEl.value,emailRegistroEl.value,passwordEl.value,new Date().toISOString().split('T')[0],JSON.parse(localStorage.getItem("businessSchedule"))))
+                existentUsers.push(new Business("new_usiness",ciudadRegistroEl.value,codigoPostalRegistroEl.value,emailRegistroEl.value,passwordEl.value,new Date().toISOString().split('T')[0],JSON.parse(localStorage.getItem("businessSchedule"))))
             }else{
-                existentUsers.push(new UserCostumer("New User",ciudadRegistroEl.value,codigoPostalRegistroEl.value,emailRegistroEl.value,passwordEl.value,new Date().toISOString().split('T')[0]))
+                existentUsers.push(new UserCostumer("new_ser",ciudadRegistroEl.value,codigoPostalRegistroEl.value,emailRegistroEl.value,passwordEl.value,new Date().toISOString().split('T')[0]))
             }
             localStorage.removeItem('businessSchedule');
             localStorage.setItem("registedUsers",JSON.stringify(existentUsers))

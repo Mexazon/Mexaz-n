@@ -5,11 +5,9 @@ import '../sass/custom.scss';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 // CSS principal
-
 import './css/loged.css';
 import './css/hambre.css';
 
-
-
 // Scripts
 import './js/menusearch.js';
+import './js/load-sidebar.js'

@@ -39,7 +39,7 @@
     <div class="row min-vh-100">
       <!-- Sidebar -->
       <div class="col-lg-2 d-none d-lg-block bg-dark text-whiter">
-        <div class="position-sticky mr-3">
+        <div class="sticky-top p-3">
           <!-- Logo -->
           <div class="brand-box text-center">
             <img src="assets/logo-mexazon.svg" alt="Mexazón" class="brand-logo">
@@ -50,7 +50,7 @@
             <i class="bi bi-search"></i> ¿Hambre?
           </button>
           <!-- Menú -->
-          <ul class="nav flex-column gap-2">
+          <ul class="nav flex-column gap-2" id="desk-sidebar">
             <li class="nav-item">
               <a class="nav-link text-white" href="#"><i class="bi bi-person-circle me-2"></i>Perfil</a>
             </li>
@@ -81,8 +81,8 @@
             aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          <button class="btn btn-nopal w-100 mb-3"><i class="bi bi-search"></i> ¿Hambre?</button>
-          <ul class="nav flex-column gap-2">
+          <button class="btn btn-nopal w-100 mb-3"><i class="bi bi-search"></i>¿Hambre?</button>
+          <ul class="nav flex-column gap-2" id="tiny-sidebar">
             <li class="nav-item"><a class="nav-link text-white" href="#">
                   <i class="bi bi-person-circle me-2"></i>Perfil</a></li>
             <li class="nav-item"><a class="nav-link text-white" href="#">
@@ -109,16 +109,11 @@
                 <div class="row gx-lg-5">
                     <div class="col-12 col-lg-6">
                         <div id="Datos" class="card p-4 rounded-4 shadow-sm mb-4">
-                            <div class="d-flex justify-content-between align-items-start mb-3">
-                                <i class="bi bi-star fs-4 text-secondary"></i>
-                                <i class="bi bi-heart fs-4 text-danger"></i>
-                            </div>
 
                             <div class="text-center mb-3" >
                                 <img src="https://www.mexicoescultura.com/galerias/espacios/principal/palacio_de_bellas_artes.jpg" width="225px" height="225px" alt="Foto de perfil" class="profile-img rounded-circle mb-2">
                                 <div class="d-flex align-items-center justify-content-center mt-2">
-                                    <button class="btn btn-success me-2">Seguir</button>
-                                    <button id="edit-button" class="btn btn-primary btn-sm d-none">Editar</button>
+                                    <button id="edit-button" class="btn btn-outline-secondary btn-sm d-none">Editar</button>
                                    
                                 </div>
                             </div>
@@ -259,78 +254,6 @@
                                     <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
                                          style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
                                         <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Tortas</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 2 - Segundo grupo de platillos -->
-                    <div class="carousel-item">
-                        <div class="row g-3">
-                            <div class="col-4">
-                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
-                                    <img src="https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c?w=400&h=400&fit=crop"
-                                        class="w-100 h-100 object-fit-cover" alt="Tamales">
-                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
-                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
-                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Tamales</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUE6O6NGcF5ZGNKClsrSHAror2czBVg1e9Yg&s?w=400&h=400&fit=crop"
-                                        class="w-100 h-100 object-fit-cover" alt="Elotes">
-                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
-                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
-                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Elotes</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
-                                    <img src="https://i.blogs.es/c45961/como-hacer-tlacoyos-receta-cocina-tradicional-mexicana/840_560.jpg?w=400&h=400&fit=crop"
-                                        class="w-100 h-100 object-fit-cover" alt="Tlacoyos">
-                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
-                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
-                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Tlacoyos</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 3 - Tercer grupo de platillos -->
-                    <div class="carousel-item">
-                        <div class="row g-3">
-                            <div class="col-4">
-                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
-                                    <img src="https://img77.uenicdn.com/image/upload/v1563182271/service_images/shutterstock_1339600532.jpg?w=400&h=400&fit=crop"
-                                        class="w-100 h-100 object-fit-cover" alt="Gorditas">
-                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
-                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
-                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Gorditas</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
-                                    <img src="https://images.unsplash.com/photo-1626790680787-de5e9a07bcf2?w=400&h=400&fit=crop"
-                                        class="w-100 h-100 object-fit-cover" alt="Sopes">
-                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
-                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
-                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Sopes</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
-                                    <img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=400&h=400&fit=crop"
-                                        class="w-100 h-100 object-fit-cover" alt="Huaraches">
-                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
-                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
-                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Huaraches</p>
                                     </div>
                                 </div>
                             </div>
@@ -512,7 +435,7 @@
                                     <p class="mb-2">No está mal para ser callejero. Me incomodó que no hubiera cubiertos, pero el sabor compensa, volveré pronto.</p>
                                     <img src="https://via.placeholder.com/200" alt="Imagen de reseña" class="img-fluid rounded-3 mb-2">
                                     <div class="d-flex justify-content-between align-items-center text-muted small">
-                                        <span>18 <i class="bi bi-hand-thumbs-up me-2"></i><i class="bi bi-chat-text"></i></span>
+                                      
                                         <span>Hace 2 horas</span>
                                     </div>
                                 </div>
@@ -533,7 +456,7 @@
                                     <p class="mb-2">No está mal para ser callejero. Me incomodó que no hubiera cubiertos, pero el sabor compensa, volveré pronto.</p>
                                     <img src="https://via.placeholder.com/200" alt="Imagen de reseña" class="img-fluid rounded-3 mb-2">
                                     <div class="d-flex justify-content-between align-items-center text-muted small">
-                                        <span>18 <i class="bi bi-hand-thumbs-up me-2"></i><i class="bi bi-chat-text"></i></span>
+                                        
                                         <span>Hace 2 horas</span>
                                     </div>
                                 </div>

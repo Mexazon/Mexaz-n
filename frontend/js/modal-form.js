@@ -1,22 +1,7 @@
 //importo las rutas de los chiles 
 import redPepper from '../assets/red-pepper.svg';
 import blackPepper from '../assets/black-pepper.svg';
-
-// Base de datos de códigos postales y sus respectivos lugares
-const postalCodeData = {
-    "06000": [
-        "Café La Plaza",
-        "Tacos Don Juan",
-        "Pizzería Italiana",
-        "Bar El Corazón"
-    ],
-    "03100": [
-        "Restaurante Del Valle",
-        "Sushi Tokyo",
-        "Panadería San José",
-        "Tacos el Tommy"
-    ]
-};
+import {foodData} from './menusearch.js'
 
 // Variables globales
 let currentRating = 0;
@@ -40,11 +25,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Cargar códigos postales
 function initializePostalCodes() {
-    Object.keys(postalCodeData).forEach(code => {
+    const places = new Set();
+    for(let business of foodData){
+        places.add(business.location);
+    }
+    places.forEach(place => {
         const option = document.createElement('option');
-        option.value = code;
-        option.textContent = code;
+        option.value = place;
+        option.textContent = place;
         postalCodeSelect.appendChild(option);
+        
     });
 }
 
@@ -58,11 +48,11 @@ postalCodeSelect.addEventListener('change', function() {
         locationSelect.innerHTML = '<option value="">Selecciona un lugar...</option>';
         
         // Cargar lugares correspondientes al código postal
-        const locations = postalCodeData[selectedCode];
-        locations.forEach(location => {
+        const places = foodData.filter(business => business.location == selectedCode);
+        places.forEach(place => {
             const option = document.createElement('option');
-            option.value = location;
-            option.textContent = location;
+            option.value = place.name;
+            option.textContent = place.name;
             locationSelect.appendChild(option);
         });
         

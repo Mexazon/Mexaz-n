@@ -169,3 +169,6 @@ body::before {
 #reviews .card {
   overflow: hidden;              /* prevents content overflow */
 }
+.card-business:hover,.card-review:hover{
+  cursor: pointer;
+}
