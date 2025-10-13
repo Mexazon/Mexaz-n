@@ -21,11 +21,11 @@ for(let food of foodData){
 
 const categories = [
   { name: 'todos', icon: 'bi-grid-fill' }, // Changed to icon
-  { name: 'tacos', image: '/assets/tacos.svg' },
-  { name: 'elotes', image: '/assets/elotes.svg' },
-  { name: 'tamales', image: '/assets/tamales.svg' },
-  { name: 'burritos', image: '/assets/burritos.svg' },
-  { name: 'pozole', image: '/assets/pozoles.svg' },
+  { name: 'tacos', image: '../assets/tacos.svg' },
+  { name: 'elotes', image: '../assets/elotes.svg' },
+  { name: 'tamales', image: '../assets/tamales.svg' },
+  { name: 'burritos', image: '../assets/burritos.svg' },
+  { name: 'pozole', image: '../assets/pozoles.svg' },
 ];
 
 // --- STATE MANAGEMENT ---

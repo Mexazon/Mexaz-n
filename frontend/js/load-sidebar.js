@@ -22,10 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
               <a class="nav-link text-white" href="index.html"><i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión</a>
             </li>`;
       LargeSidebar.innerHTML = sidebarContent;
-      OffSidebar.innerHTML = sidebarContent;
-
+    OffSidebar.innerHTML = sidebarContent;
+const btnHambre = document.getElementById("btnHambre");
 const logOutBtn = document.getElementById("log-out");
-
+    btnHambre.addEventListener('click', () => {
+      window.location.href = 'hambre.html';
+    });
+    
     logOutBtn.addEventListener('click', () => {
       console.log("entra")
       localStorage.removeItem("logedUser");
