@@ -1,4 +1,9 @@
 import {renderPepperRating} from "./peppers-rendering.js";
+import tacos from '../assets/tacos.svg';
+import elotes from '../assets/elotes.svg';
+import tamales from '../assets/tamales.svg';
+import burritos from '../assets/burritos.svg';
+import pozole from '../assets/pozoles.svg';
 // --- DATA ---
 export const foodData = [
   {id:87, name: 'Tacos El Güero',avatar:"" ,category: 'tacos', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 120 },
@@ -21,11 +26,11 @@ for(let food of foodData){
 
 const categories = [
   { name: 'todos', icon: 'bi-grid-fill' }, // Changed to icon
-  { name: 'tacos', image: '../assets/tacos.svg' },
-  { name: 'elotes', image: '../assets/elotes.svg' },
-  { name: 'tamales', image: '../assets/tamales.svg' },
-  { name: 'burritos', image: '../assets/burritos.svg' },
-  { name: 'pozole', image: '../assets/pozoles.svg' },
+  { name: 'tacos', image: tacos },
+  { name: 'elotes', image: elotes },
+  { name: 'tamales', image: tamales },
+  { name: 'burritos', image: burritos },
+  { name: 'pozole', image: pozole },
 ];
 
 // --- STATE MANAGEMENT ---
