@@ -13,7 +13,10 @@ export default defineConfig(({ command }) => ({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'frontend/index.html'),
-        feed: resolve(__dirname, 'frontend/feed.html'), // or 'frontend/pages/feed.html'
+        feed: resolve(__dirname, 'frontend/feed.html'), 
+        main: resolve(__dirname, 'frontend/hambre.html'),
+        feed: resolve(__dirname, 'frontend/user_profile.html'),
+        feed: resolve(__dirname, 'frontend/business_profile.html')// or 'frontend/pages/feed.html'
       },
     },
   },
