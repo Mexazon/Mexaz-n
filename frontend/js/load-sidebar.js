@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const btnHambre = document.getElementById("btnHambre");
 const logOutBtn = document.getElementById("log-out");
     btnHambre.addEventListener('click', () => {
-      window.location.href = 'hambre.html';
+      window.location.href = './hambre.html';
     });
     
     logOutBtn.addEventListener('click', () => {

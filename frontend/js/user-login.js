@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // valida inicio de sesión si los datos coinciden
     loginError.classList.add("d-none");
     setLogedUser(foundUser);
-    window.location.href = "feed.html"; // redirige si todo es correcto
+    window.location.href = "./feed.html"; // redirige si todo es correcto
   });
 
   function showError(message) {
