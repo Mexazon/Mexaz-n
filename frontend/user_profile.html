@@ -16,9 +16,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <!-- Font Awesome para los iconos del modal -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/loged.css">
-  <!-- Estilos del modal -->
-  <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body class="">
@@ -38,8 +36,8 @@
   <div class="container-fluid">
     <div class="row min-vh-100">
       <!-- Sidebar -->
-      <div class="col-lg-2 d-none d-lg-block bg-dark text-white sidebar">
-        <div class="px-3">
+      <div class="col-lg-2 d-none d-lg-block bg-dark text-white">
+        <div class="sticky-top p-3">
           <!-- Logo -->
           <div class="brand-box text-center">
             <img src="assets/logo-mexazon.svg" alt="Mexazón" class="brand-logo">
@@ -50,12 +48,12 @@
             <i class="bi bi-search"></i> ¿Hambre?
           </button>
           <!-- Menú -->
-          <ul class="nav flex-column gap-2">
+          <ul id="desk-sidebar" class="nav flex-column gap-2">
             <li class="nav-item">
               <a class="nav-link text-white" href="#"><i class="bi bi-person-circle me-2"></i>Perfil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#"><i class="bi bi-person-circle me-2"></i>Feed</a>
+              <a class="nav-link text-white" href="#"><i class="bi bi-book-half me-2"></i>Feed</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-white" href="#"><i class="bi bi-heart-fill me-2"></i>Favoritos</a>
@@ -81,12 +79,12 @@
             aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          <button class="btn btn-nopal w-100 mb-3"><i class="bi bi-search"></i> ¿Hambre?</button>
-          <ul class="nav flex-column gap-2">
+          <a href="hambre.html"><button class="btn btn-nopal w-100 mb-3"><i class="bi bi-search"></i>¿Hambre?</button></a>
+          <ul class="nav flex-column gap-2" id="tiny-sidebar">
             <li class="nav-item"><a class="nav-link text-white" href="#">
                   <i class="bi bi-person-circle me-2"></i>Perfil</a></li>
             <li class="nav-item"><a class="nav-link text-white" href="#">
-                  <i class="bi bi-person-circle me-2"></i>Feed</a></li>
+                  <i class="bi bi-book-half me-2"></i>Feed</a></li>
             <li class="nav-item"><a class="nav-link text-white" href="#"><i
                   class="bi bi-heart-fill me-2"></i>Favoritos</a></li>
             <li class="nav-item"><a class="nav-link text-white" href="#"><i
@@ -97,103 +95,39 @@
         </div>
       </div>
 
+      <div class="col-12 col-lg-10">
+      <div class="row min-vh-100 g-4">
+        <!-- MIDDLE COLUMN (sticky) -->
+        <div class="col-12 col-lg-6 d-flex">
+          <div class="w-100 d-flex flex-column p-4 pt-lg-4 h-lg-100 min-h-0" id="profile-data">
+            <!-- Profile Card -->
+          
 
-      <main class="col-lg-10 ms-auto p-3 p-lg-5">
-        <div class="row g-4">
-
-          <!-- Recent reviews -->
-          <section class="col-12 col-xl-6">
-            <div class="d-flex align-items-center justify-content-between mb-2">
-              <h5 class="mb-0">Reseñas Recientes</h5>
-              <button class="btn btn-sm btn-outline-chile" data-bs-toggle="modal" data-bs-target="#reviewModal">
-                <i class="bi bi-plus-lg"></i> Nueva reseña
-              </button>
-            </div>
-
-            <!-- Modal -->
-            <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title" id="reviewModalLabel">
-                      <i class="fas fa-edit me-2"></i>
-                      Nueva Reseña
-                    </h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <form id="reviewForm">
-                      <!-- Código Postal -->
-                      <div class="mb-4">
-                        <label for="postalCode" class="form-label">
-                          <i class="fas fa-map-marker-alt me-2"></i>
-                          Código Postal
-                        </label>
-                        <select class="form-select" id="postalCode" required>
-                          <option value="">Selecciona un código postal...</option>
-                        </select>
-                      </div>
-
-                      <!-- Puesto/Local -->
-                      <div class="mb-4">
-                        <label for="location" class="form-label">
-                          <i class="fas fa-store me-2"></i>
-                          Puesto/Local
-                        </label>
-                        <select name="puesto"class="form-select" id="location" disabled required>
-                          <option value="">Primero selecciona un código postal</option>
-                        </select>
-                      </div>
-
-                      <!-- Calificación -->
-                      <div class="mb-4">
-                        <label class="form-label">
-                          <i class="fas fa-star me-2"></i>
-                          Calificación
-                        </label>
-                        <div class="rating-container">
-                          <div class="rating-text" id="ratingText">Primero selecciona un local</div>
-                          <div class="star-rating pepper-form" id="starRating">
-                            <img class="star" src="assets/black-pepper.svg" data-rating="1"/>
-                            <img class="star" src="assets/black-pepper.svg" data-rating="2"/>
-                            <img class="star" src="assets/black-pepper.svg" data-rating="3"/>
-                            <img class="star" src="assets/black-pepper.svg" data-rating="4"/>
-                            <img class="star" src="assets/black-pepper.svg" data-rating="5"/>
-                          </div>
-                        </div>
-                        <input name="rating"type="hidden" id="rating" value="" required>
-                      </div>
-                      <!-- Reseña -->
-                      <div class="mb-4">
-                        <label for="reviewText" class="form-label">
-                          <i class="fas fa-comment me-2"></i>
-                          Tu Reseña
-                        </label>
-                        <textarea name="resenia"class="form-control" id="reviewText" rows="5"
-                          placeholder="Primero completa los pasos anteriores..." disabled required></textarea>
-                        <div class="form-text">Comparte tu experiencia</div>
-                      </div>
-
-                      <button type="submit" class="btn btn-submit" id="submitBtn" data-bs-dismiss="modal" disabled>
-                        <i class="fas fa-paper-plane me-2"></i>
-                        Publicar Reseña
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div id="reviews" class="vstack gap-3"></div>
-          </section>
+            <!-- Spacer so sticky column has some bottom breathing room -->
+            <div class="py-2"></div>
+          </div>
         </div>
-      </main>
+
+        <!-- RIGHT COLUMN (independent scroll) -->
+       
+        <div class="col-12 col-lg-6">
+          <div class="vh-100 overflow-auto p-4 pt-lg-4" id="user-posts">
+
+            <!-- Feed Card 1 -->
+            
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+         
     </div>
   </div>
 
     <!-- Scripts -->
     
-    <script type="module" src="/feed.js"></script>
+    <script type="module" src="/user_profile.js"></script>
 </body>
 
 </html>

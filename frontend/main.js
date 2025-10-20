@@ -11,6 +11,5 @@ import './css/styles.css';
 import './js/formulario.js';
 import './js/register-wizard.js';
 import './js/ScheduleValidation.js';
-import './js/register-wizard.js';
 import './js/loadData.js'
 import './js/user-login.js'

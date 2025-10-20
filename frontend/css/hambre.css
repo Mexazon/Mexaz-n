@@ -1,0 +1,53 @@
+/* existing styles */
+
+.top-search-bar {
+    font-size: 24px;
+    font-family: 'Varta', sans-serif;
+    font-weight: 700;
+}
+
+.category-btn {
+    font-size: 1.5em; 
+    width: 3em; 
+    height: 3em; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.category-btn img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.category-btn.active {
+    border: 2px solid var(--primary-color);
+}
+
+/* --- Responsive Styles --- */
+@media (max-width: 768px) {
+
+    .category-btn {
+        font-size: 1.2em;
+        width: 2.5em;
+        height: 2.5em;
+    }
+
+    .d-flex.justify-content-between.align-items-center.flex-wrap.gy-3 > * {
+        flex-basis: 100%;
+        text-align: center;
+    }
+
+    .d-flex.justify-content-center.flex-grow-1.gap-2 {
+        justify-content: space-around !important;
+    }
+}
+/* Tighter card spacing */
+
+
+/* Shorter header image */
+.img-shrink{
+  height: 120px;        /* try 80–120px */
+  width: 100%;
+  object-fit: cover;   /* crops to keep it neat */
+}

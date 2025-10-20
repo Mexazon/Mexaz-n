@@ -1,15 +1,14 @@
-import {Business,UserCostumer} from "./classes.js";
-
 function getExistentUsers(){
     let registedUsers = JSON.parse(localStorage.getItem("registedUsers")) || [];
-    const restoredList = registedUsers.map(u => {return u.role =="business" 
-        ? Object.assign(new Business(), u)
-        :Object.assign(new UserCostumer(), u)});
-    return restoredList; 
+    return registedUsers; 
 }
 
-function setLogedUser(users){
+export function setLogedUser(users){
     localStorage.setItem("logedUser",JSON.stringify(users));
+}
+
+export function getLogedUser(){
+    return JSON.parse(localStorage.getItem("logedUser"))
 }
 
 export let existentUsers = getExistentUsers();

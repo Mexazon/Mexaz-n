@@ -1,4 +1,5 @@
 import {existentUsers} from "./loadData.js";
+import {setLogedUser} from "./loadData.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginForm");
@@ -20,14 +21,14 @@ document.addEventListener("DOMContentLoaded", () => {
     //local storage
    const foundUser = existentUsers.find(u => u.email === user && u.password === pass);
    if (!foundUser) {
-  showError("Usuario o contraseña incorrectos");
-  return; 
-}
+      showError("Usuario o contraseña incorrectos");
+      return; 
+    }
 
     // valida inicio de sesión si los datos coinciden
     loginError.classList.add("d-none");
-    alert("✅ Inicio de sesión válido");
-    window.location.href = "feed.html"; // redirige si todo es correcto
+    setLogedUser(foundUser);
+    window.location.href = "./feed.html"; // redirige si todo es correcto
   });
 
   function showError(message) {

@@ -1,11 +1,14 @@
+import {existentUsers} from "./loadData.js";
 //Construccion del modelo de las resenias "Reviews"
 export class Review{
-    constructor(hours,lugar,calificacion,descripcion,id){
-        const idResenia = id;
-        const idUsuario = 2
+    constructor(hours,lugar,calificacion,descripcion,idUsuario){
+        this.idResenia = JSON.parse(localStorage.getItem("publications"))
+        ? JSON.parse(localStorage.getItem("publications")).length+1
+        : 1;
+        this.idUsuario = idUsuario
         const idNegocio = 3
         this.hoursAgo = hours
-        this.foto = `https://picsum.photos/seed/${idResenia*Math.random()}/320/240`
+        this.foto = `https://picsum.photos/seed/${Date.now()*Math.random()}/320/240`
         this.lugar = lugar
         this.likes = 0
         this.calificacion = calificacion
@@ -19,10 +22,10 @@ export class Review{
 
 
 class User{
-    bioDescription;
-    profilePhoto;
     role;
+    avatar;
     constructor(name,city,cp,email,password,dateRegistered){
+        this.id = existentUsers.length + 1
         this.name=name
         this.city=city
         this.cp=cp
@@ -40,20 +43,22 @@ export class Schedule{
 }
 
 export class Business extends User{
-    ranking;
-    menu;
     constructor(name,city,cp,email,password,dateRegistered,schedule){
         super(name,city,cp,email,password,dateRegistered);
         this.schedule = schedule;
         this.role="business";
+        this.bioDescription="Tragate toda la garnacha!";
+        this.avatar= `https://picsum.photos/seed/${335577*Math.random()}/320/240`;
+        this.ranking = 0;
+        this.menu = [];
     }
 }
 
 export class UserCostumer extends User{
-    favorito;
-    follows;
     constructor(name,city,cp,email,password,dateRegistered){
         super(name,city,cp,email,password,dateRegistered);
         this.role="user";
+        this.bioDescription="Que antojo tengo!";
+        this.avatar=`https://i.pravatar.cc/400?img=${Math.floor(Math.random() * 70) + 1}`;
     }
 }
