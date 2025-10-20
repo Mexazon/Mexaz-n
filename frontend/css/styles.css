@@ -268,9 +268,7 @@ body { font-family: "Varta bold", sans-serif; }
 }
 #Contacto .btn-success:hover{ background-color: #6f9f2b; }
 
-/* =========================
-   AJUSTES RESPONSIVE
-   ========================= */
+/* ========================= AJUSTES RESPONSIVE ========================= */
 #nosotros > .row{
   max-width: 1200px;
   margin-inline: auto;
@@ -379,7 +377,7 @@ body { font-family: "Varta bold", sans-serif; }
   background: #f3efe8;
 }
 
-<<<<<<< HEAD
+
 /* Iconos Equipo */ 
 a img {
   transition: transform 0.3s ease;
@@ -392,13 +390,4 @@ a:hover img {
 a {
   margin-right: 10px;
 }
-
-
-
-=======
-/* ======================== 
-seccion menu de negocio 
-============================
-*/
->>>>>>> a5835767a4f44a597e592516b106dc09ec89a9a9
 
