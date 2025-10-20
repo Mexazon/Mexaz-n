@@ -217,25 +217,27 @@
                         <!-- agregando seccion  -->
                               
 
-                        <div class="card p-4 rounded-4 shadow-sm mb-4">
-
-                          <div class="card border-0  rounded-4 p-4 mx-auto" style="max-width: 450px;">
-            <h2 class="fw-bold fs-4 mb-4">Menú</h2>
+    <div class="card p-4 rounded-4 shadow-sm mb-4">
+      <div class="card border-0  rounded-4 p-4 mx-auto" style="max-width: 450px;">
+      <h2 class="fw-bold fs-4 mb-4">Menú</h2>
 
             <div id="menuCarousel" class="carousel slide position-relative" data-bs-ride="false">
                 <div class="carousel-inner px-2">
                     <!-- Slide 1 - Primeros 3 platillos -->
                     <div class="carousel-item active">
                         <div class="row g-3">
+                          <!-- Quesadilla -->
                             <div class="col-4">
-                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
-                                    <img src="https://images.unsplash.com/photo-1618040996337-56904b7850b9?w=400&h=400&fit=crop"
-                                        class="w-100 h-100 object-fit-cover" alt="Quesadillas">
-                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
-                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
-                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Quesadillas</p>
-                                    </div>
-                                </div>
+          <div class="position-relative rounded-3 overflow-hidden shadow-sm" 
+               style="height: 180px; cursor: pointer;"
+               data-bs-toggle="modal" data-bs-target="#dishModal1">
+            <img src="https://images.unsplash.com/photo-1618040996337-56904b7850b9?w=400&h=400&fit=crop"
+                 class="w-100 h-100 object-fit-cover" alt="Quesadillas">
+            <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient"
+                 style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 100%);">
+              <p class="text-white fw-bold mb-0 fs-6">Quesadillas</p>
+            </div>
+          </div>
                             </div>
                             <div class="col-4">
                                 <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
@@ -260,6 +262,22 @@
                         </div>
                     </div>
 
+                    <!-- modal quesadilla  -->
+                     <div class="modal fade" id="dishModal1" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-sm">
+                          <div class="modal-content border-0 rounded-4 shadow">
+                            <div class="modal-header border-0">
+                              <h5 class="modal-title">Quesadillas</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                              <img src="https://images.unsplash.com/photo-1618040996337-56904b7850b9?w=600&h=400&fit=crop" class="img-fluid rounded mb-3">
+                              <p class="fw-semibold text-success">$40 MXN</p>
+                              <p>Tortillas rellenas de queso o guisado, doradas al comal y servidas con salsa.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     <!-- VISTA DE ADMINISTRADOR: Descomenta para agregar platillos -->
                     <!-- 
                     <div id class="carousel-item">
