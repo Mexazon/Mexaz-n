@@ -379,3 +379,19 @@ body { font-family: "Varta bold", sans-serif; }
   background: #f3efe8;
 }
 
+/* Iconos Equipo */ 
+a img {
+  transition: transform 0.3s ease;
+}
+
+a:hover img {
+  transform: scale(1.3);
+}
+
+a {
+  margin-right: 10px;
+}
+
+
+
+
