@@ -82,8 +82,14 @@ function renderReview(r,size,container){
     renderPepperRating(card.querySelector('.pepper-rating'), r.calificacion, 5);
 }
 
-export function renderAllReviews(list,size,container){
+/* export function renderAllReviews(list,size,container){
   for(let element of list){
+    renderReview(element,size,container);
+  }
+} */
+export function renderAllReviews(list,size,container){
+  // Se crea una copia invertida del arreglo ANTES de iterar
+  for(let element of [...list].reverse()){
     renderReview(element,size,container);
   }
 }
