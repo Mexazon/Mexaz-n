@@ -93,7 +93,7 @@
             }
 
             // Validar que la contrasenia tiene una longitude de minimo 8 caracteres
-            const passOk = passwordEl.value.length >= 8;
+            const passOk = passwordEl.value.trim().length >= 8;
             if (!passOk) {
                 passwordEl.focus();
                 return showStatusRegistro('La contraseña debe tener al menos 8 caracteres.', 'alert-warning');
