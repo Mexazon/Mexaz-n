@@ -94,8 +94,6 @@ export function renderAllReviews(list,size,container){
   }
 }
 
-renderAllReviews(postsList,'col-12 col-xl-4 col-lg-6',list);
 
-
-
+renderAllReviews(postsList,'col-12 ',list); /* col-xl-4 col-lg-6 */
 
