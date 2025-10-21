@@ -11,8 +11,6 @@
         init();
     }
 
-
-
     let checkData;
 
     function init() {
@@ -115,6 +113,8 @@
                 codigoPostalRegistroEl.focus();
                 return showStatusRegistro('El código postal debe tener 5 dígitos.', 'alert-warning');
             }
+
+            //Hacer la validacion del nombre de usuario
 
             si = modal.querySelector("#rSi")?.checked;
             no = modal.querySelector("#rNo")?.checked;
