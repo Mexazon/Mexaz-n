@@ -5,7 +5,7 @@ const esDueno = true;
 let negocioAbierto = true;
 
 // Referencia al contenedor principal
-const contenedor = document.getElementById("negocioStatus");
+const contenedor = document.getElementById("negocioOpenClose");
 
 function renderNegocioStatus() {
   if (esDueno) {
@@ -45,3 +45,16 @@ function renderNegocioStatus() {
 }
 
 document.addEventListener("DOMContentLoaded", renderNegocioStatus);
+
+
+/* =========Funcionamiento del horario============ */
+
+// Busca todos los elementos que activan un popover
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+
+// Inicializa cada uno de ellos
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => {
+  return new bootstrap.Popover(popoverTriggerEl, {
+    html: true, // ¡Muy importante! Permite que el contenido sea HTML
+  });
+});
