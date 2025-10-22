@@ -35,7 +35,10 @@ const logOutBtn = document.getElementById("log-out");
     });
 
     document.getElementById('own-profile').addEventListener('click', () =>{
-      window.location.href = `user_profile.html?id=${logedUser.id}`
+      if(logedUser.role=="user"){
+        window.location.href = `user_profile.html?id=${logedUser.id}`
+      }
+        window.location.href = `business_profile.html?id=${logedUser.id}`
     })
 
   // Your code here, for example:

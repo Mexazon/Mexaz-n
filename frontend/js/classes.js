@@ -25,7 +25,7 @@ class User{
     constructor(name,city,cp,email,password,dateRegistered){
         this.id = existentUsers.length + 1
         this.name=name
-        this.city=city
+        this.location=city
         this.cp=cp
         this.email=email
         this.password=password
@@ -39,8 +39,38 @@ export class Schedule{
         this.closing=closing;
     }
 }
+export function isOpen(schedule) {
+    // Si los valores no existen o están vacíos → cerrado
+    if (
+        !schedule ||
+        !schedule.opening || !schedule.closing ||
+        schedule.opening.trim() === "" || schedule.closing.trim() === ""
+    ) {
+        return false;
+    }
 
-class Dishes{
+    const now = new Date();
+
+    // Hora actual en minutos desde medianoche
+    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+    // Convertir horarios a minutos
+    const [openH, openM] = schedule.opening.split(':').map(Number);
+    const [closeH, closeM] = schedule.closing.split(':').map(Number);
+
+    const openingMinutes = openH * 60 + openM;
+    const closingMinutes = closeH * 60 + closeM;
+
+    // Caso normal (mismo día)
+    if (openingMinutes < closingMinutes) {
+        return currentMinutes >= openingMinutes && currentMinutes < closingMinutes;
+    }
+
+    // Caso nocturno (por ejemplo 20:00 → 02:00)
+    return currentMinutes >= openingMinutes || currentMinutes < closingMinutes;
+}
+
+export class Dishes{
     constructor(dishName,description,price,category){
         this.dishName = dishName;
         this.descripcion =description;
@@ -56,8 +86,8 @@ export class Business extends User{
         this.role="business";
         this.bioDescription="Tragate toda la garnacha!";
         this.avatar= `https://picsum.photos/seed/${335577*Math.random()}/320/240`;
-        this.ranking = 0;
         this.menu = [];
+        this.isOpen = isOpen(this.schedule)
     }
 }
 

@@ -4,25 +4,67 @@ import elotes from '../assets/elotes.svg';
 import tamales from '../assets/tamales.svg';
 import burritos from '../assets/burritos.svg';
 import pozole from '../assets/pozoles.svg';
+import {existentUsers} from './loadData.js'
+import { Schedule,isOpen } from "./classes.js";
+import { Business } from "./classes.js";
 // --- DATA ---
+
+const normalSchedule = [
+    new Schedule("", ""),
+    new Schedule("08:00", "18:00"),
+    new Schedule("08:00", "18:00"),
+    new Schedule("08:00", "18:00"),
+    new Schedule("08:00", "18:00"),
+    new Schedule("", ""),
+    new Schedule("", "")
+]
+isOpen(normalSchedule);
+
 export const foodData = [
-  {id:87, name: 'Tacos El Güero',avatar:"" ,category: 'tacos', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 120 },
-  {id:88, name: 'Elotes Doña Mary',avatar:"" ,category: 'elotes', status: 'open', location: 'Benito Juarez', rating: 4, reviews: 85 },
-  {id:89, name: 'Tamales Oaxaqueños',avatar:"" ,category: 'tamales', status: 'closed', location: 'Coyoacán', rating: 5, reviews: 200 },
-  {id:90, name: 'Burritos Express',avatar:"" ,category: 'burritos', status: 'open', location: 'Cuauhtémoc', rating: 4, reviews: 95 },
-  {id:91, name: 'Pozolería La Tradicional',avatar:"" ,category: 'pozole', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 150 },
-  {id:92, name: 'Tacos de Canasta Lupita',avatar:"" ,category: 'tacos', status: 'open', location: 'Coyoacán', rating: 4, reviews: 78 },
-  {id:93, name: 'Elotes Don Pepe',avatar:"" ,category: 'elotes', status: 'closed', location: 'Benito Juarez', rating: 3, reviews: 45 },
-  {id:94, name: 'Tamales de Rajas',avatar:"" ,category: 'tamales', status: 'open', location: 'Benito Juarez', rating: 4, reviews: 110 },
-  {id:95, name: 'Burrito Loco',avatar:"" ,category: 'burritos', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 180 },
-  {id:96, name: 'Pozole Rojo y Verde',avatar:"" ,category: 'pozole', status: 'closed', location: 'Cuauhtémoc', rating: 4, reviews: 92 },
-  {id:97, name: 'Tacos al Pastor El Rey',avatar:"" ,category: 'tacos', status: 'open', location: 'Benito Juarez', rating: 5, reviews: 250 },
-  {id:98, name: 'Esquites La Güera',avatar:"" ,category: 'elotes', status: 'open', location: 'Coyoacán', rating: 4, reviews: 67 },
+  {name: 'Tacos El Güero',location: 'Benito Juarez'},
+  {name: 'Elotes Doña Mary', location: 'Benito Juarez'},
+  {name: 'Tamales Oaxaqueños',location: 'Coyoacán'},
+  {name: 'Burritos Express', location: 'Cuauhtémoc' },
+  {name: 'Pozolería La Tradicional',location: 'Benito Juarez' },
+  {name: 'Tacos de Canasta Lupita', location: 'Coyoacán'},
+  {name: 'Elotes Don Pepe', location: 'Benito Juarez'},
+  {name: 'Tamales de Rajas', location: 'Benito Juarez'},
+  {name: 'Burrito Loco', location: 'Benito Juarez'},
+  {name: 'Pozole Rojo y Verde', location: 'Cuauhtémoc'},
+  {name: 'Tacos al Pastor El Rey', location: 'Benito Juarez'},
+  {name: 'Esquites La Güera', location: 'Coyoacán'},
 ];
 
-for(let food of foodData){
-    food.avatar=`https://picsum.photos/seed/${335577*Math.random()}/320/240`;
+function createBusinessesFromFoodData() {
+  const businesses = foodData.map((food, index) => {
+    const randomCp = Math.floor(10000 + Math.random() * 89999); // CP aleatorio
+    const email = `${food.name.toLowerCase().replace(/\s+/g, '')}@ejemplo.com`;
+    const password = `business${index + 1}`;
+    const dateRegistered = new Date().toISOString().split("T")[0];
+    const schedule = normalSchedule;
+
+    return new Business(
+      food.name,          // name
+      food.location,      // city
+      randomCp,           // cp
+      email,              // email
+      password,           // password
+      dateRegistered,     // dateRegistered
+      schedule            // schedule
+    );
+  });
+
+  return businesses;
 }
+const newBusiness = createBusinessesFromFoodData();
+// Ejemplo de uso:
+existentUsers.push(...newBusiness);
+
+console.log(existentUsers)
+
+const businesses = existentUsers.filter(user =>{
+    return user.role == "business";
+});
 
 const categories = [
   { name: 'todos', icon: 'bi-grid-fill' }, // Changed to icon
@@ -99,9 +141,9 @@ function renderNavbar() {
 function renderFoodCards() {
     foodCardContainer.innerHTML = ''; // Clear existing cards
 
-    const filteredData = foodData.filter(card => {
+    const filteredData = businesses.filter(card => {
         const categoryMatch = selectedCategory === 'todos' || card.category === selectedCategory;
-        const openMatch = !isFilteringOpen || card.status === 'open';
+        const openMatch = !isFilteringOpen || card.isOpen == true;
         const locationMatch = card.location === selectedLocation;
         const searchMatch = card.name.toLowerCase().includes(searchTerm.toLowerCase());
         return categoryMatch && openMatch && locationMatch && searchMatch;
