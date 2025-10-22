@@ -100,6 +100,51 @@
         <!-- MIDDLE COLUMN (sticky) -->
         <div class="col-12 col-lg-6 d-flex">
           <div class="w-100 d-flex flex-column p-4 pt-lg-4 h-lg-100 min-h-0" id="profile-data">
+            
+            <!-- Modal Editar Perfil -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title" id="editProfileModalLabel">Editar perfil</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="editProfileForm">
+          <!-- Foto de perfil -->
+          <div class="mb-3 text-center">
+            <label for="profilePhoto" class="form-label fw-semibold">Foto de perfil</label>
+            <input class="form-control" type="file" id="profilePhoto" accept="image/*">
+            <div class="mt-3">
+              <img id="profilePhotoPreview" src="" alt="Vista previa" class="img-fluid rounded-circle shadow-sm d-none" style="max-width: 150px;">
+            </div>
+          </div>
+
+          <!-- Nombre -->
+          <div class="mb-3">
+            <label for="profileName" class="form-label fw-semibold">Nombre</label>
+            <input type="text" class="form-control" id="profileName" placeholder="Tu nombre">
+          </div>
+
+          <!-- Descripción -->
+          <div class="mb-3">
+            <label for="profileDescription" class="form-label fw-semibold">Descripción</label>
+            <textarea class="form-control" id="profileDescription" rows="3" placeholder="Cuéntanos algo sobre ti..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-success w-100">
+            <i class="fas fa-save me-2"></i>Guardar cambios
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+  Editar Perfil
+</button>
             <!-- Profile Card -->
           
 
@@ -124,6 +169,9 @@
          
     </div>
   </div>
+
+  
+
 
     <!-- Scripts -->
     

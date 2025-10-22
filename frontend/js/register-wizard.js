@@ -33,6 +33,8 @@
         const confirmaPasswordEl = modal.querySelector('#passwordRegistroConfirmacion');
         const ciudadRegistroEl = modal.querySelector('#ciudadRegistro'); 
         const codigoPostalRegistroEl = modal.querySelector('#codigoPostalRegistro');
+        const coloniaRegistroEl = modal.querySelector('#coloniaRegistro');
+        const usuarioRegistroEl = modal.querySelector('#usuarioRegistro'); 
 
         let si = modal.querySelector("#rSi")?.checked;
         let no = modal.querySelector("#rNo")?.checked;
@@ -113,8 +115,19 @@
                 codigoPostalRegistroEl.focus();
                 return showStatusRegistro('El código postal debe tener 5 dígitos.', 'alert-warning');
             }
+            
+            //validación de la colonia
+            if (coloniaRegistroEl.value.trim() === '') {
+                coloniaRegistroEl.focus();
+                 return showStatusRegistro('La colonia no puede estar vacía', 'alert-warning');
+            }
 
-            //Hacer la validacion del nombre de usuario
+            //Validacion del nombre de usuario
+
+            if (usuarioRegistroEl.value.trim() === '') {
+                usuarioRegistroEl.focus();
+                return showStatusRegistro('El nombre de usuario no puede estar vacío', 'alert-warning');
+            }
 
             si = modal.querySelector("#rSi")?.checked;
             no = modal.querySelector("#rNo")?.checked;
@@ -133,8 +146,10 @@
             checkData=`
                 <p class="mb-2"><strong>Email:</strong> <span>${emailRegistroEl.value}</span></p>
                 <p class="mb-2"><strong>Teléfono:</strong> <span">${telefonoRegistroEl.value}</span></p>
-                <p class="mb-2"><strong>Ciudad:</strong> <span">${ciudadRegistroEl.value}</span></p>
-                <p class="mb-0"><strong>Código Postal:</strong> <span>${codigoPostalRegistroEl.value}</span></p>
+                <p class="mb-2"><strong>Alcaldía:</strong> <span">${ciudadRegistroEl.value}</span></p>
+                <p class="mb-2"><strong>Código Postal:</strong> <span>${codigoPostalRegistroEl.value}</span></p>
+                <p class="mb-2"><strong>Colonia:</strong> <span>${coloniaRegistroEl.value}</span></p>
+
             `;
             preview.innerHTML=checkData;
             let sheduleReview = JSON.parse(localStorage.getItem("businessSchedule"))

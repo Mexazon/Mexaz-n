@@ -240,3 +240,40 @@ export function resetForm() {
     
     submitBtn.disabled = true;
 }
+
+// Agregar una foto
+const photoInput = document.getElementById('reviewPhoto');
+const photoPreviewContainer = document.getElementById('photoPreviewContainer');
+const photoPreviewList = document.getElementById('photoPreviewList');
+
+photoInput.addEventListener('change', function(event) {
+  const files = event.target.files;
+
+  // Limpia vistas previas anteriores
+  photoPreviewList.innerHTML = '';
+
+  if (files.length === 0) {
+    photoPreviewContainer.classList.add('d-none');
+    return;
+  }
+
+  photoPreviewContainer.classList.remove('d-none');
+
+  // Recorre todos los archivos seleccionados
+  Array.from(files).forEach(file => {
+    if (file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = document.createElement('img');
+        img.src = e.target.result;
+        img.classList.add('img-thumbnail', 'shadow-sm');
+        img.style.width = '120px';
+        img.style.height = '120px';
+        img.style.objectFit = 'cover';
+        photoPreviewList.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+});
+
