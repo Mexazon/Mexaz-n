@@ -11,3 +11,5 @@ import './css/loged.css';
 import './js/modal-form.js';
 import './js/load-sidebar.js'
 import './js/business.js'
+import './js/businessOpenClose.js'
+import './js/businessPost.js'

@@ -1,0 +1,71 @@
+#negocioStatus {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- Componente toggle --- */
+.card-toggle {
+  width: 130px; /* similar al ancho de un botón mediano */
+  height: 36px; /* igual o un poco más alto que btn-sm */
+  perspective: 1000px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.inner-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.inner-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 0.85rem; /* texto más pequeño */
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.front {
+  background-color: #28a745; /* verde */
+}
+
+.back {
+  background-color: #dc3545; /* rojo */
+  transform: rotateY(180deg);
+}
+
+#descripcionParrafo{
+    text-align: justify;
+}
+
+#reviews {
+  max-height: 500px; /* Ajusta esta altura a tu gusto */
+  overflow-y: auto;  /* Muestra el scroll vertical SOLO si es necesario */
+}
+
+/* horarios  */
+.status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%; 
+}

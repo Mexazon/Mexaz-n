@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="/css/loged.css">
   <!-- Estilos del modal -->
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styleBusiness.css">
 </head>
 
 <body class="">
@@ -108,9 +109,9 @@
 
                 <div class="row gx-lg-5">
                     <div class="col-12 col-lg-6">
-                        <div id="Datos" class="card p-4 rounded-4 shadow-sm mb-4">
+                        <div id="tarjetaDatos" class="card p-4 rounded-4 shadow-sm mb-4">
 
-                            <div class="text-center mb-3" >
+                            <div id="contenedorProfilePhoto" class="text-center mb-3" >
                                 <img src="https://www.mexicoescultura.com/galerias/espacios/principal/palacio_de_bellas_artes.jpg" width="225px" height="225px" alt="Foto de perfil" class="profile-img rounded-circle mb-2">
                                 <div class="d-flex align-items-center justify-content-center mt-2">
                                     <button id="edit-button" class="btn btn-outline-secondary btn-sm d-none">Editar</button>
@@ -118,30 +119,31 @@
                                 </div>
                             </div>
 
-                            <h2 class="text-center fw-bold mb-2">Antojitos "La guera"</h2>
+                            <h2 id="nombreNegocio" class="text-center fw-bold mb-2">Antojitos "La guera"</h2>
                             <div class="chile-rating text-center mb-3">
                                 <i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile"></i>
                             </div>
 
-                            <div class="text-center text-muted mb-4">
+                            <div id="direccionNegocio" class="text-center text-muted mb-4">
                                 <i class="bi bi-geo-alt me-1"></i>Esquina con, Eje central, Av Francisco I. Madero, 06007 <br>Ciudad de México, CDMX
                             </div>
 
                             <hr class="mb-4">
 
-                            <div class="row text-center text-muted">
+                            <div id="seccionDatosNegocio" class="row text-center text-muted">
                                 <div class="col-6">
-                                    <div class="d-flex align-items-center justify-content-center mb-2">
+                                    <div id="tiempoActivo" class="d-flex align-items-center justify-content-center mb-2">
                                         <i class="bi bi-clock me-2"></i>
                                         <span class="fw-bold">5 meses activo</span>
                                     </div>
-                                    <div class="d-flex align-items-center justify-content-center">
+                                    <div id="cantidadReseñas" class="d-flex align-items-center justify-content-center">
                                         <i class="bi bi-camera me-2"></i>
                                         <span class="fw-bold">10 reseñas</span>
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="d-flex flex-column align-items-center mb-2">
+                                    <!-- <div id="horarioNegocio" class="d-flex flex-column align-items-center mb-2">
+                                    
                                         <button class="btn btn-sm btn-link p-0 fw-bold" data-bs-toggle="collapse" data-bs-target="#horarioCollapse">Horarios</button>
                                         <div class="collapse" id="horarioCollapse">
                                             <ul class="list-unstyled text-start small mt-2">
@@ -151,58 +153,99 @@
                                                 <li>J 10:00 - 14:00</li>
                                             </ul>
                                         </div>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <span class="fw-bold">Tipo de comida</span>
+                                    </div> -->
+
+                                    <div id="horarioNegocio" class="d-flex flex-column align-items-center mb-2">
+    <button class="btn btn-sm btn-link p-0 fw-bold" 
+            data-bs-toggle="popover" 
+            data-bs-placement="bottom"
+            data-bs-title="Horarios de Atención"
+            data-bs-content=
+                  '<ul class="list-unstyled small m-0" style="width: 250px;">
+                    <li class="row w-100 align-items-center mb-1">
+                        <div class="col-2 fw-bold">L</div>
+                        <div class="col-6 text-muted">10:00 - 14:00</div>
+                        <div class="col-4 d-flex align-items-center justify-content-end">
+                            <span class="status-dot bg-success me-2"></span>
+                            <span class="status-text" id="status-lunes">Abierto</span>
+                        </div>
+                    </li>
+                    <li class="row w-100 align-items-center mb-1">
+                        <div class="col-2 fw-bold">M</div>
+                        <div class="col-6 text-muted">10:00 - 14:00</div>
+                        <div class="col-4 d-flex align-items-center justify-content-end">
+                            <span class="status-dot bg-danger me-2"></span>
+                            <span class="status-text" id="status-martes">Cerrado</span>
+                        </div>
+                    </li>
+                    <li class="row w-100 align-items-center mb-1">
+                        <div class="col-2 fw-bold">M</div>
+                        <div class="col-6 text-muted">10:00 - 14:00</div>
+                        <div class="col-4 d-flex align-items-center justify-content-end">
+                            <span class="status-dot bg-success me-2"></span>
+                            <span class="status-text" id="status-miercoles">Abierto</span>
+                        </div>
+                    </li>
+                    <li class="row w-100 align-items-center mb-1">
+                        <div class="col-2 fw-bold">J</div>
+                        <div class="col-6 text-muted">10:00 - 14:00</div>
+                        <div class="col-4 d-flex align-items-center justify-content-end">
+                            <span class="status-dot bg-success me-2"></span>
+                            <span class="status-text" id="status-jueves">Abierto</span>
+                        </div>
+                    </li>
+                    <li class="row w-100 align-items-center mb-1">
+                        <div class="col-2 fw-bold">V</div>
+                        <div class="col-6 text-muted">10:00 - 14:00</div>
+                        <div class="col-4 d-flex align-items-center justify-content-end">
+                            <span class="status-dot bg-success me-2"></span>
+                            <span class="status-text" id="status-viernes">Abierto</span>
+                        </div>
+                    </li>
+                    <li class="row w-100 align-items-center mb-1">
+                        <div class="col-2 fw-bold">S</div>
+                        <div class="col-6 text-muted">10:00 - 14:00</div>
+                        <div class="col-4 d-flex align-items-center justify-content-end">
+                            <span class="status-dot bg-secondary me-2"></span>
+                            <span class="status-text" id="status-sabado">Cerrado</span>
+                        </div>
+                    </li>
+                    <li class="row w-100 align-items-center">
+                        <div class="col-2 fw-bold">D</div>
+                        <div class="col-6 text-muted">Cerrado</div>
+                        <div class="col-4 d-flex align-items-center justify-content-end">
+                            <span class="status-dot bg-danger me-2"></span>
+                            <span class="status-text" id="status-domingo">Cerrado</span>
+                        </div>
+                    </li>
+                </ul>
+            '>
+        Horarios
+    </button>
+</div>
+                                    <div id="negocioOpenClose" class="d-flex align-items-center justify-content-center">
+                                            <!-- botoncito de open o close -->
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div id="calificaciones" class="card p-4 rounded-4 shadow-sm mb-4">
-                            <h3 class="fw-bold mb-4">Calificaciones</h3>
+                        <div id="about" class="card p-4 rounded-4 shadow-sm mb-4">
+                            <h3 class="fw-bold mb-4">Acerca de :</h3>
                             <div class="row text-center mb-4">
-                                <div class="col-md-4 mb-3 mb-md-0">
-                                    <div class="average-rating rounded-circle d-flex flex-column justify-content-center align-items-center mx-auto">
-                                        <span class="fw-bold fs-3">4/5</span>
-                                        <span class="small"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="d-flex align-items-center mb-2">
-                                            <span class="me-2">5</span><img src="assets/red-pepper.svg" class="rating-display-icon" width="16px" height="16px">
-                                            <div class="progress flex-grow-1" role="progressbar" style="height: 10px;">
-                                                <div class="progress-bar bg-success" style="width: 80%;"></div>
-                                            </div>
-                                        </li>
-                                        <li class="d-flex align-items-center mb-2">
-                                            <span class="me-2">4</span><img src="assets/red-pepper.svg" class="rating-display-icon" width="16px" height="16px">
-                                            <div class="progress flex-grow-1" role="progressbar" style="height: 10px;">
-                                                <div class="progress-bar bg-warning" style="width: 65%;"></div>
-                                            </div>
-                                        </li>
-                                        <li class="d-flex align-items-center mb-2">
-                                            <span class="me-2">3</span><img src="assets/red-pepper.svg" class="rating-display-icon" width="16px" height="16px">
-                                            <div class="progress flex-grow-1" role="progressbar" style="height: 10px;">
-                                                <div class="progress-bar bg-warning" style="width: 40%;"></div>
-                                            </div>
-                                        </li>
-                                        <li class="d-flex align-items-center mb-2">
-                                            <span class="me-2">2</span><img src="assets/black-pepper.svg" class="rating-display-icon" width="16px" height="16px">
-                                            <div class="progress flex-grow-1" role="progressbar" style="height: 10px;">
-                                                <div class="progress-bar bg-danger" style="width: 25%;"></div>
-                                            </div>
-                                        </li>
-                                        <li class="d-flex align-items-center">
-                                            <span class="me-2">1</span><img src="assets/black-pepper.svg" class="rating-display-icon" width="16px" height="16px">
-                                            <div class="progress flex-grow-1" role="progressbar" style="height: 10px;">
-                                                <div class="progress-bar bg-danger" style="width: 15%;"></div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+    <!-- Calificación de 4/5 en un tercio del espacio -->
+    <div class="col-md-4 mb-3 mb-md-0">
+        <div class="average-rating rounded-circle d-flex flex-column justify-content-center align-items-center mx-auto">
+            <span class="fw-bold" style="font-size: 6rem;">4/5</span>  <!-- Aumenté el tamaño aquí -->
+            <span class="small">Calificación general</span>
+        </div>
+    </div>
+    
+    <!-- Descripción del negocio en los dos tercios restantes -->
+    <div class="col-md-8">
+        <p id="descripcionParrafo" class="text-muted">Antojitos "La Guera" somos un puesto de comida ubicado en el corazón de la Ciudad de México, en la esquina con Eje Central. Nos especializamos en deliciosos tacos, tortas y quesadillas, todo preparado con ingredientes frescos y de calidad.</p>
+     </div>
+</div>
                             <div class="d-flex flex-wrap">
                                 <span class="badge rounded-pill bg-light text-dark border me-2 mb-2">Tamales</span>
                                 <span class="badge rounded-pill bg-light text-dark border me-2 mb-2">Tacos</span>
@@ -218,8 +261,9 @@
                               
 
     <div class="card p-4 rounded-4 shadow-sm mb-4">
-      <div class="card border-0  rounded-4 p-4 mx-auto" style="max-width: 450px;">
       <h2 class="fw-bold fs-4 mb-4">Menú</h2>
+      <div class="rounded-4 overflow-hidden">
+      
 
 
 
@@ -227,6 +271,44 @@
                 <div class="carousel-inner px-2">
                     <!-- Slide 1 - Primeros 3 platillos -->
                     <div class="carousel-item active">
+                        <div class="row g-3">
+                          <!-- Quesadilla -->
+                            <div class="col-4">
+          <div class="position-relative rounded-3 overflow-hidden shadow-sm" 
+               style="height: 180px; cursor: pointer;"
+               data-bs-toggle="modal" data-bs-target="#dishModal1">
+            <img src="https://images.unsplash.com/photo-1618040996337-56904b7850b9?w=400&h=400&fit=crop"
+                 class="w-100 h-100 object-fit-cover" alt="Quesadillas">
+            <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient"
+                 style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 100%);">
+              <p class="text-white fw-bold mb-0 fs-6">Quesadillas</p>
+            </div>
+          </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
+                                    <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&h=400&fit=crop"
+                                        class="w-100 h-100 object-fit-cover" alt="Tacos">
+                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
+                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
+                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Tacos</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
+                                    <img src="https://mbmarcobeteta.com/wp-content/uploads/2025/03/IMG_7161-2.webp?w=400&h=400&fit=crop"
+                                        class="w-100 h-100 object-fit-cover" alt="Tortas">
+                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
+                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
+                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Tortas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                     <div class="carousel-item active">
                         <div class="row g-3">
                           <!-- Quesadilla -->
                             <div class="col-4">
@@ -441,47 +523,8 @@
 
                                 <!-- aqui termina la seccion de nueva resenia  -->
                             </div>
-                            <div class="review-feed" id="review-feed">
-                                <div class="review-card p-3 border-bottom mb-3">
-                                    <div class="d-flex align-items-center mb-2">
-                                        <img src="https://via.placeholder.com/50" alt="Perfil" class="review-profile-img rounded-circle me-3">
-                                        <div>
-                                            <span class="fw-bold">@renata_</span> hizo una reseña a un nuevo puesto
-                                            <div class="chile-rating small mt-1">
-                                                <i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h5 class="fw-bold mb-2">Quesadillas y huaraches - La guera</h5>
-                                    <p class="mb-2">No está mal para ser callejero. Me incomodó que no hubiera cubiertos, pero el sabor compensa, volveré pronto.</p>
-                                    <img src="https://via.placeholder.com/200" alt="Imagen de reseña" class="img-fluid rounded-3 mb-2">
-                                    <div class="d-flex justify-content-between align-items-center text-muted small">
-                                      
-                                        <span>Hace 2 horas</span>
-                                    </div>
-                                </div>
-
-                                
-
-                                <div class="review-card p-3 border-bottom mb-3">
-                                    <div class="d-flex align-items-center mb-2">
-                                        <img src="https://via.placeholder.com/50" alt="Perfil" class="review-profile-img rounded-circle me-3">
-                                        <div>
-                                            <span class="fw-bold">@usuario_ejemplo</span> hizo una reseña a un nuevo puesto
-                                            <div class="chile-rating small mt-1">
-                                                <i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile-fill text-danger"></i><i class="bi bi-chile"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h5 class="fw-bold mb-2">Quesadillas y huaraches - La guera</h5>
-                                    <p class="mb-2">No está mal para ser callejero. Me incomodó que no hubiera cubiertos, pero el sabor compensa, volveré pronto.</p>
-                                    <img src="https://via.placeholder.com/200" alt="Imagen de reseña" class="img-fluid rounded-3 mb-2">
-                                    <div class="d-flex justify-content-between align-items-center text-muted small">
-                                        
-                                        <span>Hace 2 horas</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="review-feed row g-4" id="reviews">
+    </div>
                         </div>
                     </div>
                 </div>
@@ -499,6 +542,8 @@
 
     <!-- Scripts -->
     <script type="module" src="./business_profile.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   
 </body>
 
 </html>
