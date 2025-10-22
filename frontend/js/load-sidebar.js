@@ -8,8 +8,8 @@ const OffSidebar = document.getElementById("tiny-sidebar");
 
 document.addEventListener("DOMContentLoaded", () => {
   const sidebarContent=`
-            <li class="nav-item">
-              <a class="nav-link text-white" href="${logedUser.role=="user"?"user_profile":"business_profile"}.html"><i class="bi bi-person-circle me-2"></i>Perfil</a>
+            <li class="nav-item" id="own-profile">
+              <a class="nav-link text-white" href=#><i class="bi bi-person-circle me-2"></i>Perfil</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-white" href="feed.html"><i class="bi bi-book-half me-2"></i>Feed</a>
@@ -34,8 +34,10 @@ const logOutBtn = document.getElementById("log-out");
       localStorage.removeItem("logedUser");
     });
 
+    document.getElementById('own-profile').addEventListener('click', () =>{
+      window.location.href = `user_profile.html?id=${logedUser.id}`
+    })
 
   // Your code here, for example:
-
 });
 
