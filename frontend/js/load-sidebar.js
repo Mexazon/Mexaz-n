@@ -38,7 +38,10 @@ const logOutBtn = document.getElementById("log-out");
       if(logedUser.role=="user"){
         window.location.href = `user_profile.html?id=${logedUser.id}`
       }
+      else{
         window.location.href = `business_profile.html?id=${logedUser.id}`
+      }
+        
     })
 
   // Your code here, for example:

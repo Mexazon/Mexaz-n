@@ -60,7 +60,7 @@ const newBusiness = createBusinessesFromFoodData();
 // Ejemplo de uso:
 existentUsers.push(...newBusiness);
 
-console.log(existentUsers)
+//console.log(existentUsers)
 
 const businesses = existentUsers.filter(user =>{
     return user.role == "business";

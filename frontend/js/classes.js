@@ -11,6 +11,7 @@ export class Review{
         this.lugar = lugar
         this.calificacion = calificacion
         this.descripcion = descripcion
+     
     }
 }
 

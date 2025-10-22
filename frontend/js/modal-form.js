@@ -199,11 +199,7 @@ function validateForm() {
     
     submitBtn.disabled = !isValid;
 }
-
-
-
 // Validar datos del formulario
-
 
 // Resetear pasos posteriores
 function resetSubsequentSteps(fromStep) {
@@ -241,7 +237,7 @@ export function resetForm() {
     submitBtn.disabled = true;
 }
 
-// Agregar una foto
+//Agregar una foto
 const photoInput = document.getElementById('reviewPhoto');
 const photoPreviewContainer = document.getElementById('photoPreviewContainer');
 const photoPreviewList = document.getElementById('photoPreviewList');

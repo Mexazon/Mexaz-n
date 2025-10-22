@@ -407,10 +407,10 @@
                       <div class="mb-4">
                         <label for="postalCode" class="form-label">
                           <i class="fas fa-map-marker-alt me-2"></i>
-                          Código Postal
+                            Locacion
                         </label>
                         <select class="form-select" id="postalCode" required>
-                          <option value="">Selecciona un código postal...</option>
+                          <option value="">Selecciona una locacion...</option>
                         </select>
                       </div>
 
@@ -421,7 +421,7 @@
                           Puesto/Local
                         </label>
                         <select name="puesto"class="form-select" id="location" disabled required>
-                          <option value="">Primero selecciona un código postal</option>
+                          <option value="">Primero selecciona un locacion</option>
                         </select>
                       </div>
 
@@ -454,7 +454,28 @@
                         <div class="form-text">Comparte tu experiencia</div>
                       </div>
 
-                      <button type="submit" class="btn btn-submit" id="submitBtn" data-bs-dismiss="modal" disabled>
+                   <!-- Foto -->
+                    <div class="mb-4">
+                      <label for="reviewPhoto" class="form-label">
+                        <i class="fas fa-camera me-2"></i>
+                        Agregar fotos (opcional)
+                      </label>
+                      <input 
+                        type="file" 
+                        class="form-control" 
+                        id="reviewPhoto" 
+                        name="reviewPhoto" 
+                        accept="image/*">
+                      <div class="form-text">Puedes subir una imagen (jpg, png, jpeg).</div>
+
+                      <!-- Vista previa -->
+                      <div class="mt-3 d-none" id="photoPreviewContainer">
+                        <div id="photoPreviewList" class="d-flex flex-wrap gap-3 justify-content-center"></div>
+                      </div>
+                    </div>
+
+                      <button type="submit" class="btn btn-submit w-100" id="submitBtn" 
+                      data-bs-dismiss="modal" disabled>
                         <i class="fas fa-paper-plane me-2"></i>
                         Publicar Reseña
                       </button>
@@ -463,20 +484,14 @@
                 </div>
               </div>
             </div>
-
-
-
-
-
-
                                 <!-- aqui termina la seccion de nueva resenia  -->
-                            </div>
-                            <div class="review-feed row g-4" id="reviews">
+            </div>
+            <div class="review-feed row g-4" id="reviews">
+          </div>
+        </div>
+      </div>
     </div>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- se cierra div de datos -->
+</div> <!-- se cierra div de datos -->
 
 
         </div>

@@ -30,10 +30,6 @@ list.addEventListener('click', (event) => {
   }
 });
 
-
-
-
-
 reviewForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const formData = new FormData(reviewForm);
@@ -51,11 +47,13 @@ reviewForm.addEventListener('submit', function(e) {
 //Funcion agarra los objetos tipo Review del arreglo posts y los inserta en un string html para luego ser insertado en el div "Reviews"
 //Agarra como parametro una lista de reviews
 function renderReview(r,size,container){
+  
     //Se crea un elemento div con la clase 'review'
     const card = create('div', { className: `${size}`});
     //Asigno el formato completo de la tarjeta con los datos del elemento Review
+    console.log(r);
     card.innerHTML = `
-    <div class="card shadow-sm mb-3 border border-dark-subtle bg-cebolla card-review" id="${r.id}" data-user-id="${r.usuario.id}">
+    <div class="card shadow-sm mb-3 border border-dark-subtle bg-cebolla card-review" id="${r.idResenia}" data-user-id="${r.usuario.id}">
       <div class="card-header">
         <div class="d-flex align-items-center gap-2 mb-1 flex-wrap text-truncate">
         <img src="${r.usuario.avatar}" 
