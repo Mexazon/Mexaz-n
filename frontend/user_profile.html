@@ -100,34 +100,71 @@
         <!-- MIDDLE COLUMN (sticky) -->
         <div class="col-12 col-lg-6 d-flex">
           <div class="w-100 d-flex flex-column p-4 pt-lg-4 h-lg-100 min-h-0" id="profile-data">
-            <!-- Profile Card -->
-          
-
-            <!-- Spacer so sticky column has some bottom breathing room -->
-            <div class="py-2"></div>
-          </div>
         </div>
+        </div>
+    </div>   
+   </div>         
+   </div>        
+               <!-- Profile Card -->
+          <div class="py-2"></div>
+        </div> 
 
-        <!-- RIGHT COLUMN (independent scroll) -->
-       
+        <!-- RIGHT COLUMN -->
         <div class="col-12 col-lg-6">
           <div class="vh-100 overflow-auto p-4 pt-lg-4" id="user-posts">
-
-            <!-- Feed Card 1 -->
-            
-
           </div>
         </div>
 
+      </div> 
+    </div> 
+  </div> 
+</div> 
+
+<!-- Modal para editar perfil -->
+<div class="modal fade" id="editprofile" tabindex="-1" aria-labelledby="editProfileLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="editProfileLabel">Editar perfil</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
-    </div>
-         
+
+      <div class="modal-body">
+        <form id="editProfileForm">
+
+          <!-- Foto -->
+          <div class="mb-3 text-center">
+            <img id="preview-photo" src="ruta/foto-perfil.jpg" alt="Foto actual" class="rounded-circle mb-2" width="80" height="80">
+            <input type="file" id="profilePhoto" class="form-control" accept="image/*">
+          </div>
+
+          <!-- Nombre -->
+          <div class="mb-3">
+            <label for="profileName" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="profileName" placeholder="Nombre de usuario">
+          </div>
+
+          <!-- Descripción -->
+          <div class="mb-3">
+            <label for="profileDescription" class="form-label">Descripción</label>
+            <textarea class="form-control" id="profileDescription" rows="2" placeholder="Descripción breve"></textarea>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-light" id="saveProfileBtn">Guardar</button>
+      </div>
+
     </div>
   </div>
+</div>
 
-    <!-- Scripts -->
-    
-    <script type="module" src="/user_profile.js"></script>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="/user_profile.js"></script>
 </body>
-
 </html>
