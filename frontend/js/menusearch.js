@@ -40,13 +40,14 @@ let selectedLocation = 'Benito Juarez';
 let searchTerm = '';
 
 const foodCardContainer = document.getElementById('food-card-container');
-
+const navbarContainer = document.getElementById('navbar-container');
 // --- RENDER FUNCTIONS asdN---
 
 
 
 function renderNavbar() {
-    const navbarContainer = document.getElementById('navbar-container');
+    
+    
 
     const categoryButtons = categories.map(cat => {
         const isActive = cat.name === selectedCategory ? 'active' : '';
@@ -63,21 +64,21 @@ function renderNavbar() {
             </button>
         `;
     }).join('');
-
+    navbarContainer.innerHTML = ``
     navbarContainer.innerHTML = `
         <div class="d-flex justify-content-between align-items-center flex-wrap gy-3">
-            <!-- Search Bar -->
+            
             <div class="input-group" style="flex-basis: 300px;">
                 <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
                 <input type="text" id="search-input" class="form-control border-start-0 top-search-bar" placeholder="Buscar...">
             </div>
 
-            <!-- Category Filters -->
+   
             <div class="d-flex justify-content-center flex-grow-1 gap-2">
                 ${categoryButtons}
             </div>
 
-            <!-- Right Controls -->
+
             <div class="d-flex align-items-center justify-content-end gap-2" style="flex-basis: 340px;">
                 <div class="dropdown">
                     <button class="btn btn-outline-secondary dropdown-toggle rounded-pill" type="button" id="locationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -195,7 +196,9 @@ function initializeEventListeners() {
 
 // --- MAIN EXECUTION ---
 document.addEventListener('DOMContentLoaded', () => {
+    if(navbarContainer != null || foodCardContainer != null){
   renderNavbar();
   renderFoodCards();
   initializeEventListeners();
+    }
 });
