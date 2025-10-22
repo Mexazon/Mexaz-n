@@ -1,11 +1,28 @@
 import {renderPepperRating} from "./peppers-rendering.js";
+import {existentUsers} from "./loadData.js";
 
+const params = new URLSearchParams(window.location.search);
+const currentUserId = params.get('id');
 
-const currentUser = JSON.parse(localStorage.getItem("logedUser")) || null;
+let currentUser;
+const logedUser = JSON.parse(localStorage.getItem("logedUser")) || null;
+
+let btn;
+
+if(logedUser.id == currentUserId){
+    btn = '<button class="btn btn-outline-secondary btn-sm">Editar Perfil</button>';
+    currentUser = logedUser; 
+}
+else{
+    btn=" ";
+    currentUser = existentUsers.find(u => u.id == currentUserId)
+}
+console.log()
+
 const publications = JSON.parse(localStorage.getItem("publications")) || [];
 
 const currentReviews = currentUser
-  ? publications.filter(card => card.idUsuario === currentUser.id)
+  ? publications.filter(card => card.usuario.id === currentUser.id)
   : [];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -25,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
 
               <div class="d-flex justify-content-center gap-2 mb-3">
-                <button class="btn btn-outline-secondary btn-sm">Editar Perfil</button>
+                ${btn}
               </div>
             </div>
             <div class="border-top px-3 py-2 d-flex justify-content-between text-muted small">

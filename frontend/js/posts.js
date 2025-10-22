@@ -16,6 +16,21 @@ let postsList = (JSON.parse(localStorage.getItem("publications")) || []);
 const create = (tag, attrs={}) => Object.assign(document.createElement(tag), attrs);
 
 const list = document.getElementById("reviews");
+list.addEventListener('click', (event) => {
+  
+  const userEl = event.target.closest('.ordinary-user');
+  if (userEl) {
+    console.log("entra")
+    const card = userEl.closest('.card');
+    if (card) {
+      const userId = card.dataset.userId;
+      console.log('User ID:', userId);
+      window.location.href = `user_profile.html?id=${userId}`;
+    }
+  }
+});
+
+
 
 
 
@@ -23,7 +38,7 @@ reviewForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const formData = new FormData(reviewForm);
 
-    post=new Review(2,formData.get("puesto"),formData.get("rating"),formData.get("resenia"),user.id);
+    post=new Review(2,formData.get("puesto"),formData.get("rating"),formData.get("resenia"),user);
     postsList.push(post);
     localStorage.setItem("publications", JSON.stringify(postsList));
 
@@ -40,14 +55,14 @@ function renderReview(r,size,container){
     const card = create('div', { className: `${size}`});
     //Asigno el formato completo de la tarjeta con los datos del elemento Review
     card.innerHTML = `
-    <div class="card shadow-sm mb-3 border border-dark-subtle bg-cebolla card-review">
+    <div class="card shadow-sm mb-3 border border-dark-subtle bg-cebolla card-review" id="${r.id}" data-user-id="${r.usuario.id}">
       <div class="card-header">
         <div class="d-flex align-items-center gap-2 mb-1 flex-wrap text-truncate">
-        <img src="${user.avatar}" 
+        <img src="${r.usuario.avatar}" 
              alt="avatar" 
              class="rounded-circle" 
-             style="width:28px; height:28px; object-fit:cover;">
-        <strong>@${user.name}</strong>
+             style="width:28px; height:28px; object-fit:cover;" class="ordinary-user">
+        <strong class="ordinary-user">@${r.usuario.name}</strong>
         <span class="text-muted small text-truncate">hizo una reseña a un nuevo puesto</span>
       </div>
       </div>
@@ -60,7 +75,7 @@ function renderReview(r,size,container){
     <div class="flex-grow-1 min-w-0 text-break">
       
 
-      <div class="fw-semibold text-truncate">${r.lugar}</div>
+      <div class="fw-semibold text-truncate" class="business-user">${r.lugar}</div>
 
       <div class="pepper-rating" aria-label="picante">
       </div>
@@ -75,7 +90,7 @@ function renderReview(r,size,container){
   </div>`;
 
     //Inserto el elemento card al div principal de "Reviews"
-    container.appendChild(card);
+    container.prepend(card);
     // Pinta el rating de esa tarjeta 
     renderPepperRating(card.querySelector('.pepper-rating'), r.calificacion, 5);
 }

@@ -1,16 +1,14 @@
 import {existentUsers} from "./loadData.js";
 //Construccion del modelo de las resenias "Reviews"
 export class Review{
-    constructor(hours,lugar,calificacion,descripcion,idUsuario){
+    constructor(hours,lugar,calificacion,descripcion,Usuario){
         this.idResenia = JSON.parse(localStorage.getItem("publications"))
         ? JSON.parse(localStorage.getItem("publications")).length+1
         : 1;
-        this.idUsuario = idUsuario
-        const idNegocio = 3
+        this.usuario = Usuario
         this.hoursAgo = hours
         this.foto = `https://picsum.photos/seed/${Date.now()*Math.random()}/320/240`
         this.lugar = lugar
-        this.likes = 0
         this.calificacion = calificacion
         this.descripcion = descripcion
     }
@@ -42,6 +40,15 @@ export class Schedule{
     }
 }
 
+class Dishes{
+    constructor(dishName,description,price,category){
+        this.dishName = dishName;
+        this.descripcion =description;
+        this.price=price;
+        this.category=category;
+    }
+}
+
 export class Business extends User{
     constructor(name,city,cp,email,password,dateRegistered,schedule){
         super(name,city,cp,email,password,dateRegistered);
@@ -62,3 +69,4 @@ export class UserCostumer extends User{
         this.avatar=`https://i.pravatar.cc/400?img=${Math.floor(Math.random() * 70) + 1}`;
     }
 }
+
