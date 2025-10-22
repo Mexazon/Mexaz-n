@@ -142,6 +142,7 @@
                                     </div>
                                 </div>
                                 <div class="col-6">
+
                                     <!-- <div id="horarioNegocio" class="d-flex flex-column align-items-center mb-2">
                                     
                                         <button class="btn btn-sm btn-link p-0 fw-bold" data-bs-toggle="collapse" data-bs-target="#horarioCollapse">Horarios</button>
@@ -268,141 +269,46 @@
 
 
             <div id="menuCarousel" class="carousel slide position-relative" data-bs-ride="false">
-                <div class="carousel-inner px-2">
-                    <!-- Slide 1 - Primeros 3 platillos -->
-                    <div class="carousel-item active">
-                        <div class="row g-3">
-                          <!-- Quesadilla -->
-                            <div class="col-4">
-          <div class="position-relative rounded-3 overflow-hidden shadow-sm" 
-               style="height: 180px; cursor: pointer;"
-               data-bs-toggle="modal" data-bs-target="#dishModal1">
-            <img src="https://images.unsplash.com/photo-1618040996337-56904b7850b9?w=400&h=400&fit=crop"
-                 class="w-100 h-100 object-fit-cover" alt="Quesadillas">
-            <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient"
-                 style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 100%);">
-              <p class="text-white fw-bold mb-0 fs-6">Quesadillas</p>
-            </div>
-          </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
-                                    <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&h=400&fit=crop"
-                                        class="w-100 h-100 object-fit-cover" alt="Tacos">
-                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
-                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
-                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Tacos</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
-                                    <img src="https://mbmarcobeteta.com/wp-content/uploads/2025/03/IMG_7161-2.webp?w=400&h=400&fit=crop"
-                                        class="w-100 h-100 object-fit-cover" alt="Tortas">
-                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
-                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
-                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Tortas</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <div class="carousel-inner px-2" id="carouselInner">
+        
+        <div class="carousel-item active">
+            <div class="row g-3">
+                <div class="col-4">
+                    <div class="rounded-3 border border-3 border-secondary border-dashed d-flex flex-column align-items-center justify-content-center" 
+                         style="height: 180px; cursor: pointer; background-color: #f0f0f0;"
+                         onclick="document.getElementById('fileInput').click()">
+                        <i class="bi bi-plus-circle fs-1 text-secondary mb-2"></i>
+                        <p class="text-secondary fw-semibold mb-0 small text-center px-2">Agregar platillo</p>
                     </div>
-                    <!-- Slide 2 -->
-                     <div class="carousel-item active">
-                        <div class="row g-3">
-                          <!-- Quesadilla -->
-                            <div class="col-4">
-          <div class="position-relative rounded-3 overflow-hidden shadow-sm" 
-               style="height: 180px; cursor: pointer;"
-               data-bs-toggle="modal" data-bs-target="#dishModal1">
-            <img src="https://images.unsplash.com/photo-1618040996337-56904b7850b9?w=400&h=400&fit=crop"
-                 class="w-100 h-100 object-fit-cover" alt="Quesadillas">
-            <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient"
-                 style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 100%);">
-              <p class="text-white fw-bold mb-0 fs-6">Quesadillas</p>
-            </div>
-          </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
-                                    <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&h=400&fit=crop"
-                                        class="w-100 h-100 object-fit-cover" alt="Tacos">
-                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
-                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
-                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Tacos</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="position-relative rounded-3 overflow-hidden shadow-sm" style="height: 180px; cursor: pointer;">
-                                    <img src="https://mbmarcobeteta.com/wp-content/uploads/2025/03/IMG_7161-2.webp?w=400&h=400&fit=crop"
-                                        class="w-100 h-100 object-fit-cover" alt="Tortas">
-                                    <div class="position-absolute bottom-0 start-0 end-0 p-3 bg-gradient" 
-                                         style="background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
-                                        <p class="text-white fw-bold mb-0 fs-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Tortas</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- modal quesadilla  -->
-                     <div class="modal fade" id="dishModal1" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-sm">
-                          <div class="modal-content border-0 rounded-4 shadow">
-                            <div class="modal-header border-0">
-                              <h5 class="modal-title">Quesadillas</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                            </div>
-                            <div class="modal-body text-center">
-                              <img src="https://images.unsplash.com/photo-1618040996337-56904b7850b9?w=600&h=400&fit=crop" class="img-fluid rounded mb-3">
-                              <p class="fw-semibold text-success">$40 MXN</p>
-                              <p>Tortillas rellenas de queso o guisado, doradas al comal y servidas con salsa.</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    <!-- VISTA DE ADMINISTRADOR: Descomenta para agregar platillos -->
-                    <!-- 
-                    <div id class="carousel-item">
-                        <div class="row g-3">
-                            <div class="col-4">
-                                <div class="rounded-3 border border-3 border-secondary border-dashed d-flex flex-column align-items-center justify-content-center" 
-                                     style="height: 180px; cursor: pointer; background-color: #f0f0f0;"
-                                     onclick="document.getElementById('fileInput').click()">
-                                    <i class="bi bi-plus-circle fs-1 text-secondary mb-2"></i>
-                                    <p class="text-secondary fw-semibold mb-0 small text-center px-2">Agregar platillo</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    -->
                 </div>
-
-                <!-- Controles del carrusel -->
-                <button class="carousel-control-prev position-absolute top-50 translate-middle-y rounded-circle bg-dark bg-opacity-75" 
-                        type="button" data-bs-target="#menuCarousel" data-bs-slide="prev" 
-                        style="width: 45px; height: 45px; left: -22px;">
-                    <span class="carousel-control-prev-icon" style="width: 24px; height: 24px;" aria-hidden="true"></span>
-                    <span class="visually-hidden">Anterior</span>
-                </button>
-                <button class="carousel-control-next position-absolute top-50 translate-middle-y rounded-circle bg-dark bg-opacity-75" 
-                        type="button" data-bs-target="#menuCarousel" data-bs-slide="next" 
-                        style="width: 45px; height: 45px; right: -22px;">
-                    <span class="carousel-control-next-icon" style="width: 24px; height: 24px;" aria-hidden="true"></span>
-                    <span class="visually-hidden">Siguiente</span>
-                </button>
             </div>
+        </div> 
+
+    </div>
+
+    <button class="carousel-control-prev position-absolute top-50 translate-middle-y rounded-circle bg-dark bg-opacity-75" 
+            type="button" data-bs-target="#menuCarousel" data-bs-slide="prev" 
+            style="width: 45px; height: 45px; left: -22px;">
+        <span class="carousel-control-prev-icon" style="width: 24px; height: 24px;" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next position-absolute top-50 translate-middle-y rounded-circle bg-dark bg-opacity-75" 
+            type="button" data-bs-target="#menuCarousel" data-bs-slide="next" 
+            style="width: 45px; height: 45px; right: -22px;">
+        <span class="carousel-control-next-icon" style="width: 24px; height: 24px;" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+    </button>
+</div>
 
             <!-- VISTA DE ADMINISTRADOR: Input oculto para subir imágenes -->
-            <input type="file" id="fileInput" accept="image/*" class="d-none">
+             <input type="file" id="fileInput" accept="image/*" class="d-none">
         </div>
-    </div>
+    </div> 
 
 
 
         <!-- MODAL FORM PARA AGREGAR PLATILLOS-->
-        <div class="modal fade" id="dishNameModal" tabindex="-1" aria-labelledby="dishNameModalLabel" aria-hidden="true">
+        <!-- <div class="modal fade" id="dishNameModal" tabindex="-1" aria-labelledby="dishNameModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -424,8 +330,49 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+        <div class="modal fade" id="addDishDetailsModal" tabindex="-1" aria-labelledby="addDishDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content border-0 rounded-4 shadow">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="addDishDetailsModalLabel">Agregar Nuevo Platillo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center mb-3">
+                    <img id="previewImage" class="img-fluid rounded" style="max-height: 200px; width: 100%; object-fit: cover; display: none;">
+                    <p id="imagePlaceholder" class="text-muted small mt-2">Imagen seleccionada</p>
+                </div>
 
+                <form id="addDishForm">
+                    <div class="mb-3">
+                        <label for="dishName" class="form-label fw-semibold small mb-1">Nombre del Platillo <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="dishName" placeholder="Ej: Enchiladas Suizas" required>
+                        <div class="invalid-feedback">El nombre es obligatorio.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dishPrice" class="form-label fw-semibold small mb-1">Precio (MXN) <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" step="0.01" class="form-control" id="dishPrice" placeholder="Ej: 95.50" required>
+                        </div>
+                        <div class="invalid-feedback">El precio es obligatorio y debe ser un número.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dishDescription" class="form-label fw-semibold small mb-1">Descripción <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="dishDescription" rows="3" placeholder="Descripción breve del platillo" required></textarea>
+                        <div class="invalid-feedback">La descripción es obligatoria.</div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+<button type="button" class="btn btn-primary" id="saveDishButton">Agregar Platillo</button>            </div>
+        </div>
+    </div>
+</div>
+
+<input type="file" id="fileInput" accept="image/*" class="d-none">
         
 
 
