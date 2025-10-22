@@ -1,234 +1,280 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Lógica para mostrar el botón de Editar solo si el usuario es el dueño del negocio
-    function checkUserRole() {
-        // Simulación: en un escenario real, esta información vendría de una API
-        const userIsOwner = true; // Cambiar a 'false' para probar el comportamiento de un usuario regular
-
-        const editButton = document.getElementById("edit-button");
-        if (userIsOwner) {
-            editButton.classList.remove("d-none");
-        }
-    }
-
-    checkUserRole();
-
-    // Lógica para simular la carga de reseñas
-    function loadReviews() {
-        const reviewFeed = document.getElementById("review-feed");
-        // Aquí iría el código para llamar a una API y obtener las reseñas.
-        // Por ahora, el HTML ya tiene un par de reseñas de ejemplo.
-        console.log("Feed de reseñas cargado.");
-    }
-
-    loadReviews();
-});
-
-
-/* Seccion de carrusel */
 /**
  * ========================================
- * CARRUSEL DE MENÚ - FUNCIONALIDAD
+ * CARRUSEL DE MENÚ - FUNCIONALIDAD COMPLETA
+ * CON PERSISTENCIA EN LOCAL STORAGE
  * ========================================
- * 
- * Este script permite agregar dinámicamente nuevos platillos al carrusel
- * mediante la carga de imágenes desde el dispositivo del usuario.
  */
 
-// Variables globales
+// Variable global para el archivo de imagen seleccionado
 let selectedImageFile = null;
-let selectedImageURL = null;
+
+// =================================================================
+// SECCIÓN DE MANEJO DE DATOS (LOCAL STORAGE)
+// =================================================================
 
 /**
- * Inicializa los event listeners cuando el DOM está cargado
+ * Obtiene todos los platillos desde Local Storage.
+ * @returns {Array} Un array de objetos de platillos.
+ */
+function getDishesFromStorage() {
+    const dishes = localStorage.getItem('dishes');
+    return dishes ? JSON.parse(dishes) : [];
+}
+
+/**
+ * Guarda el array completo de platillos en Local Storage.
+ * @param {Array} dishes - El array de platillos a guardar.
+ */
+function saveDishesToStorage(dishes) {
+    localStorage.setItem('dishes', JSON.stringify(dishes));
+}
+
+// =================================================================
+// INICIALIZACIÓN Y CARGA DE DATOS
+// =================================================================
+
+/**
+ * Inicializa los event listeners cuando el DOM está cargado.
  */
 document.addEventListener('DOMContentLoaded', function() {
     initializeFileInput();
+    initializeModalCleanup();
+    
+    // Carga los platillos guardados en Local Storage al iniciar.
+    loadAndDisplayDishes();
+
+    // ¡NUEVO! Conectar el botón del modal con la función
+    const saveButton = document.getElementById('saveDishButton');
+    if (saveButton) {
+        saveButton.addEventListener('click', validateAndAddDish);
+    }
+
+    // Para la FASE 2 (JSON), comentarías la línea de arriba y usarías esta:
+    // loadDishesFromJSON();
 });
 
 /**
- * Configura el input de archivo para manejar la selección de imágenes
- * 
- * @function initializeFileInput
- * @returns {void}
+ * Carga los platillos desde Local Storage y los muestra en el carrusel.
  */
-function initializeFileInput() {
-    const fileInput = document.getElementById('fileInput');
-    
-    if (!fileInput) {
-        console.error('No se encontró el input de archivo');
-        return;
-    }
-    
-    // Event listener para cuando se selecciona un archivo
-    fileInput.addEventListener('change', function(event) {
-        handleFileSelect(event);
+function loadAndDisplayDishes() {
+    const dishes = getDishesFromStorage();
+    dishes.forEach(dish => {
+        addDishToCarousel(dish.name, dish.price, dish.description, dish.imageUrl);
     });
 }
 
 /**
- * Maneja la selección de un archivo de imagen
- * Muestra el modal para ingresar el nombre del platillo
- * 
- * @function handleFileSelect
- * @param {Event} event - Evento de cambio del input file
- * @returns {void}
+ * (Para Fase 2) Carga los platillos desde un archivo JSON.
+ */
+async function loadDishesFromJSON() {
+    try {
+        const response = await fetch('menu.json'); // Asegúrate de tener este archivo
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const dishes = await response.json();
+        dishes.forEach(dish => {
+            addDishToCarousel(dish.name, dish.price, dish.description, dish.imageUrl);
+        });
+    } catch (error) {
+        console.error("No se pudieron cargar los platillos del JSON:", error);
+    }
+}
+
+
+// =================================================================
+// FUNCIONALIDAD DEL MODAL Y FORMULARIO
+// =================================================================
+
+/**
+ * Configura el input de archivo para manejar la selección de imágenes.
+ */
+function initializeFileInput() {
+    const fileInput = document.getElementById('fileInput');
+    if (!fileInput) {
+        console.error('No se encontró el input de archivo #fileInput');
+        return;
+    }
+    fileInput.addEventListener('change', handleFileSelect);
+}
+
+/**
+ * Limpia el formulario y la previsualización cuando el modal se cierra.
+ */
+function initializeModalCleanup() {
+    const modalElement = document.getElementById('addDishDetailsModal');
+    if (modalElement) {
+        modalElement.addEventListener('hidden.bs.modal', function() {
+            const form = document.getElementById('addDishForm');
+            form.classList.remove('was-validated');
+            form.reset(); // Manera más simple de limpiar el form
+
+            const previewImage = document.getElementById('previewImage');
+            previewImage.style.display = 'none';
+            previewImage.src = '';
+            
+            document.getElementById('imagePlaceholder').style.display = 'none';
+            
+            selectedImageFile = null;
+            document.getElementById('fileInput').value = '';
+        });
+    }
+}
+
+/**
+ * Maneja la selección de un archivo de imagen y muestra el modal.
  */
 function handleFileSelect(event) {
     const file = event.target.files[0];
-    
-    if (!file) {
-        console.warn('No se seleccionó ningún archivo');
-        return;
-    }
-    
-    // Validar que sea una imagen
+    if (!file) return;
+
     if (!file.type.startsWith('image/')) {
-        alert('Por favor selecciona un archivo de imagen válido');
-        event.target.value = '';
+        alert('Por favor selecciona un archivo de imagen válido.');
         return;
     }
-    
-    // Guardar el archivo seleccionado
+
     selectedImageFile = file;
-    
-    // Crear URL temporal para previsualizar la imagen
-    selectedImageURL = URL.createObjectURL(file);
-    
-    // Mostrar previsualización en el modal
     const previewImage = document.getElementById('previewImage');
-    if (previewImage) {
-        previewImage.src = selectedImageURL;
-        previewImage.style.display = 'block';
-    }
+    previewImage.src = URL.createObjectURL(file); // URL temporal solo para previsualizar
+    previewImage.style.display = 'block';
+    document.getElementById('imagePlaceholder').style.display = 'block';
     
-    // Limpiar el input del nombre
-    const dishNameInput = document.getElementById('dishName');
-    if (dishNameInput) {
-        dishNameInput.value = '';
-    }
-    
-    // Mostrar el modal
-    const modal = new bootstrap.Modal(document.getElementById('dishNameModal'));
+    const modal = new bootstrap.Modal(document.getElementById('addDishDetailsModal'));
     modal.show();
 }
 
 /**
- * Agrega el nuevo platillo al carrusel
- * Crea un nuevo item con la imagen y nombre proporcionados
- * 
- * @function addDishToCarousel
- * @returns {void}
+ * Valida el formulario y guarda el nuevo platillo en Local Storage.
  */
-function addDishToCarousel() {
-    const dishName = document.getElementById('dishName').value.trim();
-    
-    // Validar que se haya ingresado un nombre
-    if (!dishName) {
-        alert('Por favor ingresa un nombre para el platillo');
+function validateAndAddDish() {
+    const form = document.getElementById('addDishForm');
+    if (!form.checkValidity()) {
+        form.classList.add('was-validated');
         return;
     }
-    
-    // Validar que haya una imagen seleccionada
-    if (!selectedImageURL) {
-        alert('No se ha seleccionado ninguna imagen');
+
+    if (!selectedImageFile) {
+        alert('Error: No se ha seleccionado ninguna imagen.');
         return;
     }
+
+    // Proceso para convertir la imagen a Base64 y guardar
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedImageFile); // Convierte la imagen
     
-    // Buscar el último slide con contenido (antes del slide de agregar)
+    reader.onload = function() {
+        const imageBase64 = reader.result;
+
+        const newDish = {
+            id: `dish-${Date.now()}`,
+            name: document.getElementById('dishName').value.trim(),
+            price: parseFloat(document.getElementById('dishPrice').value).toFixed(2),
+            description: document.getElementById('dishDescription').value.trim(),
+            imageUrl: imageBase64 // Guardamos la imagen en formato Base64
+        };
+
+        const dishes = getDishesFromStorage();
+        dishes.push(newDish);
+        saveDishesToStorage(dishes);
+
+        addDishToCarousel(newDish.name, newDish.price, newDish.description, newDish.imageUrl);
+        
+        const modal = bootstrap.Modal.getInstance(document.getElementById('addDishDetailsModal'));
+        modal.hide();
+    };
+
+    reader.onerror = function(error) {
+        console.error('Error al leer el archivo:', error);
+        alert('Hubo un error al procesar la imagen.');
+    };
+}
+
+
+// =================================================================
+// MANIPULACIÓN DEL DOM (CARRUSEL) - SIN CAMBIOS
+// =================================================================
+
+/**
+ * Agrega el nuevo platillo al carrusel.
+ */
+function addDishToCarousel(dishName, dishPrice, dishDescription, imageURL) {
     const carouselInner = document.getElementById('carouselInner');
+    if (!carouselInner) {
+        console.error('Error: No se encontró el contenedor del carrusel (#carouselInner).');
+        return;
+    }
+
     const allItems = carouselInner.querySelectorAll('.carousel-item');
     const addButtonSlide = allItems[allItems.length - 1];
-    const lastContentSlide = allItems[allItems.length - 2];
-    
-    // Contar cuántos items hay en el último slide con contenido
-    const itemsInLastSlide = lastContentSlide.querySelectorAll('.col-4').length;
-    
-    if (itemsInLastSlide < 3) {
-        // Si hay espacio en el último slide, agregar ahí
-        addItemToExistingSlide(lastContentSlide, dishName, selectedImageURL);
+    let lastContentSlide = allItems.length > 1 ? allItems[allItems.length - 2] : null;
+
+    if (lastContentSlide && lastContentSlide.querySelectorAll('.col-4').length < 3) {
+        addItemToExistingSlide(lastContentSlide, dishName, dishPrice, dishDescription, imageURL);
     } else {
-        // Si el último slide está lleno, crear un nuevo slide
-        createNewSlideWithItem(carouselInner, addButtonSlide, dishName, selectedImageURL);
+        createNewSlideWithItem(carouselInner, addButtonSlide, dishName, dishPrice, dishDescription, imageURL);
     }
-    
-    // Cerrar el modal
-    const modal = bootstrap.Modal.getInstance(document.getElementById('dishNameModal'));
-    modal.hide();
-    
-    // Limpiar variables y el input de archivo
-    selectedImageFile = null;
-    selectedImageURL = null;
-    document.getElementById('fileInput').value = '';
-    document.getElementById('dishName').value = '';
-    
-    console.log('Platillo agregado exitosamente:', dishName);
 }
 
 /**
- * Agrega un nuevo item a un slide existente que tiene espacio disponible
- * 
- * @function addItemToExistingSlide
- * @param {HTMLElement} slide - Slide donde se agregará el item
- * @param {string} dishName - Nombre del platillo
- * @param {string} imageURL - URL de la imagen
- * @returns {void}
+ * Agrega un nuevo item a un slide existente.
  */
-function addItemToExistingSlide(slide, dishName, imageURL) {
+function addItemToExistingSlide(slide, dishName, dishPrice, dishDescription, imageURL) {
     const row = slide.querySelector('.row');
-    
     const newCol = document.createElement('div');
     newCol.className = 'col-4';
-    
-    newCol.innerHTML = `
-        <div class="menu-item">
-            <img src="${imageURL}" class="menu-item-img" alt="${dishName}">
-            <div class="menu-item-overlay">
-                <p class="menu-item-name">${dishName}</p>
-            </div>
-        </div>
-    `;
-    
+    newCol.innerHTML = createDishCardHTML(dishName, dishPrice, dishDescription, imageURL);
     row.appendChild(newCol);
 }
 
 /**
- * Crea un nuevo slide con el item cuando el último slide está lleno
- * 
- * @function createNewSlideWithItem
- * @param {HTMLElement} carouselInner - Contenedor del carrusel
- * @param {HTMLElement} addButtonSlide - Slide con el botón de agregar
- * @param {string} dishName - Nombre del platillo
- * @param {string} imageURL - URL de la imagen
- * @returns {void}
+ * Crea un nuevo slide con el item.
  */
-function createNewSlideWithItem(carouselInner, addButtonSlide, dishName, imageURL) {
+function createNewSlideWithItem(carouselInner, addButtonSlide, dishName, dishPrice, dishDescription, imageURL) {
     const newSlide = document.createElement('div');
     newSlide.className = 'carousel-item';
-    
     newSlide.innerHTML = `
         <div class="row g-3">
             <div class="col-4">
-                <div class="menu-item">
-                    <img src="${imageURL}" class="menu-item-img" alt="${dishName}">
-                    <div class="menu-item-overlay">
-                        <p class="menu-item-name">${dishName}</p>
+                ${createDishCardHTML(dishName, dishPrice, dishDescription, imageURL)}
+            </div>
+        </div>
+    `;
+    carouselInner.insertBefore(newSlide, addButtonSlide);
+}
+
+/**
+ * Genera el HTML para la tarjeta de platillo y su modal correspondiente.
+ */
+function createDishCardHTML(dishName, dishPrice, dishDescription, imageURL) {
+    const escapedName = dishName.replace(/"/g, '&quot;');
+    const dishId = `dish-${Date.now()}-${Math.random()}`; // ID más robusto
+
+    // Este HTML es diferente al que tenías para hacerlo más compacto y visual
+    return `
+        <div class="position-relative rounded-3 overflow-hidden shadow-sm" 
+             style="height: 180px; cursor: pointer;"
+             data-bs-toggle="modal" data-bs-target="#${dishId}-modal">
+            <img src="${imageURL}" class="w-100 h-100 object-fit-cover" alt="${escapedName}">
+            <div class="position-absolute bottom-0 start-0 end-0 p-3"
+                 style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 100%);">
+                <p class="text-white fw-bold mb-0 fs-6 text-truncate">${escapedName}</p>
+            </div>
+        </div>
+
+        <div class="modal fade" id="${dishId}-modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+                <div class="modal-content border-0 rounded-4 shadow">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title">${escapedName}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img src="${imageURL}" class="img-fluid rounded mb-3" style="max-height: 200px; width: 100%; object-fit: cover;">
+                        <p class="fw-semibold text-success fs-5">$${dishPrice} MXN</p>
+                        <p>${dishDescription}</p>
                     </div>
                 </div>
             </div>
         </div>
     `;
-    
-    // Insertar el nuevo slide antes del slide del botón "Agregar"
-    carouselInner.insertBefore(newSlide, addButtonSlide);
 }
-
-/**
- * Limpia la previsualización de la imagen cuando se cierra el modal
- */
-document.getElementById('dishNameModal')?.addEventListener('hidden.bs.modal', function() {
-    const previewImage = document.getElementById('previewImage');
-    if (previewImage) {
-        previewImage.style.display = 'none';
-        previewImage.src = '';
-    }
-});
