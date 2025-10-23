@@ -1,6 +1,5 @@
 class User{
-    constructor(userId,userType,email,phone,name,description,avatarUrl){
-        this.userId = userId;
+    constructor(userType,email,phone,name,description,avatarUrl){
         this.userType=userType;
         this.email=email;
         this.phone=phone;
@@ -13,8 +12,7 @@ class User{
 
 
 export class Dish{
-    constructor(dishId,businessId,categoryId,dishName,description,price,photoUrl){
-        this.dishId=dishId;
+    constructor(businessId,categoryId,dishName,description,price,photoUrl){
         this.businessId=businessId;
         this.categoryId=categoryId;        
         this.dishName=dishName;
@@ -40,8 +38,7 @@ export class MenuCategory {
 }
 
 export class Post {
-    constructor (postId,authorUserId,reviewedBusinessId,rating,description,createdAt,photo){
-    this.postId=postId;
+    constructor (authorUserId,reviewedBusinessId,rating,description,createdAt,photo){
     this.authorUserId=authorUserId;
     this.reviewedBusinessId=reviewedBusinessId;
     this.rating=rating;
@@ -52,8 +49,7 @@ export class Post {
 }
 
 export class PostPhoto {
-    constructor (postId,photoUrl,photoOrder,){
-        this.postId=postId;
+    constructor (photoUrl,photoOrder,){
         this.photoUrl=photoUrl;
         this.photoOrder=photoOrder;
     }
@@ -68,8 +64,8 @@ export class PostalCodeCatalog {
 }
 
 export class PostalCodeId {
-    constructor (postalCodeId, colonia){
-        this.postalCodeId=postalCodeId;
+    constructor (alcaldia, colonia){
+        this.alcaldia=alcaldia;
         this.colonia=colonia;
     }
 }
