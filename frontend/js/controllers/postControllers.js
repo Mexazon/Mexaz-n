@@ -5,6 +5,30 @@ const BASE_URL_AUTH = API_BASE_URL + "/auth";
 const BASE_URL_BUSINESSES = API_BASE_URL + "/businesses";
 const BASE_URL_BUSINESS_HOURS = API_BASE_URL + "/business-hours";
 
+
+
+/** Crear usuario: POST /api/users */
+export async function createUser(newUser) {
+  try {
+    const response = await fetch(`${API_BASE_URL}users`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newUser),
+    });
+
+    if (!response.ok) {
+      const error = await safeJson(response);
+      throw new Error(error?.message || "Error creating user");
+    }
+
+    return await response.json();
+  } catch (err) {
+    console.error("❌ createUser:", err.message);
+    throw err;
+  }
+}
+
+
 /**
  * ---------- PLATILLOS ----------
  * Crea un nuevo platillo.
@@ -100,34 +124,7 @@ export async function createBusiness(newBusiness) {
   }
 }
 
-/**
- * Actualiza información de un negocio (nombre, descripción, avatar).
- * @param {number} businessId
- * @param {Object} updateData - { name?, description?, avatarUrl? }
- * @returns {Promise<Object|null>} Negocio actualizado o null si falla.
- */
-export async function updateBusiness(businessId, updateData) {
-  try {
-    const response = await fetch(`${BASE_URL_BUSINESSES}/${businessId}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updateData)
-    });
 
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.message || "Error actualizando negocio");
-    }
-
-    const updated = await response.json();
-    console.log("✅ Negocio actualizado:", updated);
-    return updated;
-
-  } catch (error) {
-    console.error("❌ Error actualizando negocio:", error.message);
-    return null;
-  }
-}
 
 /**
  * ---------- HORARIOS DE NEGOCIO ----------
@@ -156,4 +153,63 @@ export async function saveAllBusinessHours(businessHours) {
     console.error("❌ Error guardando horarios:", error.message);
     return null;
   }
+}
+
+
+/**
+ * ✍️ Crear una nueva reseña
+ * Método: POST /api/posts
+ * Envía un objeto CreatePostRequest (rating, contenido, businessId, etc.)
+ * y devuelve la reseña creada.
+ */
+export async function createPost(postData) {
+  try {
+    const response = await fetch(`${API_BASE_URL}posts`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(postData),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || "Error creating post");
+    }
+
+    return await response.json();
+  } catch (err) {
+    console.error("❌ createPost:", err.message);
+    throw err;
+  }
+}
+
+/**
+ * 🖼️ Agregar fotografías a una reseña existente
+ * Método: POST /api/posts/{postId}/photos
+ * Envía un objeto AddPhotosRequest con una lista de URLs o datos de fotos.
+ * Devuelve la lista actualizada de fotos.
+ */
+export async function addPhotosToPost(postId, photosData) {
+  try {
+    const response = await fetch(`${API_BASE_URL}posts/${postId}/photos`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(photosData),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || "Error adding photos");
+    }
+
+    return await response.json();
+  } catch (err) {
+    console.error("❌ addPhotosToPost:", err.message);
+    throw err;
+  }
+}
+
+
+/* Utilidad para evitar fallos al leer JSON en errores */
+async function safeJson(res) {
+  try { return await res.json(); } catch { return null; }
 }

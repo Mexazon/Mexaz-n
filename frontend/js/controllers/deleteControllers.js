@@ -49,3 +49,29 @@ export async function deleteAllHours(businessId) {
     return false;
   }
 }
+
+/**
+ * 🗑️ Eliminar una reseña por ID
+ * Método: DELETE /api/posts/{postId}
+ * Elimina la reseña y sus fotos asociadas.
+ * Devuelve true si se eliminó correctamente (204 No Content).
+ */
+export async function deletePost(postId) {
+  try {
+    const response = await fetch(`${API_BASE_URL}posts/${postId}`, {
+      method: "DELETE",
+    });
+
+    if (response.status === 204) return true;
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || "Error deleting post");
+    }
+
+    return false;
+  } catch (err) {
+    console.error("❌ deletePost:", err.message);
+    throw err;
+  }
+}

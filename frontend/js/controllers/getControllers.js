@@ -3,6 +3,39 @@
 **/
 export const API_BASE_URL = "http://localhost:8080/api";
 
+
+/** Obtener usuario por ID: GET /api/users/{userId} */
+export async function getUserById(userId) {
+  try {
+    const response = await fetch(`${API_BASE_URL}users/${userId}`);
+
+    if (response.status === 404) throw new Error("User not found");
+    if (!response.ok) throw new Error("Error fetching user");
+
+    return await response.json();
+  } catch (err) {
+    console.error("❌ getUserById:", err.message);
+    throw err;
+  }
+}
+
+/** Verificar email: GET /api/users/exists?email=...  → devuelve true|false */
+export async function checkEmailExists(email) {
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}users/exists?email=${encodeURIComponent(email)}`
+    );
+
+    if (!response.ok) throw new Error("Error checking email");
+
+    const result = await response.json();
+    return result.exists === true;
+  } catch (err) {
+    console.error("❌ checkEmailExists:", err.message);
+    throw err;
+  }
+}
+
 /** 
  * PostalCodeCatalogController
 **/
@@ -226,4 +259,115 @@ export async function getHourByDay(businessId, dayOfWeek) {
     console.error("❌ Error obteniendo horario por día:", error.message);
     return null;
   }
+}
+
+export async function getUserAddress(userId) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/${userId}/address`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || "Address not found");
+    }
+
+    return await response.json(); // Devuelve { userId, postalCode, colonia, alcaldia, street, number }
+  } catch (err) {
+    console.error("❌ Error in getUserAddress:", err.message);
+    throw err;
+  }
+}
+
+/**
+ * 📘 Obtener una reseña por su ID
+ * Método: GET /api/posts/{postId}
+ * Devuelve los datos de la reseña si existe, o lanza un error si no se encuentra.
+ */
+export async function getPostById(postId) {
+  try {
+    const response = await fetch(`${API_BASE_URL}posts/${postId}`);
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || "Post not found");
+    }
+    return await response.json();
+  } catch (err) {
+    console.error("❌ getPostById:", err.message);
+    throw err;
+  }
+}
+
+/**
+ * 📋 Listar reseñas de un negocio
+ * Método: GET /api/businesses/{businessId}/posts?page=&size=
+ * Retorna una página de reseñas asociadas a un negocio específico.
+ */
+export async function listBusinessPosts(businessId, page = 0, size = 10) {
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}businesses/${businessId}/posts?page=${page}&size=${size}`
+    );
+    if (!response.ok) throw new Error("Error fetching business posts");
+    return await response.json();
+  } catch (err) {
+    console.error("❌ listBusinessPosts:", err.message);
+    throw err;
+  }
+}
+
+/**
+ * 👤 Listar reseñas creadas por un usuario
+ * Método: GET /api/users/{authorUserId}/posts?page=&size=
+ * Permite obtener las reseñas escritas por un usuario determinado.
+ */
+export async function listUserPosts(authorUserId, page = 0, size = 10) {
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}users/${authorUserId}/posts?page=${page}&size=${size}`
+    );
+    if (!response.ok) throw new Error("Error fetching user posts");
+    return await response.json();
+  } catch (err) {
+    console.error("❌ listUserPosts:", err.message);
+    throw err;
+  }
+}
+
+/**
+ * 🌍 Feed global de reseñas
+ * Método: GET /api/feed/posts?page=&size=
+ * Devuelve las reseñas más recientes publicadas por todos los usuarios.
+ */
+export async function getFeedPosts(page = 0, size = 10) {
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}feed/posts?page=${page}&size=${size}`
+    );
+    if (!response.ok) throw new Error("Error fetching feed posts");
+    return await response.json();
+  } catch (err) {
+    console.error("❌ getFeedPosts:", err.message);
+    throw err;
+  }
+}
+
+/**
+ * ⭐ Obtener el rating agregado de un negocio
+ * Método: GET /api/businesses/{businessId}/rating
+ * Devuelve promedio, número total de reseñas y distribución por estrellas.
+ */
+export async function getBusinessRating(businessId) {
+  try {
+    const response = await fetch(`${API_BASE_URL}businesses/${businessId}/rating`);
+    if (!response.ok) throw new Error("Error fetching business rating");
+    return await response.json();
+  } catch (err) {
+    console.error("❌ getBusinessRating:", err.message);
+    throw err;
+  }
+}
+
+
+/* Utilidad para evitar fallos al leer JSON en errores */
+async function safeJson(res) {
+  try { return await res.json(); } catch { return null; }
 }
