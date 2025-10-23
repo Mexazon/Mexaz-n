@@ -31,12 +31,13 @@ const logOutBtn = document.getElementById("log-out");
     
     logOutBtn.addEventListener('click', () => {
       console.log("entra")
-      localStorage.removeItem("logedUser");
+      localStorage.removeItem("userId");
+      localStorage.removeItem("userType");
     });
 
     document.getElementById('own-profile').addEventListener('click', () =>{
-      if(logedUser.role=="user"){
-        window.location.href = `user_profile.html?id=${logedUser.id}`
+      if(localStorage.getItem("userType")=="ordinary"){
+        window.location.href = `user_profile.html?id=${localStorage.getItem("userId")}`
       }
       else{
         window.location.href = `business_profile.html?id=${logedUser.id}`

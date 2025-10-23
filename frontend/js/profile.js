@@ -5,11 +5,11 @@ const params = new URLSearchParams(window.location.search);
 const currentUserId = params.get('id');
 
 let currentUser;
-const logedUser = JSON.parse(localStorage.getItem("logedUser")) || null;
+
 
 let btn;
 
-if(logedUser.id == currentUserId){
+if(localStorage.getItem("userId") == currentUserId){
     btn = '<button data-bs-toggle="modal" data-bs-target="#editprofile" class="btn btn-outline-secondary btn-sm">Editar Perfil</button>';
     currentUser = logedUser; 
 }

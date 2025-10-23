@@ -1,5 +1,6 @@
 import {existentUsers} from "./loadData.js";
 import {setLogedUser} from "./loadData.js";
+import {login} from "./controllers/postControllers.js"
 
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginForm");
@@ -7,27 +8,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loginForm.addEventListener("submit", (e) => {
     e.preventDefault(); // evita que se envíe sin validar
-
     const user = document.getElementById("loginUser").value.trim();
     const pass = document.getElementById("loginPassword").value.trim();
-
     // validaciones de incio de sesión
     if (user === "" || pass === "") {
       showError("Debes ingresar usuario y contraseña");
       return;
     }
-  
 
-    //local storage
-   const foundUser = existentUsers.find(u => u.email === user && u.password === pass);
-   if (!foundUser) {
+    
+    
+    const credential ={email:user,password:pass}
+
+    const logedUser = login(credential);
+
+
+   if (logedUser.valid) {
       showError("Usuario o contraseña incorrectos");
       return; 
     }
 
     // valida inicio de sesión si los datos coinciden
     loginError.classList.add("d-none");
-    setLogedUser(foundUser);
+    setLogedUser(logedUser);
     window.location.href = "./feed.html"; // redirige si todo es correcto
   });
 
