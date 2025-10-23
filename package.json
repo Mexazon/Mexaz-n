@@ -10,7 +10,8 @@
     "preview": "vite preview --port 4173"
   },
   "dependencies": {
-    "bootstrap": "^5.3.8"
+    "bootstrap": "^5.3.8",
+    "cloudinary": "^2.8.0"
   },
   "devDependencies": {
     "gh-pages": "^6.3.0",
