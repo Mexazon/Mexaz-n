@@ -1,5 +1,7 @@
+import {API_BASE_URL} from './getControllers'
+
 // controllers/businessHourController.js
-const BASE_URL = "http://localhost:8080/api/business-hours";
+const BASE_URL = API_BASE_URL+"/business-hours";
 
 /**
  * Elimina un horario específico de un negocio por día.
@@ -58,7 +60,7 @@ export async function deleteAllHours(businessId) {
  */
 export async function deletePost(postId) {
   try {
-    const response = await fetch(`${API_BASE_URL}posts/${postId}`, {
+    const response = await fetch(`${API_BASE_URL}/posts/${postId}`, {
       method: "DELETE",
     });
 

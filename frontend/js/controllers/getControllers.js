@@ -7,7 +7,7 @@ export const API_BASE_URL = "http://localhost:8080/api";
 /** Obtener usuario por ID: GET /api/users/{userId} */
 export async function getUserById(userId) {
   try {
-    const response = await fetch(`${API_BASE_URL}users/${userId}`);
+    const response = await fetch(`${API_BASE_URL}/users/${userId}`);
 
     if (response.status === 404) throw new Error("User not found");
     if (!response.ok) throw new Error("Error fetching user");
@@ -23,7 +23,7 @@ export async function getUserById(userId) {
 export async function checkEmailExists(email) {
   try {
     const response = await fetch(
-      `${API_BASE_URL}users/exists?email=${encodeURIComponent(email)}`
+      `${API_BASE_URL}/users/exists?email=${encodeURIComponent(email)}`
     );
 
     if (!response.ok) throw new Error("Error checking email");
@@ -284,7 +284,7 @@ export async function getUserAddress(userId) {
  */
 export async function getPostById(postId) {
   try {
-    const response = await fetch(`${API_BASE_URL}posts/${postId}`);
+    const response = await fetch(`${API_BASE_URL}/posts/${postId}`);
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.message || "Post not found");
@@ -340,7 +340,7 @@ export async function listUserPosts(authorUserId, page = 0, size = 10) {
 export async function getFeedPosts(page = 0, size = 10) {
   try {
     const response = await fetch(
-      `${API_BASE_URL}feed/posts?page=${page}&size=${size}`
+      `${API_BASE_URL}/feed/posts?page=${page}&size=${size}`
     );
     if (!response.ok) throw new Error("Error fetching feed posts");
     return await response.json();
@@ -357,12 +357,92 @@ export async function getFeedPosts(page = 0, size = 10) {
  */
 export async function getBusinessRating(businessId) {
   try {
-    const response = await fetch(`${API_BASE_URL}businesses/${businessId}/rating`);
+    const response = await fetch(`${API_BASE_URL}/businesses/${businessId}/rating`);
     if (!response.ok) throw new Error("Error fetching business rating");
     return await response.json();
   } catch (err) {
     console.error("❌ getBusinessRating:", err.message);
     throw err;
+  }
+}
+
+
+
+/* ============================================================
+   🟩 GET /api/businesses/search
+   ------------------------------------------------------------
+   🔹 Permite buscar negocios con filtros opcionales:
+       - q → texto de búsqueda (nombre, descripción, etc.)
+       - alcaldia → filtra por alcaldía
+       - categories → lista de categorías (array de strings)
+       - page, size → paginación
+       - sort → criterio de orden (por defecto name,asc)
+   ============================================================ */
+export async function searchBusinesses({
+  q = "",
+  alcaldia = "",
+  categories = [],
+  page = 0,
+  size = 20,
+  sort = "name,asc"
+} = {}) {
+  try {
+    // Construcción dinámica de parámetros de consulta
+    const params = new URLSearchParams();
+
+    if (q) params.append("q", q);
+    if (alcaldia) params.append("alcaldia", alcaldia);
+    if (categories.length > 0) {
+      categories.forEach(cat => params.append("categories", cat));
+    }
+    params.append("page", page);
+    params.append("size", size);
+    params.append("sort", sort);
+
+    const response = await fetch(`${API_BASE_URL}/businesses/search?${params.toString()}`);
+
+    if (!response.ok) {
+      throw new Error(`Error ${response.status}: No se pudo obtener resultados`);
+    }
+
+    const data = await response.json();
+    return data; // Devuelve el Page<BusinessCard>
+  } catch (error) {
+    console.error("❌ Error en searchBusinesses:", error);
+    return null;
+  }
+}
+
+
+/* ============================================================
+   🟦 GET /api/businesses/top
+   ------------------------------------------------------------
+   🔹 Obtiene los negocios mejor valorados o destacados
+     dentro de la alcaldía del usuario especificado.
+     - userId (requerido)
+     - page, size (opcional)
+   ============================================================ */
+export async function getTopBusinesses(userId, page = 0, size = 20) {
+  try {
+    if (!userId) throw new Error("⚠️ userId es obligatorio.");
+
+    const params = new URLSearchParams({
+      userId: userId,
+      page: page,
+      size: size
+    });
+
+    const response = await fetch(`${API_BASE_URL}/businesses/top?${params.toString()}`);
+
+    if (!response.ok) {
+      throw new Error(`Error ${response.status}: No se pudo obtener los negocios destacados`);
+    }
+
+    const data = await response.json();
+    return data; // Devuelve el Page<BusinessCard>
+  } catch (error) {
+    console.error("❌ Error en getTopBusinesses:", error);
+    return null;
   }
 }
 

@@ -1,6 +1,6 @@
 import {API_BASE_URL} from './getControllers'
 
-const BASE_URL_DISHES = API_BASE_URL + "dishes";
+const BASE_URL_DISHES = API_BASE_URL + "/dishes";
 const BASE_URL_AUTH = API_BASE_URL + "/auth";
 const BASE_URL_BUSINESSES = API_BASE_URL + "/businesses";
 const BASE_URL_BUSINESS_HOURS = API_BASE_URL + "/business-hours";
@@ -164,7 +164,7 @@ export async function saveAllBusinessHours(businessHours) {
  */
 export async function createPost(postData) {
   try {
-    const response = await fetch(`${API_BASE_URL}posts`, {
+    const response = await fetch(`${API_BASE_URL}/posts`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(postData),
@@ -190,7 +190,7 @@ export async function createPost(postData) {
  */
 export async function addPhotosToPost(postId, photosData) {
   try {
-    const response = await fetch(`${API_BASE_URL}posts/${postId}/photos`, {
+    const response = await fetch(`${API_BASE_URL}/posts/${postId}/photos`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(photosData),

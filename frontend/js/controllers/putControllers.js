@@ -1,3 +1,5 @@
+import {API_BASE_URL} from './getControllers'
+
 /**
  * Actualiza información de un negocio (nombre, descripción, avatar).
  * @param {number} businessId
@@ -6,7 +8,7 @@
  */
 export async function updateBusiness(businessId, updateData) {
   try {
-    const response = await fetch(`${BASE_URL_BUSINESSES}/${businessId}`, {
+    const response = await fetch(`${API_BASE_URL}/${businessId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updateData)
