@@ -1,7 +1,9 @@
-const BASE_URL_DISHES = "http://localhost:8080/api/dishes";
-const BASE_URL_AUTH = "http://localhost:8080/api/auth";
-const BASE_URL_BUSINESSES = "http://localhost:8080/api/businesses";
-const BASE_URL_BUSINESS_HOURS = "http://localhost:8080/api/business-hours";
+import {API_BASE_URL} from './getControllers'
+
+const BASE_URL_DISHES = API_BASE_URL + "dishes";
+const BASE_URL_AUTH = API_BASE_URL + "/auth";
+const BASE_URL_BUSINESSES = API_BASE_URL + "/businesses";
+const BASE_URL_BUSINESS_HOURS = API_BASE_URL + "/business-hours";
 
 /**
  * ---------- PLATILLOS ----------

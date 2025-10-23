@@ -1,7 +1,7 @@
 /** 
  * Configuración global de endpoints
 **/
-const API_BASE_URL = "http://localhost:8080/api";
+export const API_BASE_URL = "http://localhost:8080/api";
 
 /** 
  * PostalCodeCatalogController
