@@ -24,13 +24,14 @@ class User{
     role;
     avatar;
     constructor(name,city,cp,email,password,dateRegistered){
-        this.id = existentUsers.length + 1
-        this.name=name
-        this.location=city
-        this.cp=cp
-        this.email=email
-        this.password=password
-        this.dateRegistered=dateRegistered
+        this.id = existentUsers.length + 1;
+        this.name=name;
+        this.location=city;
+        this.cp=cp;
+        this.email=email;
+        this.password=password;
+        this.createdAt=dateRegistered;
+        this.phone = '1234567890';
     }
 }
 

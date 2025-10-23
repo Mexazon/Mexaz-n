@@ -1,3 +1,5 @@
+
+
 function getExistentUsers(){
     let registedUsers = JSON.parse(localStorage.getItem("registedUsers")) || [];
     return registedUsers; 
@@ -12,3 +14,4 @@ export function getLogedUser(){
 }
 
 export let existentUsers = getExistentUsers();
+

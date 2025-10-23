@@ -1,7 +1,7 @@
 //importo las rutas de los chiles 
 import redPepper from '../assets/red-pepper.svg';
 import blackPepper from '../assets/black-pepper.svg';
-import {foodData} from './menusearch.js'
+import {existentUsers} from './loadData.js'
 
 // Variables globales
 let currentRating = 0;
@@ -18,6 +18,7 @@ export const reviewForm = document.getElementById('reviewForm');
 
 // Inicialización
 document.addEventListener('DOMContentLoaded', function() {
+    existentUsers.filt
     initializePostalCodes();
     initializeStarRating();
     initializeFormValidation();

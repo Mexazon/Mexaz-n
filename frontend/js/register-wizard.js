@@ -28,7 +28,6 @@
         // inputs usados en el registro
 
         const emailRegistroEl = modal.querySelector('#emailRegistro');
-        const telefonoRegistroEl = modal.querySelector('#telefonoRegistro');
         const passwordEl = modal.querySelector('#passwordRegistro');
         const confirmaPasswordEl = modal.querySelector('#passwordRegistroConfirmacion');
         const ciudadRegistroEl = modal.querySelector('#ciudadRegistro'); 
@@ -84,13 +83,6 @@
                 emailRegistroEl.focus();
                 return showStatusRegistro('Revisa tu correo electrónico, parece inválido.', 'alert-warning');
             }
-            
-            // Validacion de telefono
-            const telOk = /^\d{10}$/.test(telefonoRegistroEl.value.trim()); 
-            if (!telOk) {
-                telefonoRegistroEl.focus();
-                return showStatusRegistro('Ingresa un teléfono válido de 10 dígitos.', 'alert-warning');
-            }
 
             // Validar que la contrasenia tiene una longitude de minimo 8 caracteres
             const passOk = passwordEl.value.trim().length >= 8;
@@ -144,8 +136,8 @@
         // --- Eventos de Navegación ---
         btnNext.addEventListener("click", () => {
             checkData=`
+                <p class="mb-2"><strong>Usuario:</strong> <span">${usuarioRegistroEl.value}</span></p>
                 <p class="mb-2"><strong>Email:</strong> <span>${emailRegistroEl.value}</span></p>
-                <p class="mb-2"><strong>Teléfono:</strong> <span">${telefonoRegistroEl.value}</span></p>
                 <p class="mb-2"><strong>Alcaldía:</strong> <span">${ciudadRegistroEl.value}</span></p>
                 <p class="mb-2"><strong>Código Postal:</strong> <span>${codigoPostalRegistroEl.value}</span></p>
                 <p class="mb-2"><strong>Colonia:</strong> <span>${coloniaRegistroEl.value}</span></p>
@@ -182,9 +174,9 @@
         btnFinish.addEventListener("click", () => {
 
             if(si){
-                existentUsers.push(new Business("new_usiness",ciudadRegistroEl.value,codigoPostalRegistroEl.value,emailRegistroEl.value,passwordEl.value,new Date().toISOString().split('T')[0],JSON.parse(localStorage.getItem("businessSchedule"))))
+                existentUsers.push(new Business(usuarioRegistroEl.value,ciudadRegistroEl.value,codigoPostalRegistroEl.value,emailRegistroEl.value,passwordEl.value,new Date().toISOString().split('T')[0],JSON.parse(localStorage.getItem("businessSchedule"))))
             }else{
-                existentUsers.push(new UserCostumer("new_ser",ciudadRegistroEl.value,codigoPostalRegistroEl.value,emailRegistroEl.value,passwordEl.value,new Date().toISOString().split('T')[0]))
+                existentUsers.push(new UserCostumer(usuarioRegistroEl.value,ciudadRegistroEl.value,codigoPostalRegistroEl.value,emailRegistroEl.value,passwordEl.value,new Date().toISOString().split('T')[0]))
             }
             localStorage.removeItem('businessSchedule');
             localStorage.setItem("registedUsers",JSON.stringify(existentUsers))
