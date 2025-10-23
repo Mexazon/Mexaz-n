@@ -1,5 +1,18 @@
 // Simula si el usuario es dueño del negocio (esto vendrá de tu sesión real)
-const esDueno = true;
+let esDueno = true;
+
+const params = new URLSearchParams(window.location.search);
+const currentUserId = params.get('id');
+let currentUser;
+
+if(localStorage.getItem("userId") == currentUserId){
+    esDueno = true;
+    currentUser = logedUser; 
+}
+else{
+    esDueno = false;
+    currentUser = existentUsers.find(u => u.id == currentUserId)
+}
 
 // Estado inicial del negocio (true = abierto)
 let negocioAbierto = true;

@@ -23,8 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </li>`;
       LargeSidebar.innerHTML = sidebarContent;
     OffSidebar.innerHTML = sidebarContent;
-const btnHambre = document.getElementById("btnHambre");
-const logOutBtn = document.getElementById("log-out");
+    const btnHambre = document.getElementById("btnHambre");
+    const logOutBtn = document.getElementById("log-out");
     btnHambre.addEventListener('click', () => {
       window.location.href = 'hambre.html';
     });
@@ -44,7 +44,5 @@ const logOutBtn = document.getElementById("log-out");
       }
         
     })
-
   // Your code here, for example:
 });
-

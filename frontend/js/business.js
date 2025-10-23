@@ -53,6 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // loadDishesFromJSON();
 });
 
+
+
 /**
  * Carga los platillos desde Local Storage y los muestra en el carrusel.
  */

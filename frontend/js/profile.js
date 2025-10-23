@@ -17,7 +17,7 @@ else{
     btn=" ";
     currentUser = existentUsers.find(u => u.id == currentUserId)
 }
-console.log()
+
 
 const publications = JSON.parse(localStorage.getItem("publications")) || [];
 
