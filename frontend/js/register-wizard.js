@@ -74,6 +74,11 @@
         }
         
 
+        codigoPostalRegistroEl.addEventListener('input',() => {
+            
+        })
+
+
         function nextFromStep1() {
             // Validacion de email
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -96,23 +101,19 @@
                 confirmaPasswordEl.focus();
                 return showStatusRegistro('Las contraseñas no coinciden.', 'alert-warning');
             }
-            //Validacion de la ciudad
-            if (ciudadRegistroEl.value.trim().length < 3) {
-                ciudadRegistroEl.focus();
-                return showStatusRegistro('Por favor, ingresa una ciudad válida.', 'alert-warning');
-            }
 
             //validacion del C.P.
             if (!/^\d{5}$/.test(codigoPostalRegistroEl.value.trim())) {
                 codigoPostalRegistroEl.focus();
                 return showStatusRegistro('El código postal debe tener 5 dígitos.', 'alert-warning');
             }
-            
-            //validación de la colonia
-            if (coloniaRegistroEl.value.trim() === '') {
-                coloniaRegistroEl.focus();
-                 return showStatusRegistro('La colonia no puede estar vacía', 'alert-warning');
-            }
+
+            //Validacion de codigo postal
+
+
+
+
+
 
             //Validacion del nombre de usuario
 
@@ -210,9 +211,5 @@
             show("1");
             branch = null;
             hideStatusRegistro();
-        });
-
-       
+        });   
     }
-
-

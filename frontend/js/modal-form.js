@@ -35,9 +35,9 @@ function initializePostalCodes() {
         option.value = place;
         option.textContent = place;
         postalCodeSelect.appendChild(option);
-        
     });
 }
+
 
 // Manejar cambio de código postal
 postalCodeSelect.addEventListener('change', function() {

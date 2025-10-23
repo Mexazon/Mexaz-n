@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // valida inicio de sesión si los datos coinciden
     loginError.classList.add("d-none");
-    setLogedUser(logedUser);
+    localStorage.setItem(logedUser);
     window.location.href = "./feed.html"; // redirige si todo es correcto
   });
 
