@@ -1,23 +1,13 @@
-
-//Aniadir un metodo para calcular un metodo para calcular el tiempo desde que se creo la review hasta el presente
-//si fue hace menos de 24hrs mostrar en horas, su fue en menos de 30 dias mostrar en dias, si fue hace mas de 30 diqs, contar por meses
-//Eliminar el paramentro de horas y remplazarlo por 'fecha de cracion' Debe almacenar el dia que se creo el post
-
 class User{
-    role;
-    avatarUrl;
-    constructor(userId,userType,email,passwordHash,phone,name,description,avatarUrl,postAuthored){
+    constructor(userId,userType,email,phone,name,description,avatarUrl){
         this.userId = userId;
         this.userType=userType;
         this.email=email;
-        this.passwordHash=passwordHash
         this.phone=phone;
         this.name=name;
         this.description=description;
         this.createdAt=createdAt;
         this.avatarUrl=avatarUrl;
-        this.postAuthored=postAuthored;
-       
     }
 }
 
@@ -35,10 +25,10 @@ export class Dish{
 }
 
 export class Business {
-    constructor(businessId,reviewedBusiness){
+    constructor(businessId,isActive){
         this.businessId=businessId; 
-        this.reviewedBusiness=reviewedBusiness
-
+        this.isActive=isActive;
+        this.user;
     }
 }
 
@@ -50,15 +40,14 @@ export class MenuCategory {
 }
 
 export class Post {
-    constructor (postId,authorUserId,reviewedBusinessId,rating,description,createdAt){
+    constructor (postId,authorUserId,reviewedBusinessId,rating,description,createdAt,photo){
     this.postId=postId;
     this.authorUserId=authorUserId;
     this.reviewedBusinessId=reviewedBusinessId;
     this.rating=rating;
     this.description=description;
     this.createdAt=createdAt;
-
-
+    this.photos=photo;
     }
 }
 

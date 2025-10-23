@@ -3,8 +3,6 @@
 **/
 const API_BASE_URL = "http://localhost:8080/api";
 
-const BASE_URL_BUSINESSES = "http://localhost:8080/api/businesses";
-const BASE_URL_BUSINESS_HOURS = "http://localhost:8080/api/business-hours";
 /** 
  * PostalCodeCatalogController
 **/
@@ -22,11 +20,11 @@ export async function getColoniasByPostalCode(postalCode) {
       const error = await response.json();
       throw new Error(error.message || "Error al consultar código postal");
     }
-    return await response.json();
+    const data = await response.json();
+    return data.colonias ?? data; // return the array if present, else raw data
   } catch (error) {
     console.error("❌ Error en getColoniasByPostalCode:", error);
     throw error;
-
   }
 }
 /**
@@ -40,17 +38,16 @@ export async function getColoniasByPostalCode(postalCode) {
  */
 export async function getBusinessById(businessId) {
   try {
-    const response = await fetch(`${BASE_URL_BUSINESSES}/${businessId}`);
+    const response = await fetch(`${API_BASE_URL}/businesses/${businessId}`);
 
     if (response.status === 404) return null; // negocio no encontrado
     if (!response.ok) throw new Error("Error obteniendo negocio");
 
     const business = await response.json();
-    console.log("✅ Negocio obtenido:", business);
+    
     return business;
 
   } catch (error) {
-    console.error("❌ Error obteniendo negocio:", error.message);
     return null;
   }
 }
@@ -137,7 +134,7 @@ export async function getDishById(dishId) {
 
 export async function getBusinessHours(businessId) {
   try {
-    const response = await fetch(`${BASE_URL_BUSINESSES}/${businessId}/hours`);
+    const response = await fetch(`${API_BASE_URL}/businesses/${businessId}/hours`);
 
     if (!response.ok) throw new Error("Error obteniendo horarios");
 
@@ -194,7 +191,7 @@ export async function getFilteredDishes(filters) {
  */
 export async function getHoursByBusiness(businessId) {
   try {
-    const response = await fetch(`${BASE_URL_BUSINESS_HOURS}/${businessId}`);
+    const response = await fetch(`${API_BASE_URL}/business-hours/${businessId}`);
 
     if (!response.ok) throw new Error("Error obteniendo horarios del negocio");
 
@@ -216,7 +213,7 @@ export async function getHoursByBusiness(businessId) {
  */
 export async function getHourByDay(businessId, dayOfWeek) {
   try {
-    const response = await fetch(`${BASE_URL_BUSINESS_HOURS}/${businessId}/${dayOfWeek}`);
+    const response = await fetch(`${API_BASE_URL}/business-hours/${businessId}/${dayOfWeek}`);
 
     if (response.status === 404) return null; // no existe
     if (!response.ok) throw new Error("Error obteniendo horario por día");
