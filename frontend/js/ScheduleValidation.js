@@ -1,16 +1,14 @@
-import { Schedule } from "./classes.js";
-
-    let si = document.getElementById("rSi")?.checked;
+import { BusinessHours } from "./model-classes.js";
     
     const DAYS = [
        
-        { label: "Lunes",     startId: "LunesA",     endId: "LunesB" },
-        { label: "Martes",    startId: "MartesA",    endId: "MartesB" },
-        { label: "Miércoles", startId: "MiercolesA", endId: "MiercolesB" },
-        { label: "Jueves",    startId: "JuevesA",    endId: "JuevesB" },
-        { label: "Viernes",   startId: "ViernesA",   endId: "ViernesB" },
-        { label: "Sábado",    startId: "SabadoA",    endId: "SabadoB" },
-        { label: "Domingo",   startId: "DomingoA",   endId: "DomingoB" }
+        { label: "Mon",     startId: "LunesA",     endId: "LunesB" },
+        { label: "Tue",    startId: "MartesA",    endId: "MartesB" },
+        { label: "Wed", startId: "MiercolesA", endId: "MiercolesB" },
+        { label: "Thu",    startId: "JuevesA",    endId: "JuevesB" },
+        { label: "Fri",   startId: "ViernesA",   endId: "ViernesB" },
+        { label: "Sat",    startId: "SabadoA",    endId: "SabadoB" },
+        { label: "Sun",   startId: "DomingoA",   endId: "DomingoB" }
     ];
 
     const STORAGE_KEY = "businessSchedule";
@@ -18,14 +16,16 @@ import { Schedule } from "./classes.js";
  
 
     const getInput = id => document.getElementById(id);
-    const fmt = t => (t && t.length >= 4 ? t : "");
+    const fmt = t => (t && t.length >= 4 ? t : null);
     const isValidRange = (a, b) => a && b && a < b;
 
     function buildScheduleArray() {
-        return DAYS.map(({ startId, endId }) => {
-            const open = fmt(getInput(startId)?.value || "");
-            const close = fmt(getInput(endId)?.value || "");
-            return new Schedule(open, close);
+        let working;
+        return DAYS.map(({label, startId, endId }) => {
+            const open = fmt(getInput(startId)?.value || null);
+            const close = fmt(getInput(endId)?.value || null);
+            working = (open != null && close != null) ? true : false;
+            return new BusinessHours(label,open, close, working);
         });
     }
 
@@ -47,8 +47,8 @@ import { Schedule } from "./classes.js";
             if (!map) return;
             const s = getInput(map.startId);
             const e = getInput(map.endId);
-            if (s && item.opening) s.value = item.opening;
-            if (e && item.closing) e.value = item.closing;
+            if (s && item.timeIn) s.value = item.timeOut;
+            if (e && item.timeIn) e.value = item.timeOut;
         });
     }
 
@@ -59,21 +59,21 @@ import { Schedule } from "./classes.js";
             const { label } = DAYS[index];
             let status;
 
-            if (!item.opening && !item.closing) {
+            if (!item.timeIn && !item.timeOut) {
                 status = `<span class="badge text-bg-secondary">Cerrado</span>`;
-            } else if (!item.opening || !item.closing) {
+            } else if (!item.timeIn || !item.timeOut) {
                 invalidCount++;
                 status = `<span class="badge text-bg-warning">Falta horario</span>`;
-            } else if (!isValidRange(item.opening, item.closing)) {
+            } else if (!isValidRange(item.timeIn, item.timeOut)) {
                 invalidCount++;
                 status = `<span class="badge text-bg-danger">Rango inválido</span>`;
             } else {
                 status = `<span class="badge text-bg-success">Abierto</span>`;
             }
 
-            const range = (!item.opening && !item.closing)
+            const range = (!item.timeIn && !item.timeOut)
                 ? "—"
-                : `${item.opening || "??:??"} — ${item.closing || "??:??"}`;
+                : `${item.timeIn || "??:??"} — ${item.timeOut || "??:??"}`;
 
             return `
                 <tr>

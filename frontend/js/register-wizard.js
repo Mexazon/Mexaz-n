@@ -1,9 +1,10 @@
     import {preview}  from "./ScheduleValidation.js";
     import { update } from "./ScheduleValidation.js";
     import {isScheduleValid} from "./ScheduleValidation"
-    import {Business,UserCostumer} from "./classes.js";
-    import {existentUsers} from "./loadData.js"
+    import {User, Business} from "./model-classes.js";
     import {getColoniasByPostalCode, checkEmailExists} from "./controllers/getControllers.js"
+    import {createUser,createBusiness} from "./controllers/postControllers.js"
+
     // Asegura que el DOM esté listo
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", init);
@@ -198,16 +199,12 @@
             
         });
         //confirmacion del registro 
-        btnFinish.addEventListener("click", () => {
+        btnFinish.addEventListener("click", async function(){
 
-            if(si){
-                existentUsers.push(new Business(usuarioRegistroEl.value,ciudadRegistroEl.value,codigoPostalRegistroEl.value,emailRegistroEl.value,passwordEl.value,new Date().toISOString().split('T')[0],JSON.parse(localStorage.getItem("businessSchedule"))))
-            }else{
-                existentUsers.push(new UserCostumer(usuarioRegistroEl.value,ciudadRegistroEl.value,codigoPostalRegistroEl.value,emailRegistroEl.value,passwordEl.value,new Date().toISOString().split('T')[0]))
-            }
-            localStorage.removeItem('businessSchedule');
-            localStorage.setItem("registedUsers",JSON.stringify(existentUsers))
-            
+        const role = si ? "business" : "ordinary";
+        const NewUser = await createUser(new User(role,emailRegistroEl.value,"6666666666",usuarioRegistroEl.value,"Nuevo el pueblo",'https://doodleipsum.com/1200x1200?i=68988796ecff7ce49d335d7e1f04e8ea',passwordEl.value))    
+            console.log(localStorage.getItem("businessSchedule"));
+        if(role == "business")await createBusiness(new Business(NewUser.userId,true,JSON.parse(localStorage.getItem('businessSchedule'))));
         });
 
     // Evita submit accidental con Enter en pasos intermedios
