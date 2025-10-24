@@ -264,8 +264,7 @@ export async function getHourByDay(businessId, dayOfWeek) {
 
 export async function getUserAddress(userId) {
   try {
-    const response = await fetch(`${API_BASE_URL}/${userId}/address`);
-
+    const response = await fetch(`${API_BASE_URL}/users/${userId}/address`);
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.message || "Address not found");
@@ -306,7 +305,7 @@ export async function getPostById(postId) {
 export async function listBusinessPosts(businessId, page = 0, size = 10) {
   try {
     const response = await fetch(
-      `${API_BASE_URL}businesses/${businessId}/posts?page=${page}&size=${size}`
+      `${API_BASE_URL}/businesses/${businessId}/posts?page=${page}&size=${size}`
     );
     if (!response.ok) throw new Error("Error fetching business posts");
     return await response.json();

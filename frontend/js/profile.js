@@ -1,11 +1,11 @@
 import {renderPepperRating} from "./peppers-rendering.js";
 import {getUserById} from "./controllers/getControllers.js"
-import {listUserPosts} from "./controllers/getControllers.js"
+import {listUserPosts, getUserAddress, getBusinessById} from "./controllers/getControllers.js"
 import {getTimeAgo} from "./dateUtils.js";
 
 const params = new URLSearchParams(window.location.search);
 const currentUserId = params.get('id');
-
+let posts;
 
 let btn;
 
@@ -18,7 +18,7 @@ else{
 
 
 
-function renderView(currentUser,currentReview){
+async function renderView(currentUser,currentReview){
     let profileReviews = document.getElementById("user-posts");
     const profileContent = document.getElementById("profile-data");
     profileContent.innerHTML = `
@@ -30,7 +30,7 @@ function renderView(currentUser,currentReview){
 
               <div class="d-flex align-items-center justify-content-center mb-3">
                 <div class="px-3">
-                  <h6 class="mb-0">10</h6><small class="text-muted">Reseñas</small>
+                  <h6 class="mb-0">${posts.length}</h6><small class="text-muted">Reseñas</small>
                 </div>
               </div>
 
@@ -64,6 +64,10 @@ function renderView(currentUser,currentReview){
 
     for(let review of currentReview){
         
+        const business = await getBusinessById(review.reviewedBusinessId);
+
+        console.log(business);
+
         current = document.createElement('div');
         
         current.innerHTML =`
@@ -79,16 +83,13 @@ function renderView(currentUser,currentReview){
                     </div>
                 </div>
                 <div class="card-body d-flex flex-row-reverse align-items-start gap-3 p-3">
-                <img src="${review.foto}" 
-                    alt="foto reseña" 
-                    class="rounded img-fluid"
-                    style="max-width: 140px; height: auto; object-fit: cover;">
+            
 
                 <div class="flex-grow-1 min-w-0 text-break">
-                    <div class="fw-semibold text-truncate">${review.lugar}</div>
+                    <div class="fw-semibold text-truncate">${business.user.name}</div>
 
                     <div class="pepper-rating" aria-label="picante"></div>
-                    <p class="mt-2 mb-2 small text-muted review-text">${review.descripcion}</p>
+                    <p class="mt-2 mb-2 small text-muted review-text">${review.description}</p>
                     <div class="d-flex align-items-center gap-3 small flex-wrap">
                         <span class="text-muted">${getTimeAgo(review.createdAt)}</span>
                     </div>
@@ -96,7 +97,7 @@ function renderView(currentUser,currentReview){
                 </div>
             </div>`
             
-    renderPepperRating(current.querySelector('.pepper-rating'), review.calificacion, 5);      
+    renderPepperRating(current.querySelector('.pepper-rating'), review.rating, 5);      
     profileReviews.prepend(current);
     }
 }
@@ -110,8 +111,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const reviews = page?.content ?? []; // <-- make it iterable
     console.log(reviews);
-
-    renderView(currentUser, reviews);
+    posts = reviews;
+    renderView(currentUser, posts);
   } catch (err) {
     console.error(err);
   }
