@@ -141,21 +141,17 @@
         <form id="editProfileForm">
 
           <!-- Foto -->
-          <div class="mb-3 text-center">
-            <img id="preview-photo" src="ruta/foto-perfil.jpg" alt="Foto actual" class="rounded-circle mb-2" width="80" height="80">
-            <input type="file" id="profilePhoto" class="form-control" accept="image/*">
-          </div>
 
           <!-- Nombre -->
           <div class="mb-3">
             <label for="profileName" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="profileName" placeholder="Nombre de usuario">
+            <input id="editName" type="text" class="form-control" id="profileName" placeholder="Nombre de usuario">
           </div>
 
           <!-- Descripción -->
           <div class="mb-3">
             <label for="profileDescription" class="form-label">Descripción</label>
-            <textarea class="form-control" id="profileDescription" rows="2" placeholder="Descripción breve"></textarea>
+            <textarea id="editDescription" class="form-control" id="profileDescription" rows="2" placeholder="Descripción breve"></textarea>
           </div>
 
         </form>
