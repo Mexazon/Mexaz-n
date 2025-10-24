@@ -31,7 +31,7 @@ export async function updateBusiness(businessId, updateData) {
 
 export async function updateUserPartial(userId, updates) {
   try {
-    const response = await fetch(`${API_BASE_URL}/${userId}`, {
+    const response = await fetch(`${API_BASE_URL}/users/${userId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updates)
@@ -49,7 +49,7 @@ export async function updateUserPartial(userId, updates) {
 
 export async function createOrUpdateAddress(userId, addressData) {
   try {
-    const response = await fetch(`${API_BASE_URL}/${userId}/address`, {
+    const response = await fetch(`${API_BASE_URL}/users/${userId}/address`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(addressData)
