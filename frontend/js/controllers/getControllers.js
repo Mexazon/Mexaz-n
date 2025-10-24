@@ -451,3 +451,4 @@ export async function getTopBusinesses(userId, page = 0, size = 20) {
 async function safeJson(res) {
   try { return await res.json(); } catch { return null; }
 }
+
