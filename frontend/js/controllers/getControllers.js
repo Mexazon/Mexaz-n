@@ -1,8 +1,7 @@
-/** 
+/**
  * Configuración global de endpoints
-**/
+ **/
 export const API_BASE_URL = "http://localhost:8080/api";
-
 
 /** Obtener usuario por ID: GET /api/users/{userId} */
 export async function getUserById(userId) {
@@ -36,19 +35,21 @@ export async function checkEmailExists(email) {
   }
 }
 
-/** 
+/**
  * PostalCodeCatalogController
-**/
+ **/
 
 /**
  * GET → Obtiene todas las colonias asociadas a un código postal.
- * 
+ *
  * @param {string} postalCode - El código postal a consultar.
  * @returns {Promise<object>} - Objeto con el código postal y lista de colonias.
  */
 export async function getColoniasByPostalCode(postalCode) {
   try {
-    const response = await fetch(`${API_BASE_URL}/postal-code-catalog?postalCode=${postalCode}`);
+    const response = await fetch(
+      `${API_BASE_URL}/postal-code-catalog?postalCode=${postalCode}`
+    );
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.message || "Error al consultar código postal");
@@ -76,9 +77,8 @@ export async function getBusinessById(businessId) {
     if (!response.ok) throw new Error("Error obteniendo negocio");
 
     const business = await response.json();
-    
-    return business;
 
+    return business;
   } catch (error) {
     return null;
   }
@@ -86,7 +86,7 @@ export async function getBusinessById(businessId) {
 
 /**
  * GET → Obtiene una entrada específica del catálogo (código postal + colonia).
- * 
+ *
  * @param {string} postalCode - Código postal.
  * @param {string} colonia - Nombre exacto de la colonia.
  * @returns {Promise<object>} - Objeto con postalCode, colonia y alcaldía.
@@ -94,7 +94,9 @@ export async function getBusinessById(businessId) {
 export async function getExactPostalEntry(postalCode, colonia) {
   try {
     const encodedColonia = encodeURIComponent(colonia.trim());
-    const response = await fetch(`${API_BASE_URL}/postal-code-catalog/${postalCode}/${encodedColonia}`);
+    const response = await fetch(
+      `${API_BASE_URL}/postal-code-catalog/${postalCode}/${encodedColonia}`
+    );
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.message || "Entrada no encontrada");
@@ -106,14 +108,13 @@ export async function getExactPostalEntry(postalCode, colonia) {
   }
 }
 
-
-/** 
+/**
  * MenuCategoryController
-**/
+ **/
 
 /**
  * GET → Obtiene todas las categorías de menú disponibles.
- * 
+ *
  * @returns {Promise<Array>} - Lista completa de categorías de menú.
  */
 export async function getAllMenuCategories() {
@@ -129,17 +130,16 @@ export async function getAllMenuCategories() {
   }
 }
 
-
-/** 
+/**
  * DishController
-**/
+ **/
 
 /**
  * GET → Obtiene un platillo específico por su ID.
- * 
+ *
  * @param {number} dishId - Identificador del platillo.
  * @returns {Promise<object>} - Objeto con los datos del platillo.
- * 
+ *
  * Ejemplo:
  * getDishById(12)
  *   .then(dish => console.log(dish.dishName))
@@ -159,21 +159,21 @@ export async function getDishById(dishId) {
   }
 }
 
-
 //Obtiene la lista de horarios de operación de un negocio.
 // @param {number} businessId
 // @returns {Promise<Array<Object>|null>} Lista de BusinessHour o null si falla.
 
 export async function getBusinessHours(businessId) {
   try {
-    const response = await fetch(`${API_BASE_URL}/businesses/${businessId}/hours`);
+    const response = await fetch(
+      `${API_BASE_URL}/businesses/${businessId}/hours`
+    );
 
     if (!response.ok) throw new Error("Error obteniendo horarios");
 
     const hours = await response.json();
     console.log("✅ Horarios obtenidos:", hours);
     return hours;
-
   } catch (error) {
     console.error("❌ Error obteniendo horarios:", error.message);
     return null;
@@ -182,16 +182,16 @@ export async function getBusinessHours(businessId) {
 
 /**
  * GET → Lista los platillos filtrados por negocio, categoría, texto o rango de precios.
- * 
+ *
  * @param {object} filters - Filtros de búsqueda.
  * @param {number} filters.businessId - ID del negocio (obligatorio).
  * @param {number} [filters.categoryId] - ID de la categoría (opcional).
  * @param {string} [filters.search] - Texto de búsqueda parcial (opcional).
  * @param {number} [filters.minPrice] - Precio mínimo (opcional).
  * @param {number} [filters.maxPrice] - Precio máximo (opcional).
- * 
+ *
  * @returns {Promise<Array>} - Lista de platillos que cumplen los filtros.
- * 
+ *
  * Ejemplo:
  * getFilteredDishes({ businessId: 3, search: "taco", minPrice: 20, maxPrice: 60 })
  *   .then(dishes => console.log(dishes))
@@ -223,14 +223,15 @@ export async function getFilteredDishes(filters) {
  */
 export async function getHoursByBusiness(businessId) {
   try {
-    const response = await fetch(`${API_BASE_URL}/business-hours/${businessId}`);
+    const response = await fetch(
+      `${API_BASE_URL}/business-hours/${businessId}`
+    );
 
     if (!response.ok) throw new Error("Error obteniendo horarios del negocio");
 
     const hours = await response.json();
     console.log("✅ Horarios del negocio:", hours);
     return hours;
-
   } catch (error) {
     console.error("❌ Error obteniendo horarios del negocio:", error.message);
     return null;
@@ -245,7 +246,9 @@ export async function getHoursByBusiness(businessId) {
  */
 export async function getHourByDay(businessId, dayOfWeek) {
   try {
-    const response = await fetch(`${API_BASE_URL}/business-hours/${businessId}/${dayOfWeek}`);
+    const response = await fetch(
+      `${API_BASE_URL}/business-hours/${businessId}/${dayOfWeek}`
+    );
 
     if (response.status === 404) return null; // no existe
     if (!response.ok) throw new Error("Error obteniendo horario por día");
@@ -253,7 +256,6 @@ export async function getHourByDay(businessId, dayOfWeek) {
     const hour = await response.json();
     console.log(`✅ Horario de ${dayOfWeek}:`, hour);
     return hour;
-
   } catch (error) {
     console.error("❌ Error obteniendo horario por día:", error.message);
     return null;
@@ -357,7 +359,9 @@ export async function getFeedPosts(page = 0, size = 10) {
  */
 export async function getBusinessRating(businessId) {
   try {
-    const response = await fetch(`${API_BASE_URL}/businesses/${businessId}/rating`);
+    const response = await fetch(
+      `${API_BASE_URL}/businesses/${businessId}/rating`
+    );
     if (!response.ok) throw new Error("Error fetching business rating");
     return await response.json();
   } catch (err) {
@@ -365,8 +369,6 @@ export async function getBusinessRating(businessId) {
     throw err;
   }
 }
-
-
 
 /* ============================================================
    🟩 GET /api/businesses/search
@@ -384,35 +386,60 @@ export async function searchBusinesses({
   categories = [],
   page = 0,
   size = 20,
-  sort = "name,asc"
+  sort = "", // <- antes: "name,asc"
 } = {}) {
   try {
-    // Construcción dinámica de parámetros de consulta
     const params = new URLSearchParams();
 
     if (q) params.append("q", q);
     if (alcaldia) params.append("alcaldia", alcaldia);
     if (categories.length > 0) {
-      categories.forEach(cat => params.append("categories", cat));
+      categories.forEach((cat) => params.append("categories", cat));
     }
     params.append("page", page);
     params.append("size", size);
-    params.append("sort", sort);
+    if (sort) params.append("sort", sort);
 
-    const response = await fetch(`${API_BASE_URL}/businesses/search?${params.toString()}`);
+    // 🟡 --- LOGS DE DEPURACIÓN ---
+    console.group("🔎 searchBusinesses()");
+    console.log("➡ Parámetros enviados:", {
+      q,
+      alcaldia,
+      categories,
+      page,
+      size,
+      sort,
+    });
+    console.log("➡ Query final:", params.toString());
+    console.log(
+      "➡ URL completa:",
+      `${API_BASE_URL}/businesses/search?${params.toString()}`
+    );
+
+    const response = await fetch(
+      `${API_BASE_URL}/businesses/search?${params.toString()}`
+    );
+    console.log("📡 Estado HTTP:", response.status, response.statusText);
 
     if (!response.ok) {
-      throw new Error(`Error ${response.status}: No se pudo obtener resultados`);
+      const errorText = await response.text();
+      console.error("❌ Error HTTP recibido:", response.status, errorText);
+      throw new Error(
+        `Error ${response.status}: No se pudo obtener resultados`
+      );
     }
 
     const data = await response.json();
-    return data; // Devuelve el Page<BusinessCard>
+    console.log("🟢 Datos recibidos del backend:", data);
+    console.groupEnd();
+
+    return data; // Page<BusinessCard>
   } catch (error) {
     console.error("❌ Error en searchBusinesses:", error);
+    console.groupEnd?.();
     return null;
   }
 }
-
 
 /* ============================================================
    🟦 GET /api/businesses/top
@@ -429,13 +456,17 @@ export async function getTopBusinesses(userId, page = 0, size = 20) {
     const params = new URLSearchParams({
       userId: userId,
       page: page,
-      size: size
+      size: size,
     });
 
-    const response = await fetch(`${API_BASE_URL}/businesses/top?${params.toString()}`);
+    const response = await fetch(
+      `${API_BASE_URL}/businesses/top?${params.toString()}`
+    );
 
     if (!response.ok) {
-      throw new Error(`Error ${response.status}: No se pudo obtener los negocios destacados`);
+      throw new Error(
+        `Error ${response.status}: No se pudo obtener los negocios destacados`
+      );
     }
 
     const data = await response.json();
@@ -446,8 +477,11 @@ export async function getTopBusinesses(userId, page = 0, size = 20) {
   }
 }
 
-
 /* Utilidad para evitar fallos al leer JSON en errores */
 async function safeJson(res) {
-  try { return await res.json(); } catch { return null; }
+  try {
+    return await res.json();
+  } catch {
+    return null;
+  }
 }
