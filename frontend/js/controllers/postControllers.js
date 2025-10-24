@@ -7,24 +7,34 @@ const BASE_URL_BUSINESS_HOURS = API_BASE_URL + "/business-hours";
 
 
 
-/** Crear usuario: POST /api/users */
+/**
+ * Crea un nuevo usuario en la API.
+ * @param {Object} newUser - Objeto con los datos del usuario a crear.
+ * @returns {Promise<Object>} - Devuelve el ID del usuario creado y el mensaje del servidor.
+ */
 export async function createUser(newUser) {
   try {
-    const response = await fetch(`${API_BASE_URL}users`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newUser),
+    const response = await fetch(`${API_BASE_URL}/users`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newUser)
     });
 
     if (!response.ok) {
-      const error = await safeJson(response);
-      throw new Error(error?.message || "Error creating user");
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Error al crear el usuario');
     }
 
-    return await response.json();
-  } catch (err) {
-    console.error("❌ createUser:", err.message);
-    throw err;
+    // Si todo sale bien, devuelve el cuerpo de la respuesta con el userId y el mensaje
+    const result = await response.json();
+    console.log('✅ Usuario creado:', result);
+    return result;
+
+  } catch (error) {
+    console.error('❌ Error en createUser:', error);
+    throw error;
   }
 }
 

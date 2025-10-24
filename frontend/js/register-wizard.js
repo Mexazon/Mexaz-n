@@ -1,8 +1,9 @@
     import {preview}  from "./ScheduleValidation.js";
     import { update } from "./ScheduleValidation.js";
     import {isScheduleValid} from "./ScheduleValidation"
-    import {Business,UserCostumer} from "./classes.js";
-    import {existentUsers} from "./loadData.js"
+    import {User, Business} from "./model-classes.js";
+    import {getColoniasByPostalCode, checkEmailExists} from "./controllers/getControllers.js"
+    import {createUser,createBusiness} from "./controllers/postControllers.js"
 
     // Asegura que el DOM esté listo
     if (document.readyState === "loading") {
@@ -73,21 +74,56 @@
             btnFinish.classList.toggle("d-none", !isLast);
         }
         
+        async function fillSelects(cp){
+            const address = await getColoniasByPostalCode(cp);
+            if(address != null){
+                ciudadRegistroEl.value = `${address[0].colonia}, ${address[0].alcaldia}`
+            }
+            else{
+                ciudadRegistroEl.value = "Codigo postal no encontrado"
+            }
+        }
 
-        codigoPostalRegistroEl.addEventListener('input',() => {
-            
-        })
+        codigoPostalRegistroEl.addEventListener('input',function(){
+            if(this.value.length == 5){
+                fillSelects(this.value)
+            }
+            else if(this.value.length >= 5){
+                ciudadRegistroEl.value = "Ingresa un numero valido"
+            }
+        });
 
-
-        function nextFromStep1() {
+        async function nextFromStep1() {
             // Validacion de email
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             const mailOk = emailRegex.test(emailRegistroEl.value.trim()); 
-            
-            if (!mailOk) {
+            let exist
+
+            if(emailRegistroEl.value.trim() != ""){
+                console.log(emailRegistroEl.value)
+                exist = await checkEmailExists(emailRegistroEl.value)
+                console.log(exist)
+            }else{
+                return showStatusRegistro('Ingresa un correo electronico.', 'alert-warning');
+            }
+
+            if (!mailOk){
                 emailRegistroEl.focus();
                 return showStatusRegistro('Revisa tu correo electrónico, parece inválido.', 'alert-warning');
+                
+            }else if(exist){
+                emailRegistroEl.focus();
+                return showStatusRegistro('El email ingresado ya esta registado.', 'alert-warning');
             }
+
+            //Validacion del nombre de usuario
+
+            if (usuarioRegistroEl.value.trim() === '') {
+                usuarioRegistroEl.focus();
+                return showStatusRegistro('El nombre de usuario no puede estar vacío', 'alert-warning');
+            }
+
+
 
             // Validar que la contrasenia tiene una longitude de minimo 8 caracteres
             const passOk = passwordEl.value.trim().length >= 8;
@@ -108,20 +144,11 @@
                 return showStatusRegistro('El código postal debe tener 5 dígitos.', 'alert-warning');
             }
 
-            //Validacion de codigo postal
-
-
-
-
-
-
-            //Validacion del nombre de usuario
-
-            if (usuarioRegistroEl.value.trim() === '') {
+            if (coloniaRegistroEl.value.trim() === '') {
                 usuarioRegistroEl.focus();
-                return showStatusRegistro('El nombre de usuario no puede estar vacío', 'alert-warning');
+                return showStatusRegistro('Ingresa tu calle', 'alert-warning');
             }
-
+            
             si = modal.querySelector("#rSi")?.checked;
             no = modal.querySelector("#rNo")?.checked;
 
@@ -172,16 +199,12 @@
             
         });
         //confirmacion del registro 
-        btnFinish.addEventListener("click", () => {
+        btnFinish.addEventListener("click", async function(){
 
-            if(si){
-                existentUsers.push(new Business(usuarioRegistroEl.value,ciudadRegistroEl.value,codigoPostalRegistroEl.value,emailRegistroEl.value,passwordEl.value,new Date().toISOString().split('T')[0],JSON.parse(localStorage.getItem("businessSchedule"))))
-            }else{
-                existentUsers.push(new UserCostumer(usuarioRegistroEl.value,ciudadRegistroEl.value,codigoPostalRegistroEl.value,emailRegistroEl.value,passwordEl.value,new Date().toISOString().split('T')[0]))
-            }
-            localStorage.removeItem('businessSchedule');
-            localStorage.setItem("registedUsers",JSON.stringify(existentUsers))
-            
+        const role = si ? "business" : "ordinary";
+        const NewUser = await createUser(new User(role,emailRegistroEl.value,"6666666666",usuarioRegistroEl.value,"Nuevo el pueblo",'https://doodleipsum.com/1200x1200?i=68988796ecff7ce49d335d7e1f04e8ea',passwordEl.value))    
+            console.log(localStorage.getItem("businessSchedule"));
+        if(role == "business")await createBusiness(new Business(NewUser.userId,true,JSON.parse(localStorage.getItem('businessSchedule'))));
         });
 
     // Evita submit accidental con Enter en pasos intermedios

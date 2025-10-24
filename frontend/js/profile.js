@@ -1,6 +1,7 @@
 import {renderPepperRating} from "./peppers-rendering.js";
 import {getUserById} from "./controllers/getControllers.js"
 import {listUserPosts} from "./controllers/getControllers.js"
+import {getTimeAgo} from "./dateUtils.js";
 
 const params = new URLSearchParams(window.location.search);
 const currentUserId = params.get('id');
@@ -38,7 +39,7 @@ function renderView(currentUser,currentReview){
               </div>
             </div>
             <div class="border-top px-3 py-2 d-flex justify-content-between text-muted small">
-                <span>${currentUser.createdAt}</span>
+                <span>Miembro ${getTimeAgo(currentUser.createdAt)}</span>
                 <span><i class="bi bi-geo-alt"></i> ${currentUser.city}, México</span>
             </div>
         </div> 
@@ -89,7 +90,7 @@ function renderView(currentUser,currentReview){
                     <div class="pepper-rating" aria-label="picante"></div>
                     <p class="mt-2 mb-2 small text-muted review-text">${review.descripcion}</p>
                     <div class="d-flex align-items-center gap-3 small flex-wrap">
-                        <span class="text-muted">hace 2 horas</span>
+                        <span class="text-muted">${getTimeAgo(review.createdAt)}</span>
                     </div>
                 </div>
                 </div>
@@ -100,17 +101,19 @@ function renderView(currentUser,currentReview){
     }
 }
 
-document.addEventListener("DOMContentLoaded", async() => {
-    try {
-    const [currentUser, currentReviews] = await Promise.all([
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const [currentUser, page] = await Promise.all([
       getUserById(currentUserId),
-      listUserPosts(currentUserId)
+      listUserPosts(currentUserId) // returns a Page object
     ]);
-    console.log(currentUser)
-    renderView(currentUser, currentReviews);
+
+    const reviews = page?.content ?? []; // <-- make it iterable
+    console.log(reviews);
+
+    renderView(currentUser, reviews);
   } catch (err) {
     console.error(err);
   }
-   
 });
 

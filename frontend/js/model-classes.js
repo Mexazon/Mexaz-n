@@ -1,12 +1,12 @@
-class User{
-    constructor(userType,email,phone,name,description,avatarUrl){
+export class User{
+    constructor(userType,email,phone,name,description,avatarUrl,password){
         this.userType=userType;
         this.email=email;
         this.phone=phone;
         this.name=name;
         this.description=description;
-        this.createdAt=createdAt;
         this.avatarUrl=avatarUrl;
+        this.password = password;
     }
 }
 
@@ -23,10 +23,10 @@ export class Dish{
 }
 
 export class Business {
-    constructor(businessId,isActive){
+    constructor(businessId,isActive,businessHours){
         this.businessId=businessId; 
         this.isActive=isActive;
-        this.user;
+        this.businessHours=businessHours    ;
     }
 }
 
@@ -81,8 +81,8 @@ export class UserAddress {
 }
 
 export class BusinessHours {
-    constructor(businessId,timeIn,timeOut,isWorking){
-        this.businessId=businessId;
+    constructor(dayOfWeek, timeIn,timeOut,isWorking){
+        this.dayOfWeek = dayOfWeek;
         this.timeIn=timeIn;
         this.timeOut=timeOut;
         this.isWorking=isWorking;
@@ -90,10 +90,5 @@ export class BusinessHours {
     }
 }
 
-export class BusinessHoursId {
-    constructor(businessId,dayOfWeek){
-        this.businessId=businessId;
-        this.dayOfWeek=dayOfWeek; 
-    }
-}
+
 
