@@ -100,17 +100,19 @@ function renderView(currentUser,currentReview){
     }
 }
 
-document.addEventListener("DOMContentLoaded", async() => {
-    try {
-    const [currentUser, currentReviews] = await Promise.all([
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const [currentUser, page] = await Promise.all([
       getUserById(currentUserId),
-      listUserPosts(currentUserId)
+      listUserPosts(currentUserId) // returns a Page object
     ]);
-    console.log(currentUser)
-    renderView(currentUser, currentReviews);
+
+    const reviews = page?.content ?? []; // <-- make it iterable
+    console.log(reviews);
+
+    renderView(currentUser, reviews);
   } catch (err) {
     console.error(err);
   }
-   
 });
 

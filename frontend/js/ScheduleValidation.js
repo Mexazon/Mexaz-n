@@ -111,18 +111,18 @@ import { BusinessHours } from "./model-classes.js";
     }
 
     export function isScheduleValid(scheduleArray) {
-      // scheduleArray is your 7-element array of { opening, closing }
-      return scheduleArray.every(item => {
-        const { opening, closing } = item;
+        // scheduleArray is your 7-element array of { opening, closing }
+        return scheduleArray.every(item => {
+        const { timeIn, closing } = item;
 
         // Case 1: both empty = valid closed day
-        if (!opening && !closing) return true;
+        if (!timeIn && !timeOut) return true;
 
         // Case 2: one missing = invalid
-        if (!opening || !closing) return false;
+        if (!timeIn || !timeOut) return false;
 
         // Case 3: both present -> must be a valid range
-        return opening < closing;
+        return timeIn < timeOut;
       });
     }
 
