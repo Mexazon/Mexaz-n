@@ -35,19 +35,19 @@ function initializePostalCodes() {
         option.value = place;
         option.textContent = place;
         postalCodeSelect.appendChild(option);
-        
+
     });
 }
 
 // Manejar cambio de código postal
 postalCodeSelect.addEventListener('change', function() {
     const selectedCode = this.value;
-    
+
     if (selectedCode) {
         // Habilitar selector de ubicación
         locationSelect.disabled = false;
         locationSelect.innerHTML = '<option value="">Selecciona un lugar...</option>';
-        
+
         // Cargar lugares correspondientes al código postal
         const places = foodData.filter(business => business.location == selectedCode);
         places.forEach(place => {
@@ -56,7 +56,7 @@ postalCodeSelect.addEventListener('change', function() {
             option.textContent = place.name;
             locationSelect.appendChild(option);
         });
-        
+
         // Resetear pasos posteriores
         resetSubsequentSteps(2);
     } else {

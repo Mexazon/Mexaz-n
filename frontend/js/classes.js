@@ -1,23 +1,19 @@
 import {existentUsers} from "./loadData.js";
 //Construccion del modelo de las resenias "Reviews"
 export class Review{
-    constructor(hours,lugar,calificacion,descripcion,Usuario){
+    constructor(lugar,calificacion,descripcion,Usuario){
         this.idResenia = JSON.parse(localStorage.getItem("publications"))
         ? JSON.parse(localStorage.getItem("publications")).length+1
         : 1;
         this.usuario = Usuario
-        this.hoursAgo = hours
+        this.createdAt = new Date().toISOString()
         this.foto = `https://picsum.photos/seed/${Date.now()*Math.random()}/320/240`
         this.lugar = lugar
         this.calificacion = calificacion
         this.descripcion = descripcion
-     
+
     }
 }
-
-//Aniadir un metodo para calcular un metodo para calcular el tiempo desde que se creo la review hasta el presente
-//si fue hace menos de 24hrs mostrar en horas, su fue en menos de 30 dias mostrar en dias, si fue hace mas de 30 diqs, contar por meses
-//Eliminar el paramentro de horas y remplazarlo por 'fecha de cracion' Debe almacenar el dia que se creo el post
 
 
 class User{

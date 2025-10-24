@@ -2,6 +2,7 @@
 import { Review } from "./classes.js";
 import  {resetForm,reviewForm}  from "./modal-form.js";
 import {renderPepperRating} from "./peppers-rendering.js";
+import {getTimeAgo} from "./dateUtils.js";
 
 //objeto usuario basico (Cambiar al modelo establecido en el UML)"
 const user = JSON.parse(localStorage.getItem("logedUser"));
@@ -23,15 +24,15 @@ reviewForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const formData = new FormData(reviewForm);
 
-    post=new Review(2,formData.get("puesto"),formData.get("rating"),formData.get("resenia"),user.id);
+    post=new Review(formData.get("puesto"),formData.get("rating"),formData.get("resenia"),user.id);
     /* postsList.push(post); */
-    postsList.unshift(post);  
+    postsList.unshift(post);
     localStorage.setItem("publications", JSON.stringify(postsList));
 
     renderReview(post, "col-12", list);
         //Enviar datos al modelo
     resetForm();
-    
+
 });
 
 //Funcion agarra los objetos tipo Review del arreglo posts y los inserta en un string html para luego ser insertado en el div "Reviews"
@@ -69,7 +70,7 @@ function renderReview(r,size,container){
       <p class="mt-2 mb-2 small text-muted review-text">${r.descripcion}</p>
 
       <div class="d-flex align-items-center gap-3 small flex-wrap">
-        <span class="text-muted">hace 2 horas</span>
+        <span class="text-muted">${getTimeAgo(r.createdAt)}</span>
       </div>
     </div>
   </div>
