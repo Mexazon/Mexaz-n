@@ -3,7 +3,7 @@
     import {isScheduleValid} from "./ScheduleValidation"
     import {Business,UserCostumer} from "./classes.js";
     import {existentUsers} from "./loadData.js"
-
+    import {getColoniasByPostalCode, checkEmailExists} from "./controllers/getControllers.js"
     // Asegura que el DOM esté listo
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", init);
@@ -73,21 +73,56 @@
             btnFinish.classList.toggle("d-none", !isLast);
         }
         
+        async function fillSelects(cp){
+            const address = await getColoniasByPostalCode(cp);
+            if(address != null){
+                ciudadRegistroEl.value = `${address[0].colonia}, ${address[0].alcaldia}`
+            }
+            else{
+                ciudadRegistroEl.value = "Codigo postal no encontrado"
+            }
+        }
 
-        codigoPostalRegistroEl.addEventListener('input',() => {
-            
-        })
+        codigoPostalRegistroEl.addEventListener('input',function(){
+            if(this.value.length == 5){
+                fillSelects(this.value)
+            }
+            else if(this.value.length >= 5){
+                ciudadRegistroEl.value = "Ingresa un numero valido"
+            }
+        });
 
-
-        function nextFromStep1() {
+        async function nextFromStep1() {
             // Validacion de email
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             const mailOk = emailRegex.test(emailRegistroEl.value.trim()); 
-            
-            if (!mailOk) {
+            let exist
+
+            if(emailRegistroEl.value.trim() != ""){
+                console.log(emailRegistroEl.value)
+                exist = await checkEmailExists(emailRegistroEl.value)
+                console.log(exist)
+            }else{
+                return showStatusRegistro('Ingresa un correo electronico.', 'alert-warning');
+            }
+
+            if (!mailOk){
                 emailRegistroEl.focus();
                 return showStatusRegistro('Revisa tu correo electrónico, parece inválido.', 'alert-warning');
+                
+            }else if(exist){
+                emailRegistroEl.focus();
+                return showStatusRegistro('El email ingresado ya esta registado.', 'alert-warning');
             }
+
+            //Validacion del nombre de usuario
+
+            if (usuarioRegistroEl.value.trim() === '') {
+                usuarioRegistroEl.focus();
+                return showStatusRegistro('El nombre de usuario no puede estar vacío', 'alert-warning');
+            }
+
+
 
             // Validar que la contrasenia tiene una longitude de minimo 8 caracteres
             const passOk = passwordEl.value.trim().length >= 8;
@@ -108,20 +143,11 @@
                 return showStatusRegistro('El código postal debe tener 5 dígitos.', 'alert-warning');
             }
 
-            //Validacion de codigo postal
-
-
-
-
-
-
-            //Validacion del nombre de usuario
-
-            if (usuarioRegistroEl.value.trim() === '') {
+            if (coloniaRegistroEl.value.trim() === '') {
                 usuarioRegistroEl.focus();
-                return showStatusRegistro('El nombre de usuario no puede estar vacío', 'alert-warning');
+                return showStatusRegistro('Ingresa tu calle', 'alert-warning');
             }
-
+            
             si = modal.querySelector("#rSi")?.checked;
             no = modal.querySelector("#rNo")?.checked;
 

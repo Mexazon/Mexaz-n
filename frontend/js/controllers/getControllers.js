@@ -56,8 +56,7 @@ export async function getColoniasByPostalCode(postalCode) {
     const data = await response.json();
     return data.colonias ?? data; // return the array if present, else raw data
   } catch (error) {
-    console.error("❌ Error en getColoniasByPostalCode:", error);
-    throw error;
+    return null;
   }
 }
 /**
@@ -276,6 +275,7 @@ export async function getUserAddress(userId) {
     throw err;
   }
 }
+
 
 /**
  * 📘 Obtener una reseña por su ID
