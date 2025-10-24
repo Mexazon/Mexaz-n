@@ -322,7 +322,7 @@ export async function listBusinessPosts(businessId, page = 0, size = 10) {
 export async function listUserPosts(authorUserId, page = 0, size = 10) {
   try {
     const response = await fetch(
-      `${API_BASE_URL}users/${authorUserId}/posts?page=${page}&size=${size}`
+      `${API_BASE_URL}/users/${authorUserId}/posts?page=${page}&size=${size}`
     );
     if (!response.ok) throw new Error("Error fetching user posts");
     return await response.json();

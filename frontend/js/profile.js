@@ -1,39 +1,31 @@
 import {renderPepperRating} from "./peppers-rendering.js";
-import {existentUsers} from "./loadData.js";
+import {getUserById} from "./controllers/getControllers.js"
+import {listUserPosts} from "./controllers/getControllers.js"
 
 const params = new URLSearchParams(window.location.search);
 const currentUserId = params.get('id');
-
-let currentUser;
 
 
 let btn;
 
 if(localStorage.getItem("userId") == currentUserId){
-    btn = '<button data-bs-toggle="modal" data-bs-target="#editprofile" class="btn btn-outline-secondary btn-sm">Editar Perfil</button>';
-    currentUser = logedUser; 
+    btn = '<button data-bs-toggle="modal" data-bs-target="#editprofile" class="btn btn-outline-secondary btn-sm">Editar Perfil</button>';  
 }
 else{
-    btn=" ";
-    currentUser = existentUsers.find(u => u.id == currentUserId)
+    btn=" ";   
 }
 
 
-const publications = JSON.parse(localStorage.getItem("publications")) || [];
 
-const currentReviews = currentUser
-  ? publications.filter(card => card.usuario.id === currentUser.id)
-  : [];
-
-document.addEventListener("DOMContentLoaded", () => {
+function renderView(currentUser,currentReview){
     let profileReviews = document.getElementById("user-posts");
     const profileContent = document.getElementById("profile-data");
     profileContent.innerHTML = `
         <div class="card shadow-sm mb-3 h-75 d-flex flex-column justify-content-center">
             <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
-              <img src="${currentUser.avatar}" class="rounded-circle mb-3" alt="Profile" width="100" height="100">
+              <img src="${currentUser.avatarUrl}" class="rounded-circle mb-3" alt="Profile" width="300" height="300">
               <h4 class="mb-1">${currentUser.name}</h4>
-              <p class="text-muted mb-3">${currentUser.bioDescription}</p>
+              <p class="text-muted mb-3">${currentUser.description}</p>
 
               <div class="d-flex align-items-center justify-content-center mb-3">
                 <div class="px-3">
@@ -46,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
             </div>
             <div class="border-top px-3 py-2 d-flex justify-content-between text-muted small">
-                <span>${currentUser.dateRegistered}</span>
+                <span>${currentUser.createdAt}</span>
                 <span><i class="bi bi-geo-alt"></i> ${currentUser.city}, México</span>
             </div>
         </div> 
@@ -67,17 +59,17 @@ document.addEventListener("DOMContentLoaded", () => {
     `;  
 
     renderPepperRating(profileContent.querySelector('.pepper-rating'), 5, 5);   
-    let currentReview;
+    let current;
 
-    for(let review of currentReviews){
+    for(let review of currentReview){
         
-        currentReview = document.createElement('div');
+        current = document.createElement('div');
         
-        currentReview.innerHTML =`
+        current.innerHTML =`
             <div class="card shadow-sm mb-3 border border-dark-subtle bg-cebolla card-review">
                 <div class="card-header">
                     <div class="d-flex align-items-center gap-2 mb-1 flex-wrap text-truncate">
-                    <img src="${currentUser.avatar}" 
+                    <img src="${currentUser.avatarUrl}" 
                         alt="avatar" 
                         class="rounded-circle" 
                         style="width:28px; height:28px; object-fit:cover;">
@@ -103,9 +95,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>`
             
-  renderPepperRating(currentReview.querySelector('.pepper-rating'), review.calificacion, 5);      
-  profileReviews.prepend(currentReview)
+    renderPepperRating(current.querySelector('.pepper-rating'), review.calificacion, 5);      
+    profileReviews.prepend(current);
     }
-    
+}
+
+document.addEventListener("DOMContentLoaded", async() => {
+    try {
+    const [currentUser, currentReviews] = await Promise.all([
+      getUserById(currentUserId),
+      listUserPosts(currentUserId)
+    ]);
+    console.log(currentUser)
+    renderView(currentUser, currentReviews);
+  } catch (err) {
+    console.error(err);
+  }
+   
 });
 

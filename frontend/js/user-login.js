@@ -1,5 +1,3 @@
-import {existentUsers} from "./loadData.js";
-import {setLogedUser} from "./loadData.js";
 import {login} from "./controllers/postControllers.js"
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -30,7 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // valida inicio de sesión si los datos coinciden
     loginError.classList.add("d-none");
-    localStorage.setItem(logedUser);
+    localStorage.setItem("userId", logedUser.userId);
+    localStorage.setItem("userType", logedUser.userType);
     window.location.href = "./feed.html"; // redirige si todo es correcto
   });
 

@@ -5,9 +5,7 @@ function getExistentUsers(){
     return registedUsers; 
 }
 
-export function setLogedUser(users){
-    localStorage.setItem("logedUser",JSON.stringify(users));
-}
+
 
 export function getLogedUser(){
     return JSON.parse(localStorage.getItem("logedUser"))
