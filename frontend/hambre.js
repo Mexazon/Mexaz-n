@@ -5,11 +5,9 @@ import '../sass/custom.scss';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 // CSS principal
-import './css/styles.css';
+import './css/loged.css';
+import './css/hambre.css';
 
 // Scripts
-import './js/formulario.js';
-import './js/register-wizard.js';
-import './js/ScheduleValidation.js';
-import './js/loadData.js'
-import './js/user-login.js'
+import './js/menusearch.js';
+import './js/load-sidebar.js'

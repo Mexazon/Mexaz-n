@@ -9,13 +9,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Varta:wght@300..700&family=Wellfleet&display=swap" rel="stylesheet">
     
+    //conexion a SELECT2
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
 
 
 <!-- TU CSS (sirve cualquiera de las 2 formas; usa UNA) -->
 <link rel="stylesheet" href="/css/styles.css">   <!-- ✅ -->
 
 </head>
-<body>
+<body class="landing">
     <!-- Barra de navegación --> 
     <header> 
         <div class="menu container">
@@ -49,44 +52,49 @@
         </div>
 
         <!-- Modal Inicio de Sesión -->
-        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginTitle" aria-hidden="true">
-            <div class="modal-dialog modal-xl modal-dialog-centered">
-                <div class="modal-content border-0 rounded-3 overflow-hidden shadow-lg">
-                <button type="button" class="btn-close position-absolute end-0 m-3"
-                        data-bs-dismiss="modal" aria-label="Cerrar"></button>
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginTitle" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content border-0 rounded-3 overflow-hidden shadow-lg">
+      <button type="button" class="btn-close position-absolute end-0 m-3"
+              data-bs-dismiss="modal" aria-label="Cerrar"></button>
 
-                <div class="row g-0">
-                    <div class="col-md-6 bg-queso text-white p-4 p-md-5 d-flex flex-column justify-content-center">
-                    <h2 id="loginTitle" class="wellfleet-regular text-uppercase mb-4">Iniciar sesión</h2>
+      <div class="row g-0">
+        <div class="col-md-6 bg-queso text-white p-4 p-md-5 d-flex flex-column justify-content-center">
+          <h2 id="loginTitle" class="wellfleet-regular text-uppercase mb-4">Iniciar sesión</h2>
 
-                    <form>
-                        <div class="mb-3">
-                        <input type="text" class="form-control form-control-mex" placeholder="Usuario">
-                        </div>
-                        <div class="mb-3">
-                        <input type="password" class="form-control form-control-mex" placeholder="Contraseña">
-                        </div>
-
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="rememberMe">
-                            <label class="form-check-label" for="rememberMe">Recordarme siempre</label>
-                        </div>
-                        <a href="#" class="link-light text-decoration-none small">¿Olvidaste la contraseña?</a>
-                        </div>
-
-                        <button class="btn btn-mex btn-nopal text-white wellfleet-regular w-100">Entrar</button>
-                    </form>
-                    </div>
-
-                    <div class="col-md-6 bg-white d-flex align-items-center justify-content-center p-4 p-md-5">
-                    <img src="assets/landing/dorilocos.png" class="img-fluid" alt="Vendedora de dorilocos">
-                    </div>
-                </div>
-                </div>
+          <!-- Agrego id al formulario -->
+          <form id="loginForm">
+            <div class="mb-3">
+              <input type="text" id="loginUser" class="form-control form-control-mex" placeholder="Usuario">
             </div>
+            <div class="mb-3">
+              <input type="password" id="loginPassword" class="form-control form-control-mex" placeholder="Contraseña">
+            </div>
+
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="rememberMe">
+                <label class="form-check-label" for="rememberMe">Recordarme siempre</label>
+              </div>
+              <a href="#" class="link-light text-decoration-none small">¿Olvidaste la contraseña?</a>
+            </div>
+
+            <!-- Cambié a submit -->
+            <button type="submit" class="btn btn-mex btn-nopal text-white wellfleet-regular w-100">Entrar</button>
+          </form>
+
+          <!-- Contenedor para errores -->
+          <div id="loginError" class="alert alert-danger mt-3 d-none"></div>
         </div>
-    
+
+        <div class="col-md-6 bg-white d-flex align-items-center justify-content-center p-4 p-md-5">
+          <img src="assets/landing/dorilocos.png" class="img-fluid" alt="Vendedora de dorilocos">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
         <!-- Modal Registro -->
         <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerTitle" aria-hidden="true">
             <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -104,103 +112,109 @@
                             <h2 id="registerTitle" class="wellfleet-regular text-uppercase mb-4">Regístrate</h2>
 
                             <section class="wizard-step" data-step="1">
-                                <div class="mb-3">
-                                <input type="text" class="form-control form-control-mex" placeholder="Nombre de tu negocio">
-                                </div>
-                                <div class="row g-3 mb-3">
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control form-control-mex" placeholder="Correo electrónico">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="tel" class="form-control form-control-mex" placeholder="Teléfono">
-                                </div>
-                                </div>
-                                <div class="row g-3 mb-3">
-                                <div class="col-md-6">
-                                    <input type="password" class="form-control form-control-mex" placeholder="Contraseña">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="password" class="form-control form-control-mex" placeholder="Confirma tu contraseña">
-                                </div>
-                                </div>
 
+                             
+                                <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <input type="usuarioRegistro" id="emailRegistro" class="form-control form-control-mex" placeholder="Correo electrónico">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" id="usuarioRegistro" class="form-control form-control-mex" placeholder="Nombre de usuario">
+                                </div>
+                                </div>
+                                <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <input type="password"
+                                    id="passwordRegistro" class="form-control form-control-mex" placeholder="Contraseña">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="password"
+                                    id="passwordRegistroConfirmacion"
+                                    class="form-control form-control-mex" placeholder="Confirma tu contraseña">
+                                </div>
+                                </div>
+                                <div class="row g-3 mb-3"> 
+                                <div class="col-md-6">
+                                    <input disabled type="email" id="ciudadRegistro" class="form-control form-control-mex" placeholder="Pon tu codigo postal">
+                                </div> 
+                                <div class="col-md-6"> 
+                                    <input type="tel" id="codigoPostalRegistro" class="form-control form-control-mex" placeholder="C.P."> 
+                                </div> 
+                                <div class="col-md-6"> 
+                                    <input type="tel" id="coloniaRegistro" class="form-control form-control-mex" placeholder="Calle"> 
+                                </div> 
+                                </div>
                                 <label class="d-block mb-3">¿Eres un puesto?</label>
                                 <div class="btn-group" role="group">
-                                <input type="radio" class="btn-check" name="esPuesto" id="rSi" autocomplete="off" value="si">
-                                <label class="btn btn-light" for="rSi">Sí</label>
-
-                                <input type="radio" class="btn-check" name="esPuesto" id="rNo" autocomplete="off" value="no">
-                                <label class="btn btn-light" for="rNo">No</label>
+                                    <input type="radio" class="btn-check" name="esPuesto" id="rSi" autocomplete="off" value="si">
+                                    <label class="btn btn-light" for="rSi">Sí</label>
+                                        
+                                    <input type="radio" class="btn-check" name="esPuesto" id="rNo" autocomplete="off" value="no">
+                                    <label class="btn btn-light" for="rNo">No</label>
                                 </div>
                             </section>
 
-                            <section class="wizard-step d-none" data-step="2a">
+                            <section class="wizard-step d-none"     data-step="2a">
                                 <p class="mb-3">Configura tus horarios:</p>
                                 <div class="vstack gap-2">
                                     <div class="d-flex gap-2 align-items-center">
                                         <span class="w-25">Lunes</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex"id="LunesA">
                                         <span>a</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex"id="LunesB">
                                     </div>
                                     <div class="d-flex gap-2 align-items-center">
                                         <span class="w-25">Martes</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="MartesA">
                                         <span>a</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="MartesB">
                                     </div>
                                     <div class="d-flex gap-2 align-items-center">
                                         <span class="w-25">Miércoles</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="MiercolesA">
                                         <span>a</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="MiercolesB">
                                     </div>
                                     <div class="d-flex gap-2 align-items-center">
                                         <span class="w-25">Jueves</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="JuevesA">
                                         <span>a</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="JuevesB">
                                     </div>
                                     <div class="d-flex gap-2 align-items-center">
                                         <span class="w-25">Viernes</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="ViernesA">
                                         <span>a</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="ViernesB">
                                     </div>
                                     <div class="d-flex gap-2 align-items-center">
                                         <span class="w-25">Sábado</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="SabadoA">
                                         <span>a</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="SabadoB">
                                     </div>
                                     <div class="d-flex gap-2 align-items-center">
                                         <span class="w-25">Domingo</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="DomingoA">
                                         <span>a</span>
-                                        <input type="time" class="form-control form-control-mex">
+                                        <input type="time" class="form-control form-control-mex" id="DomingoB">
                                     </div>
-                                </div>
-                            </section>
-
-                            <section class="wizard-step d-none" data-step="2b">
-                                <p class="mb-3">Cuéntanos un poco más:</p>
-                                <div class="mb-3">
-                                <input type="text" class="form-control form-control-mex" placeholder="Ciudad / Municipio">
-                                </div>
-                                <div class="mb-3">
-                                <input type="text" class="form-control form-control-mex" placeholder="Intereses (tacos, elotes, etc.)">
                                 </div>
                             </section>
 
                             <section class="wizard-step d-none" data-step="3">
                                 <p class="mb-3">Revisa tu información y confirma.</p>
-                                <div class="p-3 bg-white text-dark rounded">Resumen (demo)</div>
+                                <div class="p-3 bg-white text-dark rounded" id="schedulePreview">
+                                    
+                                </div>
                             </section>
 
                             <div class="step-footer">
                                 <button class="btn btn-secondary" id="btnBack">Anterior</button>
                                 <button class="btn btn-warning ms-auto" id="btnNext">Siguiente</button>
-                                <button class="btn btn-nopal text-white d-none wellfleet-regular btn-confirmar" id="btnFinish">Confirmar</button>
+                                <button class="btn btn-nopal text-white d-none wellfleet-regular btn-confirmar btn-secondary" data-bs-dismiss="modal" id="btnFinish">Confirmar</button>
+                            </div>
+                            <div id="registerStatusMessage" style="display: none;" class="mt-3 text-center"></div> <!-- contenedor de mensajes -->
                             </div>
                         </div>
                     </div>
@@ -236,54 +250,65 @@
                         <div id="equipoCarousel" class="carousel slide d-flex flex-column justify-content-center flex-grow-1" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="assets/landing/paty.png" class="d-block w-100 img-card-icon-equipo" alt="Nombre de la persona">
+                                    <img src="./assets/paty2.png" class="d-block w-100 img-card-icon-equipo" alt="Paty foto">
                                     <div class="carousel-caption d-none d-md-block text-dark position-static mt-3">
-                                        <h5>Paty</h5>
-                                        <p>Scrum Master</p>
+                                        <h5>Diana Ham | Scrum Master</h5>
+                                        <p class="card-text varta-16 mb-0">Desarrolladora de Software FullStack con formación en Ingeniería en Computación y experiencia en proyectos empresariales y académicos.</p>
+                                        <a href="https://www.linkedin.com/in/diana-ham//" target="_blank"><img src="./assets/linkedinicono.png" alt="LinkedIn" style="width: 30px; height: 30px;">
+                                        <a href="https://github.com/ham-diana" target="_blank">   <img src="./assets/iconogit.png" alt="GitHub" style="width: 32px; height: 32px;"> </a>
+</a>
                                     </div>
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="assets/landing/fredy.png" class="d-block w-100 img-card-icon-equipo" alt="Nombre de la persona">
+                                    <img src="assets/freddy1.png" class="d-block w-100 img-card-icon-equipo" alt="Freddy foto">
                                     <div class="carousel-caption d-none d-md-block text-dark position-static mt-3">
-                                        <h5>Freddy</h5>
-                                        <p>Diseñador</p>
+                                        <h5>Alfredo Ramirez | Web Developer</h5>
+                                        <p class="card-text varta-16 mb-0">Desarrollador especializado en backend porque disfruto diseñar sistemas sólidos y escalables que conecten datos, procesos y usuarios de forma eficiente.</p> 
+                                        <a href="https://www.linkedin.com/in/alfredo-rn-nz/" target="_blank"><img src="./assets/linkedinicono.png" alt="LinkedIn" style="width: 30px; height: 30px;">
+                                        <a href="https://github.com/Fredyest" target="_blank">   <img src="./assets/iconogit.png" alt="GitHub" style="width: 32px; height: 32px;"> </a>  
                                     </div>
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="assets/landing/andy.png" class="d-block w-100 img-card-icon-equipo" alt="Nombre de la persona">
+                                    <img src="assets/landing/Andy1.png" class="d-block w-100 img-card-icon-equipo" alt="Andy foto">
                                     <div class="carousel-caption d-none d-md-block text-dark position-static mt-3">
-                                        <h5>Andy</h5>
-                                        <p>Desarrolladora FullStack</p>
+                                        <h5>Andrea Reyes | Web Developer</h5>
+                                        <p class="card-text varta-16 mb-0">Desarrolladora web, me interesa contribuir al desarrollo de herramientas interactivas que transformen datos en conocimiento accesible.</p>
+                                        <a href="https://www.linkedin.com/in/andreareyesf/" target="_blank"><img src="./assets/linkedinicono.png" alt="LinkedIn" style="width: 30px; height: 30px;">
+                                        <a href="https://github.com/andreaklls" target="_blank">   <img src="./assets/iconogit.png" alt="GitHub" style="width: 32px; height: 32px;"> </a>
                                     </div>
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="assets/landing/jayco.png" class="d-block w-100 img-card-icon-equipo" alt="Nombre de la persona">
+                                    <img src="./assets/jacov1.png" class="d-block w-100 img-card-icon-equipo" alt="Jacov foto">
                                     <div class="carousel-caption d-none d-md-block text-dark position-static mt-3">
-                                        <h5>Jay Co</h5>
-                                        <p>Desarrollador FullStack</p>
+                                        <h5>Jaime Covarrubias | Web Developer </h5>
+                                        <p class="card-text varta-16 mb-0">Desarrollador front-end apasionado con conocimientos en JavaScript, Angular, HTML, CSS, Selenium y pruebas unitarias.</p>
+                                        <a href="https://www.linkedin.com/in/jacovrom/" target="_blank"><img src="./assets/linkedinicono.png" alt="LinkedIn" style="width: 30px; height: 30px;">
+                                        <a href="https://github.com/jakoobo90" target="_blank">   <img src="./assets/iconogit.png" alt="GitHub" style="width: 32px; height: 32px;"> </a>
+                                        
                                     </div>
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="assets/landing/alvaro.png" class="d-block w-100 img-card-icon-equipo" alt="Nombre de la persona">
+                                    <img src="assets/Alvaro1.png" class="d-block w-100 img-card-icon-equipo" alt="Alvaro foto">
                                     <div class="carousel-caption d-none d-md-block text-dark position-static mt-3">
-                                        <h5>Alvaro</h5>
-                                        <p>Desarrollador FullStack</p>
+                                        <h5>Alvaro Bazan | Web Delevoper </h5>
+                                        <p class="card-text varta-16 mb-0">Profesional en formación en Sistemas Computacionales con preparación en desarrollo de aplicaciones web Full Stack con JavaScript.</p>
+                                        <a href="https://www.linkedin.com/in/alvarobazanjimenez/" target="_blank"><img src="./assets/linkedinicono.png" alt="LinkedIn" style="width: 30px; height: 30px;">
+                                        <a href="https://github.com/AlvaarobjG" target="_blank">   <img src="./assets/iconogit.png" alt="GitHub" style="width: 32px; height: 32px;"> </a>
                                     </div>
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="assets/landing/gio.jpg" class="d-block w-100 img-card-icon-equipo" alt="Nombre de la persona">
+                                    <img src="./assets/gio2.png" class="d-block w-100 img-card-icon-equipo" alt="Gio foto">
                                     <div class="carousel-caption d-none d-md-block text-dark position-static mt-3">
-                                        <h5>Gio</h5>
-                                        <p>Desarrollador FullStack</p>
+
+                                        <h5>Giovanni Esquiliano | Web Developer </h5>
+                                        <p class="card-text varta-16 mb-0">Desarrollador Web con un fuerte interés y dedicación por la programación Backend, enfocado en comprender y diseñar la lógica del proyecto.</p>
+                                        <a href="https://www.linkedin.com/in/sges/" target="_blank"><img src="./assets/linkedinicono.png" alt="LinkedIn" style="width: 30px; height: 30px;">
+                                        <a href="https://github.com/sgio-esso" target="_blank">   <img src="./assets/iconogit.png" alt="GitHub" style="width: 32px; height: 32px;"> </a>
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="carousel-item">
-                                    <img src="assets/landing/lupita.jpeg" class="d-block w-100 img-card-icon-equipo" alt="Nombre de la persona">
-                                    <div class="carousel-caption d-none d-md-block text-dark position-static mt-3">
-                                        <h5>Lupita</h5>
-                                        <p>Desarrollador FullStack</p>
-                                    </div>
-                                </div>
+                                
+=
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#equipoCarousel" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -363,8 +388,6 @@
 
 <!-- Entrada Vite -->
 <script type="module" src="/main.js"></script>   <!-- usa /main.js -->
-
-
 
 </body>
 </html>

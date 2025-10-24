@@ -1,11 +1,24 @@
 import { defineConfig } from 'vite';
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   root: 'frontend',
-  base: '/Mexaz-n/',
+  base: command === 'build' ? '/Mexaz-n/' : '/',  // base=/ in dev, /Mexaz-n/ in build
   build: {
     outDir: '../dist',
-    emptyOutDir: true
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'frontend/index.html'),
+        feed: resolve(__dirname, 'frontend/feed.html'), 
+        hambre: resolve(__dirname, 'frontend/hambre.html'),
+        user_profile: resolve(__dirname, 'frontend/user_profile.html'),
+        business_profile: resolve(__dirname, 'frontend/business_profile.html')// or 'frontend/pages/feed.html'
+      },
+    },
   },
-  server: { open: true }
-});
+  server: { open: true },
+}));
