@@ -8,7 +8,8 @@ import {
     getUserAddress,
     getHoursByBusiness,
     listBusinessPosts,
-    getBusinessRating
+    getBusinessRating,
+    getUserById
 } from './controllers/getControllers.js';
 
 // ... (El DAY_MAP y getBusinessId quedan igual) ...
@@ -74,6 +75,7 @@ function displayHours(hoursData) {
 }
 
 function displayRating(ratingData) {
+    
     // ... (código de la función sin cambios)
     if (!ratingData) return;
     const { averageRating, totalRatings } = ratingData;
@@ -92,16 +94,28 @@ function displayRating(ratingData) {
     }
 }
 
-function displayReviews(postsData) {
-    // ... (código de la función sin cambios)
-    if (!postsData || !postsData.content) return;
-    const reviewsContainer = document.getElementById('reviews');
-    if (!reviewsContainer) return;
-    if (postsData.content.length === 0) {
-        reviewsContainer.innerHTML = '<p class="text-muted">Este negocio aún no tiene reseñas.</p>';
-        return;
-    }
-    reviewsContainer.innerHTML = postsData.content.map(post => {
+async function displayReviews(postsData) {
+    
+
+
+ // 1) Get container safely
+  const reviewsContainer = document.getElementById("reviews");
+  if (!reviewsContainer) {
+    console.warn('⚠️ #reviews not found in DOM');
+    return;
+  }
+
+  // 2) Normalize data: support both an array OR an object with .content
+  const reviews = (Array.isArray(postsData) ? postsData : postsData?.content) ?? [];
+
+  // 3) Empty state
+  if (reviews.length === 0) {
+    reviewsContainer.innerHTML = '<p class="text-muted">No reviews yet.</p>';
+    return;
+  }
+    reviewsContainer.innerHTML = reviews.map(post => {
+    
+        console.log(postUser);
         const postDate = new Date(post.createdAt).toLocaleDateString('es-MX');
         return `
             <div class="col-12 col-md-6">
@@ -172,7 +186,7 @@ function displayBusinessStatus(esDueno, negocioAbierto) {
 // --- Función Principal de Carga (MODIFICADA) ---
 
 async function loadProfileData() {
-    const businessId = getBusinessId();
+    const businessId = await getBusinessId();
     const mainContainer = document.getElementById('business_profile');
     
     // Obtenemos el ID del usuario logueado desde localStorage
@@ -187,7 +201,7 @@ async function loadProfileData() {
             addressData, 
             hoursData, 
             ratingData, 
-            postsData
+            rawPostsData
         ] = await Promise.all([
             // --- ¡CAMBIO IMPORTANTE! ---
             // Ahora también "atrapamos" el error de las llamadas principales
@@ -230,7 +244,8 @@ async function loadProfileData() {
 
         // Obtenemos el estado real del negocio
         const negocioAbierto = businessData.isActive;
-
+        
+        const postsData = rawPostsData?.content ?? []; // <-- make it iterable
         // 1. Mostramos la info principal (que sabemos que existe)
         displayBusinessInfo(businessData);
         displayBusinessStatus(esDueno, negocioAbierto);
